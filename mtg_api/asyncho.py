@@ -1,11 +1,9 @@
 from typing import List, Union
 from pathlib import Path
-from mtgsdk import Card
 import aiohttp
 import aiofiles
 import asyncio
 import json
-from pprint import pprint
 
 
 
