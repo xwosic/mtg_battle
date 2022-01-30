@@ -8,16 +8,16 @@ import json
 
 
 async def get_card_image(card_name: str,
-                         path_to_cards: Union[Path, str]):
+                         path_to_cards: Union[Path, str],
+                         default_url: str = 'https://api.magicthegathering.io/v1/cards?name='):
 
     print(f'downloading |#__| {card_name}')
     response_body = {}
     async with aiohttp.ClientSession() as session:
-        async with session.get(f'https://api.magicthegathering.io/v1/cards?name={card_name}') as response:
+        async with session.get(default_url + card_name) as response:
             if response.status == 200:
                 response_body = await response.text()
                 
-    
     response_body = json.loads(response_body)
 
     for card in response_body['cards']:
