@@ -4,16 +4,27 @@ from mtgsdk import Card
 import aiohttp
 import aiofiles
 import asyncio
+import json
+from pprint import pprint
+
 
 
 async def get_card_image(card_name: str,
                          path_to_cards: Union[Path, str]):
 
     print(f'downloading |#__| {card_name}')
-    result: List[Card] = Card.where(name=card_name).all()
-    for c in result:
-        if c.image_url is not None:
-            await download_card(url=c.image_url,
+    response_body = {}
+    async with aiohttp.ClientSession() as session:
+        async with session.get(f'https://api.magicthegathering.io/v1/cards?name={card_name}') as response:
+            if response.status == 200:
+                response_body = await response.text()
+                
+    
+    response_body = json.loads(response_body)
+
+    for card in response_body['cards']:
+        if card.get('imageUrl'):
+            await download_card(url=card['imageUrl'],
                                 card_name=card_name,
                                 path_to_cards=path_to_cards)
             break
@@ -37,7 +48,7 @@ async def download_card(url: str,
                 await f.close()
 
 
-async def download_cards(cards_to_download: List[str], path_to_cards: Union[Path, str]):
+async def execute_tasks(cards_to_download: List[str], path_to_cards: Union[Path, str]):
     tasks = []
     for card in cards_to_download:
         tasks.append(get_card_image(card_name=card,
@@ -46,10 +57,10 @@ async def download_cards(cards_to_download: List[str], path_to_cards: Union[Path
     await asyncio.gather(*tasks)
 
 
-loop = asyncio.get_event_loop()
-try:
-    loop.run_until_complete(download_cards(['Cloudkin Seer', 'Diamond Mare', 'Howling Golem'],
-                                            'cards'))
+def download_cards(cards_to_download: List[str], path_to_cards: Path):
+    loop = asyncio.get_event_loop()
+    try:
+        loop.run_until_complete(execute_tasks(cards_to_download, path_to_cards))
 
-except Exception:
-    loop.close()
+    except Exception as ex:
+        loop.close()

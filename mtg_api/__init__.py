@@ -1,1 +1,2 @@
-from mtg_api.sync import check_which_card_to_download, download_cards
+from mtg_api.sync import check_which_card_to_download
+from mtg_api.asyncho import download_cards
