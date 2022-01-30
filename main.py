@@ -5,7 +5,7 @@ from pathlib import Path
 
 def main():
     path = Path('cards')
-    deck_path = Path('decks/Azorius Control.txt')
+    deck_path = Path('decks/Reap the Tides.txt')
     deck = read_deck(deck_path)
     deck = list(deck['mainboard'].keys())
     cards_to_download = check_which_card_to_download(deck, path)
