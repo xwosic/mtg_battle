@@ -1,7 +1,4 @@
-import csv
-from random import choices
 import pygame
-from game.loader import load_tiles
 
 
 class Game:
@@ -50,20 +47,9 @@ class Game:
         }
         # everything is in sprite_group
         self.sprite_group = pygame.sprite.Group()
-        # everything which can stop bullet is here
-        self.touch_group = pygame.sprite.Group()
-        # everything which support standing on it is here
-        self.tile_group = pygame.sprite.Group()
-        # enemy cannot shoot to each other
-        self.enemy_group = pygame.sprite.Group()
+
         # pointer to player
         self.player = None
-        # graphics showed on the screen
-        self.bullet_graphic  = None
-        self.grenade_graphic = None
-        # load level
-        # self.load_current_lvl()
-
 
     def on_init(self):
         pygame.init()
@@ -71,74 +57,6 @@ class Game:
         pygame.display.set_caption('mtg_battle')
         self.running = True
         self.TEXT_FONT = pygame.font.SysFont('calibri', 15)
-        # tiles
-        # self.tiles_img = self.load_tiles_img('img/tile', scale=1.7 * self.SCALE)
-        
-        # init Classes used in game
-        # Explosion.init(self.SCALE)
-        # SmallExplosion.init(self.SCALE)
-
-        # populate the world
-        self.populate_world()
-        # self.player = Player(self.width/2, self.heigth/2, groups=[self.sprite_group, self.touch_group], game=self)
-
-    
-    def load_current_lvl(self):
-        # clear map
-        self.WORLD_MAP = []
-        for row in range(self.ROWS):
-            r = [-1] * self.COLUMNS
-            self.WORLD_MAP.append(r)
-
-        # load data from csv
-        with open(f'level{self.CURRENT_LVL}_data.csv', newline='') as csvfile:
-            reader = csv.reader(csvfile)
-            for x, row in enumerate(reader):
-                for y, tile in enumerate(row):
-                    self.WORLD_MAP[x][y] = int(tile)
-
-
-    def load_tiles_img(self, path, scale=1):
-        """Scrapps all images to list from a given directory."""
-        return load_tiles(path, scale=scale)
-
-    
-    def populate_world(self):
-        for row, list in enumerate(self.WORLD_MAP):
-            for col, img_num in enumerate(list):
-                pass
-                # if img_num >= 0:
-                    # if img_num in [9, 10, 11, 13, 14, 20]:
-                    #     # touchless
-                    #     Tile(col * self.TILE_SIZE, row * self.TILE_SIZE, self.TILE_SIZE, self.tiles_img[img_num], groups=[self.sprite_group])
-                    # elif img_num in [0, 1, 2, 3, 4, 5, 6, 7, 8, 12]:
-                    #     # touchable
-                    #     Tile(col * self.TILE_SIZE, row * self.TILE_SIZE, self.TILE_SIZE, self.tiles_img[img_num], groups=[self.sprite_group, self.tile_group, self.touch_group])
-                    # elif img_num == 16:
-                    #     num = choices([1, 2, 3, 4, 5, 6, 7])
-                    #     num = num[0]
-                    #     # num = 7
-                    #     if num == 1:
-                    #         enemy.EnemyShooter(col * self.TILE_SIZE, row * self.TILE_SIZE, groups=[self.sprite_group, self.touch_group, self.enemy_group])
-                    #     elif num == 2:
-                    #         enemy.EnemyWomanWarrior(col * self.TILE_SIZE, row * self.TILE_SIZE, groups=[self.sprite_group, self.touch_group, self.enemy_group])
-                    #     elif num == 3:
-                    #         enemy.EnemySkeleton(col * self.TILE_SIZE, row * self.TILE_SIZE, groups=[self.sprite_group, self.touch_group, self.enemy_group])
-                    #     elif num ==4:
-                    #         enemy.EnemyElyxStormblade(col * self.TILE_SIZE, row * self.TILE_SIZE, groups=[self.sprite_group, self.touch_group, self.enemy_group])
-                    #     elif num ==5:
-                    #         enemy.EnemyZurael(col * self.TILE_SIZE, row * self.TILE_SIZE, groups=[self.sprite_group, self.touch_group, self.enemy_group])
-                    #     elif num ==6:
-                    #         enemy.EnemyWhiteWidow(col * self.TILE_SIZE, row * self.TILE_SIZE, groups=[self.sprite_group, self.touch_group, self.enemy_group])
-                    #     elif num ==7:
-                    #         enemy.EnemyKheshraiFanblade(col * self.TILE_SIZE, row * self.TILE_SIZE, groups=[self.sprite_group, self.touch_group, self.enemy_group])
-                    # elif img_num == 17:
-                    #     ItemBox.ammo_box(col * self.TILE_SIZE, row * self.TILE_SIZE, groups=[self.sprite_group])
-                    # elif img_num == 18:
-                    #     ItemBox.grenades_box(col * self.TILE_SIZE, row * self.TILE_SIZE, groups=[self.sprite_group])
-                    # elif img_num == 19:
-                    #     ItemBox.health_box(col * self.TILE_SIZE, row * self.TILE_SIZE, groups=[self.sprite_group])
-
 
     def on_event(self, event):
         if event.type == pygame.QUIT:
