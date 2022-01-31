@@ -1,7 +1,4 @@
-from game.animation_less import AnimationLess
-
-
-class Card(AnimationLess):
+class Card:
     def __init__(self, x, y, width, height, **kwargs):
         super().__init__(width, height, **kwargs)
         self.rect.x = x

@@ -1,4 +1,3 @@
-from telnetlib import GA
 from mtg_api import check_which_card_to_download, download_cards
 from mtg_deck_reader import read_deck
 from pathlib import Path
