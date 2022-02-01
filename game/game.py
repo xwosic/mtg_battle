@@ -35,7 +35,7 @@ class Game:
         pygame.display.set_caption('mtg_battle')
         self.text_font = pygame.font.SysFont('calibri', 15)
         self.running = True
-        go = GameObject(groups=[self.sprite_group])
+        go = GameObject(groups=[self.sprite_group], image=pygame.image.load('cards/Angel of the Ruins.jpg'))
 
     def on_event(self, event):
         if event.type == pygame.QUIT:
