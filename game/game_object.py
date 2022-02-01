@@ -10,12 +10,15 @@ class GameObject(pygame.sprite.Sprite):
                  width=10,
                  height=10,
                  color=(255, 255, 255),
-                 image=None):
+                 image: pygame.Surface = None,
+                 scale=1.0):
 
         pygame.sprite.Sprite.__init__(self)
         self.selected = True
 
         if image:
+            size_to_set = (int(image.get_width() * scale), int(image.get_height() * scale))
+            image = pygame.transform.scale(image, size_to_set).convert_alpha()
             self.image = image
         else:
             self.image = pygame.Surface([width, height])

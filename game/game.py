@@ -36,8 +36,8 @@ class Game:
         pygame.display.set_caption('mtg_battle')
         self.text_font = pygame.font.SysFont('calibri', 15)
         self.running = True
-        go = GameObject(groups=[self.sprite_group], image=pygame.image.load('cards/Angel of the Ruins.jpg'))
-        c1 = Card(groups=[self.sprite_group], name='Arcane Denial', x=100, y=100)
+        c1 = Card(groups=[self.sprite_group], name='Angel of the Ruins', x=500, y=50)
+        c2 = Card(groups=[self.sprite_group], name='Arcane Denial', x=200, y=50)
 
     def on_event(self, event):
         if event.type == pygame.QUIT:
