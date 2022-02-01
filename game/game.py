@@ -1,5 +1,5 @@
 from typing import Tuple
-from game.game_object import GameObject
+from game.deck import Deck
 from game.card import Card
 import pygame
 
@@ -38,6 +38,8 @@ class Game:
         self.running = True
         c1 = Card(groups=[self.sprite_group], name='Angel of the Ruins', x=500, y=50)
         c2 = Card(groups=[self.sprite_group], name='Arcane Denial', x=200, y=50)
+        d1 = Deck(groups=[self.sprite_group], name='Reap the Tides', color=(127, 255, 127))
+        print(d1.deck_setup)
 
     def on_event(self, event):
         if event.type == pygame.QUIT:
