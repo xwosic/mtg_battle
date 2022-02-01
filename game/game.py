@@ -38,8 +38,8 @@ class Game:
         self.running = True
         c1 = Card(groups=[self.sprite_group], name='Angel of the Ruins', x=500, y=50)
         c2 = Card(groups=[self.sprite_group], name='Arcane Denial', x=200, y=50)
-        d1 = Deck(groups=[self.sprite_group], name='Reap the Tides', color=(127, 255, 127))
-        print(d1.deck_setup)
+        d1 = Deck(groups=[self.sprite_group], name='Reap the Tides', color=(0, 255, 255))
+        print(d1.cards)
 
     def on_event(self, event):
         if event.type == pygame.QUIT:
