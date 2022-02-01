@@ -4,16 +4,16 @@ from typing import List
 from pathlib import Path
 
 
-class Card(GameObject):
+class CardVisualization(GameObject):
     WIDTH = 63 * 4
     HEIGHT = 88 * 4
     DEFAULT_PATH = 'cards'
     def __init__(self, 
                  name: str, 
-                 default_path: str = 'cards',
+                 default_path: str = None,
                  **kwargs):
         self.name = name
-        self.DEFAULT_PATH = default_path
+        self.DEFAULT_PATH = default_path if default_path else self.DEFAULT_PATH
 
         image = self.find_image(name)
         scale = self.unify_scale(image)
@@ -38,3 +38,16 @@ class Card(GameObject):
         ratio = actual_width / self.WIDTH
         scale_to_unify = 1 / ratio
         return scale_to_unify
+
+
+class Card:
+    def __init__(self,
+                 name: str,
+                 **kwargs):
+        self.name = name
+        self.tapped = False
+        self.view = CardVisualization(name=name, **kwargs)
+
+    # leave it here to think about it
+    # def update(self, **kwargs):
+    #     self.view.update(**kwargs)
