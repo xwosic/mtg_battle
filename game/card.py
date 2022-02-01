@@ -1,17 +1,18 @@
-class Card:
-    def __init__(self, x, y, width, height, **kwargs):
-        super().__init__(width, height, **kwargs)
-        self.rect.x = x
-        self.rect.y = y
+import pygame
+from game.game_object import GameObject
+from typing import List
+from pathlib import Path
 
-    def add_gravity(self, game):
-        pass
 
-    def collide_with_tiles(self, game):
-        pass
+class Card(GameObject):
+    def __init__(self, 
+                 name: str, 
+                 default_path: str = 'cards',
+                 **kwargs):
+        self.name = name
+        image = self.find_image(default_path, name)
+        super().__init__(image=image, **kwargs)
 
-    def get_hit(self, demage, game):
-        pass
-
-    def prevent_collisions(self, game):
-        pass
+    def find_image(self, default_path: str, name: str):
+        path_to_card = Path.joinpath(Path(default_path), f'{name}.jpg')
+        return pygame.image.load(path_to_card)

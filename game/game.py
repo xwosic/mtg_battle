@@ -1,5 +1,6 @@
 from typing import Tuple
 from game.game_object import GameObject
+from game.card import Card
 import pygame
 
 
@@ -36,6 +37,7 @@ class Game:
         self.text_font = pygame.font.SysFont('calibri', 15)
         self.running = True
         go = GameObject(groups=[self.sprite_group], image=pygame.image.load('cards/Angel of the Ruins.jpg'))
+        c1 = Card(groups=[self.sprite_group], name='Arcane Denial', x=100, y=100)
 
     def on_event(self, event):
         if event.type == pygame.QUIT:
