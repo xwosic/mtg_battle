@@ -1,7 +1,7 @@
 from typing import Tuple
 from game.deck import Deck
 from game.card import Card
-from game.mouse import Mouse
+from game.mouse import MouseDown, MouseUp
 import pygame
 
 
@@ -37,16 +37,19 @@ class Game:
         pygame.display.set_caption('mtg_battle')
         self.text_font = pygame.font.SysFont('calibri', 15)
         self.running = True
-        c1 = Card(groups=[self.sprite_group], name='Angel of the Ruins', x=500, y=50)
+        c1 = Card(groups=[self.sprite_group], name='Angel of the Ruins', x=300, y=50)
         c2 = Card(groups=[self.sprite_group], name='Arcane Denial', x=200, y=50)
         d1 = Deck(groups=[self.sprite_group], name='Reap the Tides', color=(0, 255, 255))
         print(d1.cards)
 
     def on_event(self, event):
+        print(event)
         if event.type == pygame.QUIT:
             self.running = False
+        elif event.type == pygame.MOUSEBUTTONUP:
+            MouseUp(self, event)
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            Mouse()(self, event)
+            MouseDown(self, event)
         
     def handle_events(self):
         for event in pygame.event.get():

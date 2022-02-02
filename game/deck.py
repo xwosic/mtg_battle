@@ -31,6 +31,9 @@ class Deck:
         return read_deck(path_to_deck)
     
     def create_deck(self, deck_setup: dict):
+        """
+        Adds cards to deck in number as in deck setup dict.
+        """
         cards = []
         for name, quantity in deck_setup['mainboard'].items():
             for _ in range(quantity):

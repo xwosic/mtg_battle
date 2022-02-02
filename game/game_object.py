@@ -33,10 +33,16 @@ class GameObject(pygame.sprite.Sprite):
             for group in groups:
                 group.add(self)
     
-    def left_click(self):
+    def left_click(self, **kwargs):
         pass
 
-    def right_click(self):
+    def right_click(self, **kwargs):
+        pass
+
+    def left_upclick(self, **kwargs):
+        pass
+
+    def right_upclick(self, **kwargs):
         pass
 
     def update(self, game) -> None:

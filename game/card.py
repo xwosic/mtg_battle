@@ -44,8 +44,11 @@ class CardVisualization(GameObject):
         ratio = actual_width / self.WIDTH
         scale_to_unify = 1 / ratio
         return scale_to_unify
+
+    def left_click(self, **kwargs):
+        self.rect.center = kwargs['mouse_event'].pos
     
-    def left_click(self):
+    def left_upclick(self, **kwargs):
         self.selected = False if self.selected else True
 
 
@@ -56,7 +59,3 @@ class Card:
         self.name = name
         self.tapped = False
         self.view = CardVisualization(card=self, name=name, **kwargs)
-
-    # leave it here to think about it
-    # def update(self, **kwargs):
-    #     self.view.update(**kwargs)
