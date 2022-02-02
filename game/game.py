@@ -1,6 +1,7 @@
 from typing import Tuple
 from game.deck import Deck
 from game.card import Card
+from game.mouse import Mouse
 import pygame
 
 
@@ -45,13 +46,7 @@ class Game:
         if event.type == pygame.QUIT:
             self.running = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            print(event.__dict__)
-            if event.button == 1:
-                # lpm
-                clicked = [go for go in self.sprite_group.sprites() if go.rect.collidepoint(event.pos)]
-                print(clicked)
-                for c in clicked:
-                    c.selected = False if c.selected else True
+            Mouse()(self, event)
         
     def handle_events(self):
         for event in pygame.event.get():

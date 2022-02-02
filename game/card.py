@@ -44,6 +44,9 @@ class CardVisualization(GameObject):
         ratio = actual_width / self.WIDTH
         scale_to_unify = 1 / ratio
         return scale_to_unify
+    
+    def left_click(self):
+        self.selected = False if self.selected else True
 
 
 class Card:
