@@ -44,6 +44,14 @@ class Game:
     def on_event(self, event):
         if event.type == pygame.QUIT:
             self.running = False
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            print(event.__dict__)
+            if event.button == 1:
+                # lpm
+                clicked = [go for go in self.sprite_group.sprites() if go.rect.collidepoint(event.pos)]
+                print(clicked)
+                for c in clicked:
+                    c.selected = False if c.selected else True
         
     def handle_events(self):
         for event in pygame.event.get():

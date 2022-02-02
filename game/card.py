@@ -4,15 +4,21 @@ from typing import List
 from pathlib import Path
 
 
+class Card:
+    pass
+
+
 class CardVisualization(GameObject):
     WIDTH = 63 * 4
     HEIGHT = 88 * 4
     DEFAULT_PATH = 'cards'
     def __init__(self, 
-                 name: str, 
+                 name: str,
+                 card: Card = None, 
                  default_path: str = None,
                  **kwargs):
         self.name = name
+        self.card = card if card else None
         self.DEFAULT_PATH = default_path if default_path else self.DEFAULT_PATH
 
         image = self.find_image(name)
@@ -46,7 +52,7 @@ class Card:
                  **kwargs):
         self.name = name
         self.tapped = False
-        self.view = CardVisualization(name=name, **kwargs)
+        self.view = CardVisualization(card=self, name=name, **kwargs)
 
     # leave it here to think about it
     # def update(self, **kwargs):
