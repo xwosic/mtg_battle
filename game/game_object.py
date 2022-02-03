@@ -14,7 +14,7 @@ class GameObject(pygame.sprite.Sprite):
                  scale=1.0):
 
         pygame.sprite.Sprite.__init__(self)
-        self.selected = True
+        self.selected = False
 
         if image:
             size_to_set = (int(image.get_width() * scale), int(image.get_height() * scale))

@@ -5,7 +5,15 @@ class Player:
 
 
 class Hand:
-    def __init__(self, player: Player, x=0, y=0, width=100, height=100, rotation_angle=0.0, scale=1.0, **kwargs):
+    def __init__(self, 
+                 player: Player, 
+                 x=0, 
+                 y=0, 
+                 width=100,
+                 height=10,
+                 rotation_angle=0.0,
+                 scale=1.0,
+                 **kwargs):
         self.x = x
         self.y = y
         self.width = width
