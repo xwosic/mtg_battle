@@ -33,6 +33,10 @@ class Game:
         Card(groups=[self.sprite_group], name='Forest', x=335, y=650)
         Card(groups=[self.sprite_group], name='Forest', x=435, y=650)
         Card(groups=[self.sprite_group], name='Forest', x=535, y=650)
+        Card(groups=[self.sprite_group], name='Island', x=635, y=650)
+        Card(groups=[self.sprite_group], name='Island', x=735, y=650)
+        Card(groups=[self.sprite_group], name='Island', x=835, y=650)
+        Card(groups=[self.sprite_group], name='Island', x=935, y=650)
         Deck(groups=[self.sprite_group], name='Reap the Tides', color=(0, 255, 255), x=100, y=100)
 
     def on_event(self, event):
