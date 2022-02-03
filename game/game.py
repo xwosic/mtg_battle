@@ -46,6 +46,9 @@ class Game:
     def on_event(self, event):
         if event.type == pygame.QUIT:
             self.running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                self.running = False
         elif event.type == pygame.MOUSEBUTTONUP:
             self.mouse.mouse_up(event)
         elif event.type == pygame.MOUSEBUTTONDOWN:

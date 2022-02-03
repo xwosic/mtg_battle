@@ -3,6 +3,9 @@ from game.game_object import GameObject
 
 
 class Clickable(GameObject):
+    """
+    Class inheriting after Clickable will be triggered by Mouse class
+    """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
     
