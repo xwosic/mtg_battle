@@ -25,9 +25,9 @@ class GameObject(pygame.sprite.Sprite):
             self.image.fill(color)
         
         self.rect = self.image.get_rect()
-
         self.rect.x = x if x else 0
         self.rect.y = y if y else 0
+        self.rect.center = (self.rect.x, self.rect.y)
 
         if groups is not None:
             for group in groups:

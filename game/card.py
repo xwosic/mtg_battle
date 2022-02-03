@@ -25,8 +25,6 @@ class CardVisualization(Tapable):
         scale = self.unify_scale(image)
         super().__init__(image=image, scale=scale, **kwargs)
 
-        self.rect.center = self.rect.bottomleft
-
     def find_image(self, name: str):
         """
         Loades name.jpg from the directory.

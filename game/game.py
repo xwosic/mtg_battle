@@ -26,9 +26,14 @@ class Game:
         self.screen = Screen(tittle='mtg_battle', width=1600)
         self.mouse = Mouse(game=self)
         self.running = True
-        c1 = Card(groups=[self.sprite_group], name='Angel of the Ruins', x=300, y=50)
-        c2 = Card(groups=[self.sprite_group], name='Arcane Denial', x=200, y=50)
-        d1 = Deck(groups=[self.sprite_group], name='Reap the Tides', color=(0, 255, 255))
+        Card(groups=[self.sprite_group], name='Angel of the Ruins', x=300, y=350)
+        Card(groups=[self.sprite_group], name='Arcane Denial', x=500, y=350)
+        Card(groups=[self.sprite_group], name='Forest', x=135, y=650)
+        Card(groups=[self.sprite_group], name='Forest', x=235, y=650)
+        Card(groups=[self.sprite_group], name='Forest', x=335, y=650)
+        Card(groups=[self.sprite_group], name='Forest', x=435, y=650)
+        Card(groups=[self.sprite_group], name='Forest', x=535, y=650)
+        Deck(groups=[self.sprite_group], name='Reap the Tides', color=(0, 255, 255), x=100, y=100)
 
     def on_event(self, event):
         if event.type == pygame.QUIT:
