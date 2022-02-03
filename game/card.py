@@ -9,8 +9,8 @@ class Card:
 
 
 class CardVisualization(Tapable):
-    WIDTH = 63 * 4
-    HEIGHT = 88 * 4
+    WIDTH = 63 * 3
+    HEIGHT = 88 * 3
     DEFAULT_PATH = 'cards'
     def __init__(self, 
                  name: str,
@@ -25,7 +25,6 @@ class CardVisualization(Tapable):
         scale = self.unify_scale(image)
         super().__init__(image=image, scale=scale, **kwargs)
 
-        # card is held in bottom left corner - easier pivot
         self.rect.center = self.rect.bottomleft
 
     def find_image(self, name: str):

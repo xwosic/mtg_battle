@@ -34,8 +34,8 @@ class GameObject(pygame.sprite.Sprite):
                 group.add(self)
 
     def update(self, game) -> None:
-        game.screen.blit(pygame.transform.flip(self.image, flip_x=False, flip_y=False),
-                        (self.rect.x, self.rect.y))
+        game.screen.screen.blit(pygame.transform.flip(self.image, flip_x=False, flip_y=False),
+                               (self.rect.x, self.rect.y))
 
         if self.selected:
-            pygame.draw.rect(game.screen, (0, 255, 0), self.rect, width=1)
+            pygame.draw.rect(game.screen.screen, (0, 255, 0), self.rect, width=1)

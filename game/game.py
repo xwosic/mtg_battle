@@ -1,19 +1,16 @@
+from turtle import width
 from typing import Tuple
 from game.deck import Deck
 from game.card import Card
 from game.mouse import Mouse
+from game.screen import Screen
 import pygame
 
 
 class Game:
     def __init__(self):
         # screen
-        self.screen: pygame.Surface = None
-        self.text_font: pygame.font.Font = None
-        self.width = 1200
-        self.heigth = int(self.width * 0.8)
-        self.size: Tuple[int, int] = (self.width, self.heigth)
-        self.background_color: Tuple[int, int, int] = (100, 100, 100)
+        self.screen: Screen = None
         # time
         self.clock = pygame.time.Clock()
         self.FPS = 30
@@ -24,24 +21,14 @@ class Game:
         # pointers to players
         self.players = []
 
-    def draw_text(self, text, font=None, text_color=(0, 0, 0), x=0, y=0):
-        if font == None:
-            font = self.text_font
-
-        img = self.text_font.render(text, True, text_color)
-        self.screen.blit(img, (x, y))
-
     def on_init(self):
         pygame.init()
-        self.screen = pygame.display.set_mode(self.size)
-        pygame.display.set_caption('mtg_battle')
-        self.text_font = pygame.font.SysFont('calibri', 15)
-        self.running = True
+        self.screen = Screen(tittle='mtg_battle', width=1600)
         self.mouse = Mouse(game=self)
+        self.running = True
         c1 = Card(groups=[self.sprite_group], name='Angel of the Ruins', x=300, y=50)
         c2 = Card(groups=[self.sprite_group], name='Arcane Denial', x=200, y=50)
         d1 = Deck(groups=[self.sprite_group], name='Reap the Tides', color=(0, 255, 255))
-        print(d1.cards)
 
     def on_event(self, event):
         if event.type == pygame.QUIT:
@@ -59,7 +46,7 @@ class Game:
             self.on_event(event)
 
     def update(self):
-        self.screen.fill(self.background_color)
+        self.screen.screen.fill(self.screen.background_color)
         self.sprite_group.update(self)
         pygame.display.update()
 
