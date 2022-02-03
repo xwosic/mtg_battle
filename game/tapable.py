@@ -1,8 +1,8 @@
 import pygame
-from game.clickable import Clickable
+from game.dragable import Dragable
 
 
-class Tapable(Clickable):
+class Tapable(Dragable):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.tap = False
@@ -22,7 +22,6 @@ class Tapable(Clickable):
         else:
             self.tap = True
         return super().left_upclick(mouse_event, **kwargs)
-
     
     def update(self, game) -> None:
         delta_x = self.tap_end_position[0] - self.tap_start_position[0]
