@@ -1,5 +1,5 @@
 import pygame
-from game.game_object import GameObject
+from game.clickable import Clickable
 from typing import List
 from pathlib import Path
 
@@ -8,7 +8,7 @@ class Card:
     pass
 
 
-class CardVisualization(GameObject):
+class CardVisualization(Clickable):
     WIDTH = 63 * 4
     HEIGHT = 88 * 4
     DEFAULT_PATH = 'cards'
@@ -44,12 +44,6 @@ class CardVisualization(GameObject):
         ratio = actual_width / self.WIDTH
         scale_to_unify = 1 / ratio
         return scale_to_unify
-
-    def left_click(self, **kwargs):
-        self.rect.center = kwargs['mouse_event'].pos
-    
-    def left_upclick(self, **kwargs):
-        self.selected = False if self.selected else True
 
 
 class Card:

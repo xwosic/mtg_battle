@@ -1,9 +1,9 @@
-from game.game_object import GameObject
+from game.clickable import Clickable
 from pathlib import Path
 from mtg_deck_reader import read_deck
 
 
-class DeckVisualization(GameObject):
+class DeckVisualization(Clickable):
     WIDTH = 63 * 2
     HEIGHT = 88 * 2
     def __init__(self, name: str, **kwargs):

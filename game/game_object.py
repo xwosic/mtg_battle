@@ -32,18 +32,6 @@ class GameObject(pygame.sprite.Sprite):
         if groups is not None:
             for group in groups:
                 group.add(self)
-    
-    def left_click(self, **kwargs):
-        pass
-
-    def right_click(self, **kwargs):
-        pass
-
-    def left_upclick(self, **kwargs):
-        pass
-
-    def right_upclick(self, **kwargs):
-        pass
 
     def update(self, game) -> None:
         game.screen.blit(pygame.transform.flip(self.image, flip_x=False, flip_y=False),
