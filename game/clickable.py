@@ -3,8 +3,8 @@ from game.game_object import GameObject
 
 
 class Clickable(GameObject):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         self.drag = False
         self.mouse_offset = (0,0)
     
@@ -17,7 +17,6 @@ class Clickable(GameObject):
 
     def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         self.drag = False
-        self.selected = False if self.selected else True
 
 
     def right_upclick(self, mouse_event: pygame.event.Event, **kwargs):

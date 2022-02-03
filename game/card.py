@@ -1,5 +1,5 @@
 import pygame
-from game.clickable import Clickable
+from game.tapable import Tapable
 from typing import List
 from pathlib import Path
 
@@ -8,7 +8,7 @@ class Card:
     pass
 
 
-class CardVisualization(Clickable):
+class CardVisualization(Tapable):
     WIDTH = 63 * 4
     HEIGHT = 88 * 4
     DEFAULT_PATH = 'cards'
