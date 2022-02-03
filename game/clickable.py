@@ -26,5 +26,6 @@ class Clickable(GameObject):
         if self.drag:
             self.rect.x = pygame.mouse.get_pos()[0] - self.mouse_offset[0]
             self.rect.y = pygame.mouse.get_pos()[1] - self.mouse_offset[1]
+        
         return super().update(game)
         
