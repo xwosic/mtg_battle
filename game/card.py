@@ -16,13 +16,15 @@ class CardVisualization(Tapable):
                  name: str,
                  card: Card = None, 
                  default_path: str = None,
+                 scale: float = None,
                  **kwargs):
         self.name = name
         self.card = card if card else None
         self.DEFAULT_PATH = default_path if default_path else self.DEFAULT_PATH
 
         image = self.find_image(name)
-        scale = self.unify_scale(image)
+        unified_scale = self.unify_scale(image)
+        scale = scale * unified_scale if scale else unified_scale
         super().__init__(image=image, scale=scale, **kwargs)
 
     def find_image(self, name: str):
