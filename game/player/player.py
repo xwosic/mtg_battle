@@ -48,14 +48,10 @@ class Player:
         self.tl = (self.x, self.y)
         self.bl = (self.x, self.y + self.h)
         self.tr = (self.x + self.w, self.y)
-        self.br = (self.x + self.w, self.y + self.h)
-        print('tl', self.tl)
-        print('bl', self.bl)
-        print('tr', self.tr)
-        print('br', self.br)        
-   
-        hand_x, hand_y = self.calculate_rotation(self.x + abs(self.w // 2), self.y + abs(self.h // 2), self.a, self.scale)
-        print('hand', hand_x, hand_y)
+        self.br = (self.x + self.w, self.y + self.h)   
+        
+        hand_x = self.x + self.w // 2
+        hand_y = self.y + self.h // 2
         self.hand = Hand(player=self, x=hand_x, y=hand_y, a=self.a, scale=self.scale)
     
         # self.detail = pygame.sprite.GroupSingle()

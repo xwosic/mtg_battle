@@ -1,4 +1,5 @@
 import pygame
+from math import cos, sin, pi
 
 class Player:
     pass
@@ -14,17 +15,25 @@ class Hand:
                  a=0.0,
                  scale=1.0,
                  **kwargs):
+        self.a = a
+        self.scale = scale
         self.x = x
         self.y = y
-        self.w = w
-        self.h = h
-        self.a = a
+        self.w, self.h = self.calculate_rotation(w, h, angle=self.a, scale=self.scale)
+
         self.tl = (self.x, self.y)
         self.bl = (self.x, self.y + self.h)
         self.tr = (self.x + self.w, self.y)
         self.br = (self.x + self.w, self.y + self.h)
+
         self.player = player
         self.cards = pygame.sprite.Group()
+
+    def calculate_rotation(self, x, y, angle, scale):
+        angle_radians = angle * pi / 180
+        delta_x = x * cos(angle_radians) - y * sin(angle_radians)
+        delta_y = x * sin(angle_radians) + y * cos(angle_radians)
+        return delta_x * scale, delta_y * scale
     
     def distribute(self):
         """
