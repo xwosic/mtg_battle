@@ -1,3 +1,4 @@
+from math import cos, sin, pi
 import pygame
 from game.deck import Deck
 from .hand import Hand
@@ -29,24 +30,46 @@ class Player:
                  deck: Deck,
                  x: int = 0,
                  y: int = 0,
-                 width=100,
-                 height=100,
-                 rotation_angle: float = 0.0,
+                 w: int = 100,
+                 h: int = 100,
+                 a: float = 0.0,
+                 c = None,
                  scale: float = 1.0,
                  **kwargs):
         self.game = game
         self.deck = deck
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height  
-        self.rect = pygame.rect.Rect(self.x, self.y, self.width, self.height)      
-        self.rotation_angle = rotation_angle
+
+        self.a = a
         self.scale = scale
-        self.hand = Hand(player=self, x=x, y=y, rotation_angle=rotation_angle, scale=scale)
+        self.x, self.y = x, y 
+        self.w, self.h = self.calculate_rotation(w,  h, self.a, self.scale)
+        self.color = c
+
+        self.tl = (self.x, self.y)
+        self.bl = (self.x, self.y + self.h)
+        self.tr = (self.x + self.w, self.y)
+        self.br = (self.x + self.w, self.y + self.h)
+        print('tl', self.tl)
+        print('bl', self.bl)
+        print('tr', self.tr)
+        print('br', self.br)        
+   
+        hand_x, hand_y = self.calculate_rotation(self.x + abs(self.w // 2), self.y + abs(self.h // 2), self.a, self.scale)
+        print('hand', hand_x, hand_y)
+        self.hand = Hand(player=self, x=hand_x, y=hand_y, a=self.a, scale=self.scale)
+    
         # self.detail = pygame.sprite.GroupSingle()
     
+    def calculate_rotation(self, x, y, angle, scale):
+        angle_radians = angle * pi / 180
+        delta_x = x * cos(angle_radians) - y * sin(angle_radians)
+        delta_y = x * sin(angle_radians) + y * cos(angle_radians)
+        return delta_x * scale, delta_y * scale
+
     def update(self):
         self.hand.update()
-        pygame.draw.rect(self.game.screen.screen, (255, 0, 0), self.rect, width=1)
+        pygame.draw.polygon(self.game.screen.screen,
+                            self.color,
+                            [self.tl, self.tr, self.br, self.bl, self.tl],
+                            width=1)
 

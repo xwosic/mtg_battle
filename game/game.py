@@ -23,10 +23,10 @@ class Game:
 
     def on_init(self):
         pygame.init()
-        self.screen = Screen(tittle='mtg_battle', width=1600)
+        self.screen = Screen(tittle='mtg_battle', width=1200)
         self.mouse = Mouse(game=self)
         self.running = True
-        d = Deck(groups=[self.sprite_group], name='Reap the Tides', color=(0, 255, 255), x=100, y=100)
+        d = Deck(groups=[self.sprite_group], name='Reap the Tides', color=(0, 255, 255), x=10, y=10)
         Card(groups=[self.sprite_group], name='Forest', x=135, y=650, scale=0.7)
         Card(groups=[self.sprite_group], name='Forest', x=235, y=650, scale=0.7)
         Card(groups=[self.sprite_group], name='Forest', x=335, y=650, scale=0.7)
@@ -36,9 +36,12 @@ class Game:
         Card(groups=[self.sprite_group], name='Island', x=735, y=650, scale=0.7)
         Card(groups=[self.sprite_group], name='Island', x=835, y=650, scale=0.7)
         Card(groups=[self.sprite_group], name='Island', x=935, y=650, scale=0.7)
-        self.players.append(Player(game=self, deck=d, x=250, y=250))
-        self.players[0].hand.cards.add(Card(groups=[self.sprite_group], name='Angel of the Ruins').view)
-        self.players[0].hand.cards.add(Card(groups=[self.sprite_group], name='Arcane Denial').view)
+        self.players.append(Player(game=self, deck=d, c = (0, 0, 0),   x=600, y=300, w=250, h=125, a=0.0))    # black
+        self.players.append(Player(game=self, deck=d, c = (255, 0, 0), x=600, y=300, w=250, h=125, a=90.0))   # red
+        self.players.append(Player(game=self, deck=d, c = (0, 255, 0), x=600, y=300, w=250, h=125, a=180.0))  # green
+        self.players.append(Player(game=self, deck=d, c = (0, 0, 255), x=600, y=300, w=250, h=125, a=270.0))  # blue
+        # self.players[0].hand.cards.add(Card(groups=[self.sprite_group], name='Angel of the Ruins').view)
+        # self.players[0].hand.cards.add(Card(groups=[self.sprite_group], name='Arcane Denial').view)
 
     def on_event(self, event):
         if event.type == pygame.QUIT:
