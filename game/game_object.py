@@ -2,8 +2,13 @@ import pygame
 from typing import List
 
 
+class Game:
+    pass
+
+
 class GameObject(pygame.sprite.Sprite):
     def __init__(self,
+                 game: Game,
                  groups: List[pygame.sprite.Group] = None,
                  x=None,
                  y=None,
@@ -14,6 +19,7 @@ class GameObject(pygame.sprite.Sprite):
                  scale=1.0):
 
         pygame.sprite.Sprite.__init__(self)
+        self.game = game
         self.selected = False
 
         if image:
