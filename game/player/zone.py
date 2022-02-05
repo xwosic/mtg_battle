@@ -1,3 +1,4 @@
+from typing import Tuple
 import pygame
 from math import cos, sin, pi
 
@@ -18,6 +19,7 @@ class Zone:
                  **kwargs):
         self.game = game
 
+
         self.a = a
         self.scale = scale
         self.x, self.y = x, y 
@@ -28,6 +30,8 @@ class Zone:
         self.bl = (self.x, self.y + self.h)
         self.tr = (self.x + self.w, self.y)
         self.br = (self.x + self.w, self.y + self.h)
+        
+        # todo - create good rectangle!!!
     
     def calculate_rotation(self, x, y, angle, scale):
         angle_radians = angle * pi / 180
@@ -37,6 +41,26 @@ class Zone:
     
     def is_rotated(self):
         return self.a == 90 or self.a == 270
+    
+    def is_clicked(self, pos: Tuple[int, int]) -> bool:
+        x = pos[0]
+        y = pos[1]
+        print(self.tl, self.br, pos)
+        if self.tl[0] <= x <= self.tr[0]:
+            if self.tl[1] >= y >= self.bl[1]:
+                print('tru')
+                return True
+        print('fol')
+        return False
+    
+    def add_card(self, card):
+        pass
+
+    def left_upclick(self, mouse_event: pygame.event.Event, dragged, **kwargs):
+        """
+        Object is dropped when mouse's left button is reliesed.
+        """
+        pass
 
     def update(self):
         pygame.draw.polygon(self.game.screen.screen,

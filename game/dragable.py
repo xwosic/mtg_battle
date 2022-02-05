@@ -9,6 +9,7 @@ class Dragable(Clickable):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.drag = False
+        self.loc = None
         self.mouse_offset = (0,0)
     
     def left_click(self, mouse_event: pygame.event.Event, **kwargs):
@@ -24,6 +25,7 @@ class Dragable(Clickable):
         Object is dropped when mouse's left button is reliesed.
         """
         self.drag = False
+        self.find_zone(mouse_event.pos)
         return super().left_upclick(mouse_event, **kwargs)
 
     def update(self, game) -> None:
@@ -35,3 +37,12 @@ class Dragable(Clickable):
             self.rect.y = pygame.mouse.get_pos()[1] - self.mouse_offset[1]
         
         return super().update(game)
+    
+    def find_zone(self, pos):
+        for player in self.game.players:
+            print(player)
+            for zone in player.zones:
+                print(zone)
+                # todo - add check if in rect
+                zone.add_card(self)
+                break

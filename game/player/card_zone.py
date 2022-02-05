@@ -1,8 +1,7 @@
 from typing import List
 import pygame
 from game.player.zone import Zone
-from game.player.card_group import CardGroup
-from game.card import Card
+from game.card import Card, CardVisualization
 
 
 class CardZone(Zone):
@@ -10,16 +9,25 @@ class CardZone(Zone):
         self.cards = pygame.sprite.Group()
         super().__init__(**kwargs)
     
-    def add_card(self, card: Card):
-        self.cards.add(card.view)
-        self.game.sprite_group.add(card.view)
+    def add_card(self, card):
+        if isinstance(card, CardVisualization):
+            self.cards.add(card)
+            self.game.sprite_group.add(card)
+            card.loc = self
+
+        elif isinstance(card, Card):
+            self.cards.add(card.view)
+            self.game.sprite_group.add(card.view)
+            card.view.loc = self
+
         if len(self.cards) > 0:
             self.distribute_cards()
-    
-    def remove_card(self, card: Card):
-        if card.view in self.cards:
-            self.cards.remove(card.view)
-            self.game.sprite_group.remove(card.view)
+            
+    def remove_card(self, card: CardVisualization):
+        if card in self.cards:
+            self.cards.remove(card)
+            self.game.sprite_group.remove(card)
+            card.loc = None
             self.distribute_cards()
         return card.name
 

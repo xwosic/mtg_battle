@@ -1,5 +1,4 @@
 from typing import List
-from game.deck import Deck
 from game.card import Card
 from game.mouse import Mouse
 from game.screen import Screen

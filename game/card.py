@@ -1,6 +1,5 @@
 import pygame
 from game.tapable import Tapable
-from typing import List
 from pathlib import Path
 
 
