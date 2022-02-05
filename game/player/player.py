@@ -1,4 +1,6 @@
 from game.deck import Deck
+from game.player.lands import Lands
+from game.player.battlefield import Battlefield
 from game.player.zone import Zone
 from .hand import Hand
 from typing import Callable
@@ -29,9 +31,10 @@ class Player(Zone):
         super().__init__(**kwargs)
         self.deck = deck
         kwargs.pop('c')
-        self.lands = self.create_cardzone(Hand, x_ratio=0.5, y_ratio=0.5, w_ratio=0.5, h_ratio=0.25, c=(255,0,0), **kwargs)
-        self.hand = self.create_cardzone(Hand, x_ratio=0.5, y_ratio=0.75, w_ratio=0.5, h_ratio=0.25, c=(0,255,0), **kwargs)
-        
+        self.lands = self.create_cardzone(Hand, x_ratio=0.25, y_ratio=0.5, w_ratio=0.75, h_ratio=0.25, c=(255,0,0), **kwargs)
+        self.hand = self.create_cardzone(Lands, x_ratio=0.25, y_ratio=0.75, w_ratio=0.75, h_ratio=0.25, c=(0,255,0), **kwargs)
+        self.battlefield = self.create_cardzone(Battlefield, x_ratio=0, y_ratio=0, w_ratio=1, h_ratio=0.5, c=(0, 0, 255), **kwargs)
+        self.zones = [self.lands, self.hand, self.battlefield]
         # self.detail = pygame.sprite.GroupSingle()
     
     def create_cardzone(self,
@@ -64,6 +67,5 @@ class Player(Zone):
                          scale=self.scale)
 
     def update(self):
-        self.hand.update()
-        self.lands.update()
+        [zone.update() for zone in self.zones]
         return super().update()
