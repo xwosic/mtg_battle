@@ -32,6 +32,15 @@ class Player(Zone):
 
         hand_x = self.x + self.w // 2
         hand_y = self.y + self.h // 2
-        self.hand = Hand(player=self, x=hand_x, y=hand_y, a=self.a, scale=self.scale)
+        self.hand = Hand(player=self, 
+                         game=self.game,
+                         x=hand_x,
+                         y=hand_y,
+                         a=self.a,
+                         scale=self.scale)
     
         # self.detail = pygame.sprite.GroupSingle()
+
+    def update(self):
+        self.hand.update()
+        return super().update()
