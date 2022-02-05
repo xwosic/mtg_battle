@@ -7,7 +7,7 @@ from pathlib import Path
 class Card:
     pass
 
-tmp_scale = 1.5
+tmp_scale = 1.25
 
 class CardVisualization(Tapable):
     WIDTH = int(63 * tmp_scale)
