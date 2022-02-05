@@ -7,10 +7,11 @@ from pathlib import Path
 class Card:
     pass
 
+tmp_scale = 0.5
 
 class CardVisualization(Tapable):
-    WIDTH = 63 * 3
-    HEIGHT = 88 * 3
+    WIDTH = int(63 * tmp_scale)
+    HEIGHT = int(88 * tmp_scale)
     DEFAULT_PATH = 'cards'
     def __init__(self, 
                  name: str,

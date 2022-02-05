@@ -27,21 +27,21 @@ class Game:
         self.mouse = Mouse(game=self)
         self.running = True
         d = Deck(groups=[self.sprite_group], name='Reap the Tides', color=(0, 255, 255), x=10, y=10)
-        Card(groups=[self.sprite_group], name='Forest', x=135, y=650, scale=0.7)
-        Card(groups=[self.sprite_group], name='Forest', x=235, y=650, scale=0.7)
-        Card(groups=[self.sprite_group], name='Forest', x=335, y=650, scale=0.7)
-        Card(groups=[self.sprite_group], name='Forest', x=435, y=650, scale=0.7)
-        Card(groups=[self.sprite_group], name='Forest', x=535, y=650, scale=0.7)
-        Card(groups=[self.sprite_group], name='Island', x=635, y=650, scale=0.7)
-        Card(groups=[self.sprite_group], name='Island', x=735, y=650, scale=0.7)
-        Card(groups=[self.sprite_group], name='Island', x=835, y=650, scale=0.7)
-        Card(groups=[self.sprite_group], name='Island', x=935, y=650, scale=0.7)
-        self.players.append(Player(game=self, deck=d, c = (0, 0, 0),   x=300, y=300, w=200, h=100, a=0.0))    # black
-        self.players.append(Player(game=self, deck=d, c = (255, 0, 0), x=300, y=300, w=200, h=100, a=90.0))   # red
-        self.players.append(Player(game=self, deck=d, c = (0, 255, 0), x=300, y=300, w=200, h=100, a=180.0))  # green
-        self.players.append(Player(game=self, deck=d, c = (0, 0, 255), x=300, y=300, w=200, h=100, a=270.0))  # blue
-        # self.players[1].hand.cards.add(Card(groups=[self.sprite_group], name='Angel of the Ruins').view)
-        # self.players[1].hand.cards.add(Card(groups=[self.sprite_group], name='Arcane Denial').view)
+        self.players.append(Player(game=self, deck=d, scale=1, c=(0, 0, 0),   x=self.screen.width//2, y=self.screen.height//2, w=self.screen.width//2, h=self.screen.height//2, a=0.0))    # black
+        self.players.append(Player(game=self, deck=d, scale=1, c=(255, 0, 0), x=self.screen.width//4, y=0, w=self.screen.height, h=self.screen.width//4, a=90.0))   # red
+        self.players.append(Player(game=self, deck=d, scale=1, c=(0, 255, 0), x=self.screen.width, y=self.screen.height//2, w=self.screen.width//2, h=self.screen.height//2, a=180.0))  # green
+        self.players.append(Player(game=self, deck=d, scale=1, c=(0, 0, 255), x=self.screen.width//4, y=self.screen.height, w=self.screen.height, h=self.screen.width//4, a=270.0))  # blue
+        for n, p in enumerate(self.players):
+            self.add_cards(n)
+
+    def add_cards(self, num: int):
+        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Angel of the Ruins').view)
+        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Arcane Denial').view)
+        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Forest').view)
+        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Island').view)
+        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Cleansing Nova').view)
+        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Coiling Oracle').view)
+        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Doomskar').view)
 
     def on_event(self, event):
         if event.type == pygame.QUIT:
