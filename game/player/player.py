@@ -77,7 +77,7 @@ class Player(Zone):
                     y_ratio: float,
                     **kwargs):
         deck_position = self.calculate_position(x_ratio, y_ratio, **kwargs)
-        return Deck(groups=[self.game.sprite_group], name=deck_name, color=(0, 255, 255), x=deck_position['x'], y=deck_position['y'])
+        return Deck(player=self, groups=[self.game.sprite_group], name=deck_name, color=(0, 255, 255), x=deck_position['x'], y=deck_position['y'])
         
 
     def update(self):
