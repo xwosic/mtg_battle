@@ -35,6 +35,7 @@ class Game:
             self.add_cards(n)
 
     def add_cards(self, num: int):
+        # hand
         self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Angel of the Ruins').view)
         self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Arcane Denial').view)
         self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Forest').view)
@@ -42,6 +43,25 @@ class Game:
         self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Cleansing Nova').view)
         self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Coiling Oracle').view)
         self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Doomskar').view)
+        # lands
+        self.players[num].lands.cards.add(Card(groups=[self.sprite_group], name='Forest').view)
+        self.players[num].lands.cards.add(Card(groups=[self.sprite_group], name='Forest').view)
+        self.players[num].lands.cards.add(Card(groups=[self.sprite_group], name='Forest').view)
+        self.players[num].lands.cards.add(Card(groups=[self.sprite_group], name='Forest').view)
+        self.players[num].lands.cards.add(Card(groups=[self.sprite_group], name='Forest').view)
+        self.players[num].lands.cards.add(Card(groups=[self.sprite_group], name='Island').view)
+        self.players[num].lands.cards.add(Card(groups=[self.sprite_group], name='Island').view)
+        self.players[num].lands.cards.add(Card(groups=[self.sprite_group], name='Island').view)
+        self.players[num].lands.cards.add(Card(groups=[self.sprite_group], name='Island').view)
+        self.players[num].lands.cards.add(Card(groups=[self.sprite_group], name='Island').view)
+        self.players[num].lands.cards.add(Card(groups=[self.sprite_group], name='Island').view)
+        self.players[num].lands.cards.add(Card(groups=[self.sprite_group], name='Island').view)
+        # battlefield
+        self.players[num].battlefield.cards.add(Card(groups=[self.sprite_group], name='Sun Titan').view)
+        self.players[num].battlefield.cards.add(Card(groups=[self.sprite_group], name='Acidic Slime').view)
+        self.players[num].battlefield.cards.add(Card(groups=[self.sprite_group], name='Ancient Den').view)
+        self.players[num].battlefield.cards.add(Card(groups=[self.sprite_group], name='Banishing Light').view)
+
 
     def on_event(self, event):
         if event.type == pygame.QUIT:
