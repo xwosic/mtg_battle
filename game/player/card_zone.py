@@ -1,3 +1,4 @@
+from typing import List
 import pygame
 from game.player.zone import Zone
 from game.player.card_group import CardGroup
@@ -5,7 +6,7 @@ from game.player.card_group import CardGroup
 
 class CardZone(Zone):
     def __init__(self, **kwargs):
-        self.cards = CardGroup(zone=self)
+        self.cards: List[pygame.sprite.Sprite] = CardGroup(zone=self)
         super().__init__(**kwargs)
 
     def distribute_cards(self):
@@ -16,5 +17,5 @@ class CardZone(Zone):
         space_x = self.w // (cards_count + 1)
         space_y = self.h // (cards_count + 1)
         for number, card in enumerate(self.cards):
-            card.rect.x = self.x + space_x * (number + 1)
-            card.rect.y = self.y + space_y * (number + 1)
+            card.rect.centerx = self.x + space_x * (number + 1)
+            card.rect.centery = self.y + space_y * (number + 1)
