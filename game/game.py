@@ -36,10 +36,10 @@ class Game:
         Card(groups=[self.sprite_group], name='Island', x=735, y=650, scale=0.7)
         Card(groups=[self.sprite_group], name='Island', x=835, y=650, scale=0.7)
         Card(groups=[self.sprite_group], name='Island', x=935, y=650, scale=0.7)
-        self.players.append(Player(game=self, deck=d, c = (0, 0, 0),   x=600, y=300, w=250, h=125, a=0.0))    # black
-        self.players.append(Player(game=self, deck=d, c = (255, 0, 0), x=600, y=300, w=250, h=125, a=90.0))   # red
-        self.players.append(Player(game=self, deck=d, c = (0, 255, 0), x=600, y=300, w=250, h=125, a=180.0))  # green
-        self.players.append(Player(game=self, deck=d, c = (0, 0, 255), x=600, y=300, w=250, h=125, a=270.0))  # blue
+        self.players.append(Player(game=self, deck=d, c = (0, 0, 0),   x=300, y=300, w=200, h=100, a=0.0))    # black
+        self.players.append(Player(game=self, deck=d, c = (255, 0, 0), x=300, y=300, w=200, h=100, a=90.0))   # red
+        self.players.append(Player(game=self, deck=d, c = (0, 255, 0), x=300, y=300, w=200, h=100, a=180.0))  # green
+        self.players.append(Player(game=self, deck=d, c = (0, 0, 255), x=300, y=300, w=200, h=100, a=270.0))  # blue
         # self.players[1].hand.cards.add(Card(groups=[self.sprite_group], name='Angel of the Ruins').view)
         # self.players[1].hand.cards.add(Card(groups=[self.sprite_group], name='Arcane Denial').view)
 
