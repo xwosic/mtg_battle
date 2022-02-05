@@ -17,7 +17,7 @@ class CardZone(Zone):
         space_x = self.w // (cards_count + 1)
         space_y = self.h // (cards_count + 1)
         for number, card in enumerate(self.cards):
-            if self.a == 90 or self.a == 270:
+            if self.is_rotated():
                 card.rect.centerx = self.x + self.w // 2
                 card.rect.centery = self.y + space_y * (number + 1)
             else:

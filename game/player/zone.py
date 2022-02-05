@@ -34,6 +34,9 @@ class Zone:
         delta_x = x * cos(angle_radians) - y * sin(angle_radians)
         delta_y = x * sin(angle_radians) + y * cos(angle_radians)
         return delta_x * scale, delta_y * scale
+    
+    def is_rotated(self):
+        return self.a == 90 or self.a == 270
 
     def update(self):
         pygame.draw.polygon(self.game.screen.screen,

@@ -26,23 +26,14 @@ class Game:
         self.screen = Screen(tittle='mtg_battle', width=1600)
         self.mouse = Mouse(game=self)
         self.running = True
-        d = Deck(groups=[self.sprite_group], name='Reap the Tides', color=(0, 255, 255), x=10, y=10)
-        self.players.append(Player(game=self, deck=d, scale=1, c=(0, 0, 0),   x=self.screen.width//2, y=self.screen.height//2, w=self.screen.width//2, h=self.screen.height//2, a=0.0))    # black
-        self.players.append(Player(game=self, deck=d, scale=1, c=(255, 0, 0), x=self.screen.width//4, y=0, w=self.screen.height, h=self.screen.width//4, a=90.0))   # red
-        self.players.append(Player(game=self, deck=d, scale=1, c=(0, 255, 0), x=self.screen.width, y=self.screen.height//2, w=self.screen.width//2, h=self.screen.height//2, a=180.0))  # green
-        self.players.append(Player(game=self, deck=d, scale=1, c=(0, 0, 255), x=self.screen.width//4, y=self.screen.height, w=self.screen.height, h=self.screen.width//4, a=270.0))  # blue
+        self.players.append(Player(game=self, deck='Reap the Tides', scale=1, c=(0, 0, 0),   x=self.screen.width//2, y=self.screen.height//2, w=self.screen.width//2, h=self.screen.height//2, a=0.0))    # black
+        self.players.append(Player(game=self, deck='Lorehold Legacies', scale=1, c=(255, 0, 0), x=self.screen.width//4, y=0, w=self.screen.height, h=self.screen.width//4, a=90.0))   # red
+        self.players.append(Player(game=self, deck='Azorius Control', scale=1, c=(0, 255, 0), x=self.screen.width, y=self.screen.height//2, w=self.screen.width//2, h=self.screen.height//2, a=180.0))  # green
+        self.players.append(Player(game=self, deck='Reap the Tides', scale=1, c=(0, 0, 255), x=self.screen.width//4, y=self.screen.height, w=self.screen.height, h=self.screen.width//4, a=270.0))  # blue
         for n, p in enumerate(self.players):
             self.add_cards(n)
 
     def add_cards(self, num: int):
-        # hand
-        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Angel of the Ruins').view)
-        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Arcane Denial').view)
-        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Forest').view)
-        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Island').view)
-        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Cleansing Nova').view)
-        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Coiling Oracle').view)
-        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Doomskar').view)
         # lands
         self.players[num].lands.cards.add(Card(groups=[self.sprite_group], name='Forest').view)
         self.players[num].lands.cards.add(Card(groups=[self.sprite_group], name='Forest').view)
@@ -61,6 +52,14 @@ class Game:
         self.players[num].battlefield.cards.add(Card(groups=[self.sprite_group], name='Acidic Slime').view)
         self.players[num].battlefield.cards.add(Card(groups=[self.sprite_group], name='Ancient Den').view)
         self.players[num].battlefield.cards.add(Card(groups=[self.sprite_group], name='Banishing Light').view)
+        # hand
+        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Angel of the Ruins').view)
+        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Arcane Denial').view)
+        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Forest').view)
+        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Island').view)
+        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Cleansing Nova').view)
+        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Coiling Oracle').view)
+        self.players[num].hand.cards.add(Card(groups=[self.sprite_group], name='Doomskar').view)
 
 
     def on_event(self, event):
