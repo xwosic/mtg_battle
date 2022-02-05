@@ -2,12 +2,26 @@ from typing import List
 import pygame
 from game.player.zone import Zone
 from game.player.card_group import CardGroup
+from game.card import Card
 
 
 class CardZone(Zone):
     def __init__(self, **kwargs):
-        self.cards: List[pygame.sprite.Sprite] = CardGroup(zone=self)
+        self.cards = pygame.sprite.Group()
         super().__init__(**kwargs)
+    
+    def add_card(self, card: Card):
+        self.cards.add(card.view)
+        self.game.sprite_group.add(card.view)
+        if len(self.cards) > 0:
+            self.distribute_cards()
+    
+    def remove_card(self, card: Card):
+        if card.view in self.cards:
+            self.cards.remove(card.view)
+            self.game.sprite_group.remove(card.view)
+            self.distribute_cards()
+        return card.name
 
     def distribute_cards(self):
         """
