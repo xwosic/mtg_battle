@@ -23,7 +23,7 @@ class Game:
 
     def on_init(self):
         pygame.init()
-        self.screen = Screen(tittle='mtg_battle', width=1200)
+        self.screen = Screen(tittle='mtg_battle', width=1600)
         self.mouse = Mouse(game=self)
         self.running = True
         d = Deck(groups=[self.sprite_group], name='Reap the Tides', color=(0, 255, 255), x=10, y=10)
