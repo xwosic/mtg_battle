@@ -40,8 +40,8 @@ class Game:
         self.players.append(Player(game=self, deck=d, c = (255, 0, 0), x=600, y=300, w=250, h=125, a=90.0))   # red
         self.players.append(Player(game=self, deck=d, c = (0, 255, 0), x=600, y=300, w=250, h=125, a=180.0))  # green
         self.players.append(Player(game=self, deck=d, c = (0, 0, 255), x=600, y=300, w=250, h=125, a=270.0))  # blue
-        self.players[0].hand.cards.add(Card(groups=[self.sprite_group], name='Angel of the Ruins').view)
-        self.players[0].hand.cards.add(Card(groups=[self.sprite_group], name='Arcane Denial').view)
+        # self.players[1].hand.cards.add(Card(groups=[self.sprite_group], name='Angel of the Ruins').view)
+        # self.players[1].hand.cards.add(Card(groups=[self.sprite_group], name='Arcane Denial').view)
 
     def on_event(self, event):
         if event.type == pygame.QUIT:
