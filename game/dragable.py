@@ -17,6 +17,11 @@ class Dragable(Clickable):
         Dragging starts after mouse's left button is clicked.
         """
         self.drag = True
+
+        # add to top when drag
+        self.game.sprite_group.remove(self)
+        self.game.sprite_group.add(self)
+
         if self.loc:
             self.loc.remove_card(self)
             self.loc = None
