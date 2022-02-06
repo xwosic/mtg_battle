@@ -3,6 +3,7 @@ from game.clickable import Clickable
 from pathlib import Path
 from mtg_deck_reader import read_deck
 from game.card import Card
+import random
 
 
 class Player:
@@ -39,6 +40,7 @@ class Deck:
         self.DEFAULT_PATH = default_path if default_path else self.DEFAULT_PATH
         deck_setup = self.get_cards_from_txt(name)
         self.cards = self.create_deck(deck_setup)
+        random.shuffle(self.cards)
     
     def get_cards_from_txt(self, name: str) -> dict:
         """
@@ -62,3 +64,7 @@ class Deck:
         if self.cards:
             card_name = self.cards.pop()
             self.player.hand.add_card(Card(game=self.view.game, groups=[self.player.game.sprite_group], name=card_name))
+
+    def shuffle(self):
+        if self.cards:
+            random.shuffle(self.cards)
