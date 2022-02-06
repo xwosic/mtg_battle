@@ -29,16 +29,29 @@ class CardZone(Zone):
         return card.name
 
     def distribute_cards(self):
-        """
-        Change coordinates of each card in this zone to distribute them equaly.
-        """
+        # count space between cards
         cards_count = len(self.cards)
         space_x = self.w // (cards_count + 1)
         space_y = self.h // (cards_count + 1)
-        for number, card in enumerate(self.cards):
+
+        # map coordinates with objects
+        coordinate_dict = {}
+        for card in self.cards:
+            for card in self.cards:
+                if self.is_rotated():
+                    coordinate_dict[card.rect.centery] = card
+                else:
+                    coordinate_dict[card.rect.centerx] = card
+
+        # sort coordinates in ascending order
+        list_of_order = list(coordinate_dict.keys())
+        list_of_order.sort()
+
+        # distribute
+        for number, coordinate in enumerate(list_of_order):
             if self.is_rotated():
-                card.rect.centerx = self.x + self.w // 2
-                card.rect.centery = self.y + space_y * (number + 1)
-            else:
-                card.rect.centerx = self.x + space_x * (number + 1)
-                card.rect.centery = self.y + self.h // 2
+                coordinate_dict[coordinate].rect.centerx = self.x + self.w // 2
+                coordinate_dict[coordinate].rect.centery = self.y + space_y * (number + 1)
+            else:            
+                coordinate_dict[coordinate].rect.centerx = self.x + space_x * (number + 1)
+                coordinate_dict[coordinate].rect.centery = self.y + self.h // 2
