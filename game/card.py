@@ -26,6 +26,7 @@ class CardVisualization(Tapable):
         unified_scale = self.unify_scale(image)
         scale = scale * unified_scale if scale else unified_scale
         super().__init__(image=image, scale=scale, **kwargs)
+        self.game.sprite_group.add(self)
 
     def find_image(self, name: str):
         """
@@ -50,5 +51,4 @@ class Card:
                  name: str,
                  **kwargs):
         self.name = name
-        self.tapped = False
         self.view = CardVisualization(card=self, name=name, **kwargs)

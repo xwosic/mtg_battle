@@ -12,23 +12,20 @@ class CardZone(Zone):
     def add_card(self, card):
         if isinstance(card, CardVisualization):
             self.cards.add(card)
-            self.game.sprite_group.add(card)
             card.loc = self
+            if len(self.cards) > 0:
+                self.distribute_cards()
 
         elif isinstance(card, Card):
             self.cards.add(card.view)
-            self.game.sprite_group.add(card.view)
             card.view.loc = self
-
-        if len(self.cards) > 0:
-            self.distribute_cards()
+            if len(self.cards) > 0:
+                self.distribute_cards()
             
     def remove_card(self, card: CardVisualization):
         if card in self.cards:
             self.cards.remove(card)
-            self.game.sprite_group.remove(card)
             card.loc = None
-            self.distribute_cards()
         return card.name
 
     def distribute_cards(self):

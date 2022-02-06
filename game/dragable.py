@@ -17,6 +17,9 @@ class Dragable(Clickable):
         Dragging starts after mouse's left button is clicked.
         """
         self.drag = True
+        if self.loc:
+            self.loc.remove_card(self)
+            self.loc = None
         self.mouse_offset = (mouse_event.pos[0] - self.rect.x, mouse_event.pos[1] - self.rect.y)
         return super().left_click(mouse_event, **kwargs)
 
@@ -25,7 +28,7 @@ class Dragable(Clickable):
         Object is dropped when mouse's left button is reliesed.
         """
         self.drag = False
-        self.find_zone(mouse_event.pos)
+        self.drop_to_zone(mouse_event.pos)
         return super().left_upclick(mouse_event, **kwargs)
 
     def update(self, game) -> None:
@@ -38,11 +41,9 @@ class Dragable(Clickable):
         
         return super().update(game)
     
-    def find_zone(self, pos):
+    def drop_to_zone(self, pos):
         for player in self.game.players:
-            print(player)
             for zone in player.zones:
-                print(zone)
-                # todo - add check if in rect
-                zone.add_card(self)
-                break
+                if zone.is_clicked(pos):
+                    zone.add_card(self)
+                    break
