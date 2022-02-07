@@ -1,5 +1,5 @@
 import pygame
-from game.clickable import Clickable
+from game.clickable_and_dropable import ClickableDropable
 from pathlib import Path
 from mtg_deck_reader import read_deck
 from game.card import Card
@@ -14,7 +14,7 @@ class Deck:
     pass
 
 
-class DeckVisualization(Clickable):
+class DeckVisualization(ClickableDropable):
     WIDTH = 63 * 2
     HEIGHT = 88 * 2
     def __init__(self, name: str, deck: Deck, **kwargs):
@@ -22,9 +22,11 @@ class DeckVisualization(Clickable):
         self.name = name
         self.deck = deck
     
-    def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
+    def left_upclicked_trigger(self, mouse_event: pygame.event.Event, **kwargs):
         self.deck.draw()
-        return super().left_upclick(mouse_event, **kwargs)
+    
+    def drop_trigger(self, **kwargs):
+        return super().drop_trigger(**kwargs)
 
 
 class Deck:
