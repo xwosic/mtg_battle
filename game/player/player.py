@@ -29,9 +29,9 @@ class Player(Zone):
     """
     def __init__(self, deck: str, **kwargs):
         super().__init__(**kwargs)
-        self.lands = self.create_cardzone(Hand, x_ratio=0.25, y_ratio=0.5, w_ratio=0.75, h_ratio=0.25, **kwargs)
-        self.hand = self.create_cardzone(Lands, x_ratio=0.25, y_ratio=0.75, w_ratio=0.75, h_ratio=0.25, **kwargs)
-        self.battlefield = self.create_cardzone(Battlefield, x_ratio=0, y_ratio=0, w_ratio=1, h_ratio=0.5, **kwargs)
+        self.lands = self.create_cardzone(Hand, x_ratio=0.25, y_ratio=0.3, w_ratio=0.75, h_ratio=0.3, **kwargs)
+        self.hand = self.create_cardzone(Lands, x_ratio=0.25, y_ratio=0.6, w_ratio=0.75, h_ratio=0.3, **kwargs)
+        self.battlefield = self.create_cardzone(Battlefield, x_ratio=0, y_ratio=0, w_ratio=1, h_ratio=0.3, **kwargs)
         # self.detail = pygame.sprite.GroupSingle()
         self.zones = [self.lands, self.hand, self.battlefield]
 

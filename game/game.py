@@ -22,7 +22,7 @@ class Game:
 
     def on_init(self):
         pygame.init()
-        self.screen = Screen(tittle='mtg_battle', width=1600, height=1000)
+        self.screen = Screen(tittle='mtg_battle', width=1200, height=600)
         self.mouse = Mouse(game=self)
         self.running = True
         self.players.append(Player(game=self, deck='Reap the Tides', scale=1, c=(0, 0, 0),   x=0, y=self.screen.height//2, w=self.screen.width, h=self.screen.height//2, a=0.0))    # black
