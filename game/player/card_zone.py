@@ -25,7 +25,6 @@ class CardZone(Zone):
             
     def remove_card(self, card: CardVisualization):
         if card in self.cards:
-            # self.undo_rotate_card(card)
             self.cards.remove(card)
         return card.name
     

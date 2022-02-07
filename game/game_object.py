@@ -38,6 +38,12 @@ class GameObject(pygame.sprite.Sprite):
         if groups is not None:
             for group in groups:
                 group.add(self)
+    
+    def change_scale(self, scale):
+        size_to_set = (int(self.image.get_width() * scale), int(self.image.get_height() * scale))
+        image = pygame.transform.scale(self.image, size_to_set).convert_alpha()
+        self.image = image
+        self.rect = self.image.get_rect()
 
     def update(self, game) -> None:
         game.screen.screen.blit(pygame.transform.flip(self.image, flip_x=False, flip_y=False),

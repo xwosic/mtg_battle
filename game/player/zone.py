@@ -73,10 +73,6 @@ class Zone:
         pass
 
     def update(self):
-        pygame.draw.polygon(self.game.screen.screen,
-                            self.color,
-                            [self.tl, self.tr, self.br, self.bl, self.tl],
-                            width=1)
         pygame.draw.rect(self.game.screen.screen,
                             (0, 255, 0),
                             self.rect,
