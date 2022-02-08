@@ -6,15 +6,18 @@ from pathlib import Path
 class Card:
     pass
 
+
 tmp_scale = 1.75
+
 
 class CardVisualization(Tapable):
     WIDTH = int(63 * tmp_scale)
     HEIGHT = int(88 * tmp_scale)
     DEFAULT_PATH = 'cards'
-    def __init__(self, 
+
+    def __init__(self,
                  name: str,
-                 card: Card = None, 
+                 card: Card = None,
                  default_path: str = None,
                  scale: float = None,
                  **kwargs):
@@ -35,7 +38,7 @@ class CardVisualization(Tapable):
         path_to_card = Path.joinpath(Path(self.DEFAULT_PATH), f'{name}.jpg')
         image = pygame.image.load(path_to_card)
         return image
-    
+
     def unify_scale(self, image: pygame.Surface):
         """
         Image size is compared to the pattern and fix scale is computed.

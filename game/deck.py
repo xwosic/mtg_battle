@@ -27,12 +27,6 @@ class DeckVisualization(Clickable):
         self.deck.draw()
         return super().left_upclick(mouse_event, **kwargs)
 
-    # def left_upclicked_trigger(self, mouse_event: pygame.event.Event, **kwargs):
-    #     self.deck.draw()
-
-    # def drop_trigger(self, **kwargs):
-    #     return super().drop_trigger(**kwargs)
-
 
 class Deck:
     DEFAULT_PATH = 'decks'
@@ -71,7 +65,9 @@ class Deck:
     def draw(self):
         if self.cards:
             card_name = self.cards.pop()
-            self.player.hand.add_card(Card(game=self.view.game, groups=[self.player.game.sprite_group], name=card_name))
+            self.player.hand.add_card(Card(game=self.view.game,
+                                           groups=[self.player.game.sprite_group],
+                                           name=card_name))
 
     def shuffle(self):
         if self.cards:

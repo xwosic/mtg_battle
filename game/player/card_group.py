@@ -22,7 +22,7 @@ class CardGroup(pygame.sprite.Group):
         super().add(*sprites)
         if len(self.sprites()) > 0:
             self.zone.distribute_cards()
-    
+
     def remove(self, *sprites: Sprite) -> None:
         """
         When card is removed from group, zone recalculates positions of remaining cards.

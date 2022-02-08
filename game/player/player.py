@@ -13,7 +13,7 @@ class Game:
 class Player(Zone):
     """
     Player class has to provide scalable and easy to rotate map of containers on screen.
-    
+
     There will be couple of sprite groups to handle this:
         Hand
         Battlefield
@@ -24,7 +24,7 @@ class Player(Zone):
         View (many cards with search)
         Detail (one card when hover over)
         Air (during drag ang drop)
-    
+
     Player will get rotation angle and rectangle to "fit in", also each player will have his/her own deck.
     """
     def __init__(self, deck: str, **kwargs):
@@ -32,13 +32,12 @@ class Player(Zone):
         self.lands = self.create_cardzone(Hand, x_ratio=0.25, y_ratio=0.3, w_ratio=0.75, h_ratio=0.3, **kwargs)
         self.hand = self.create_cardzone(Lands, x_ratio=0.25, y_ratio=0.6, w_ratio=0.75, h_ratio=0.3, **kwargs)
         self.battlefield = self.create_cardzone(Battlefield, x_ratio=0, y_ratio=0, w_ratio=1, h_ratio=0.3, **kwargs)
-        # self.detail = pygame.sprite.GroupSingle()
         self.zones = [self.lands, self.hand, self.battlefield]
 
         self.deck = self.create_deck(deck_name=deck, x_ratio=0.1, y_ratio=0.75, **kwargs)
-    
-    def calculate_position(self, 
-                           x_ratio: float, 
+
+    def calculate_position(self,
+                           x_ratio: float,
                            y_ratio: float,
                            w_ratio: float = 1.0,
                            h_ratio: float = 1.0,
@@ -55,8 +54,8 @@ class Player(Zone):
         return {'x': zone_x, 'y': zone_y, 'w': zone_w, 'h': zone_h, 'a': self.a}
 
     def create_cardzone(self,
-                        zone_type: Callable, 
-                        x_ratio: float, 
+                        zone_type: Callable,
+                        x_ratio: float,
                         y_ratio: float,
                         w_ratio: float,
                         h_ratio: float,
@@ -70,15 +69,20 @@ class Player(Zone):
                          c=c,
                          player=self,
                          game=self.game)
-    
-    def create_deck(self, 
+
+    def create_deck(self,
                     deck_name: str,
-                    x_ratio: float, 
+                    x_ratio: float,
                     y_ratio: float,
                     **kwargs):
         deck_position = self.calculate_position(x_ratio, y_ratio, **kwargs)
-        return Deck(game=self.game, player=self, groups=[self.game.sprite_group], name=deck_name, color=(0, 255, 255), x=deck_position['x'], y=deck_position['y'])
-        
+        return Deck(game=self.game,
+                    player=self,
+                    groups=[self.game.sprite_group],
+                    name=deck_name,
+                    color=self.color,
+                    x=deck_position['x'],
+                    y=deck_position['y'])
 
     def update(self):
         [zone.update() for zone in self.zones]
