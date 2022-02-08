@@ -1,29 +1,32 @@
 import pygame
 from game.tapable import Tapable
-from typing import List
 from pathlib import Path
 
 
 class Card:
     pass
 
+tmp_scale = 1.75
 
 class CardVisualization(Tapable):
-    WIDTH = 63 * 3
-    HEIGHT = 88 * 3
+    WIDTH = int(63 * tmp_scale)
+    HEIGHT = int(88 * tmp_scale)
     DEFAULT_PATH = 'cards'
     def __init__(self, 
                  name: str,
                  card: Card = None, 
                  default_path: str = None,
+                 scale: float = None,
                  **kwargs):
         self.name = name
         self.card = card if card else None
         self.DEFAULT_PATH = default_path if default_path else self.DEFAULT_PATH
 
         image = self.find_image(name)
-        scale = self.unify_scale(image)
+        unified_scale = self.unify_scale(image)
+        scale = scale * unified_scale if scale else unified_scale
         super().__init__(image=image, scale=scale, **kwargs)
+        self.game.sprite_group.add(self)
 
     def find_image(self, name: str):
         """
@@ -48,5 +51,4 @@ class Card:
                  name: str,
                  **kwargs):
         self.name = name
-        self.tapped = False
         self.view = CardVisualization(card=self, name=name, **kwargs)
