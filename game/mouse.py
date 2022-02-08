@@ -74,7 +74,6 @@ class Mouse:
                         print('upclick')
                         clicked.left_upclick(mouse_event=mouse_event)
 
-            
             self.left_button_down = False
             self.dragged_object = None
 

@@ -1,4 +1,3 @@
-import pygame
 from game.clickable import Clickable
 
 

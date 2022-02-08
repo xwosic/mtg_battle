@@ -19,7 +19,7 @@ class ClickableDropable(Clickable):
         self.left_clicked = True
         # self.tap_start_position = mouse_event.pos
         return super().left_click(mouse_event, **kwargs)
-    
+
     def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         """
         When MLB is method checks if object moved. If so, no tap/untap will be performed.
@@ -34,10 +34,10 @@ class ClickableDropable(Clickable):
         else:
             # dragged over and drop
             self.drop_trigger(mouse_event=mouse_event, **kwargs)
-  
+
         self.left_clicked = False
         return super().left_upclick(mouse_event, **kwargs)
-    
+
     def left_upclicked_trigger(self, **kwargs):
         pass
 

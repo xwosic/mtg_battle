@@ -8,7 +8,7 @@ class Clickable(GameObject):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-    
+
     def left_click(self, mouse_event: pygame.event.Event, **kwargs):
         pass
 
@@ -23,4 +23,3 @@ class Clickable(GameObject):
 
     def update(self) -> None:
         return super().update()
-        
