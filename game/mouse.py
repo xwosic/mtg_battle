@@ -9,6 +9,10 @@ class Game:
 
 class Mouse:
     def __init__(self, game: Game):
+        """
+        In game there is only one Mouse object which handles
+        mouse events. It can click Clickable or drag and drop Dragable.
+        """
         self.game = game
         self.left_button_down = False
         self.right_button_down = False
@@ -28,60 +32,99 @@ class Mouse:
                 clicked_object = on_top
                 break
 
-        print(clicked_object)
         return clicked_object
 
     def is_moved(self):
         """
-        Returns true if between click and upclick position was changed."""
+        Returns true if between click and upclick position was changed.
+        """
         return self.start_pos != self.end_pos
+    
+    def move_dragged_on_top(self):
+        """
+        When object is dragged it is drawn last - always above other objects.
+        """
+        self.game.sprite_group.remove(self.dragged_object)
+        self.game.sprite_group.add(self.dragged_object)
+
+    def mouse_down_left_button(self, mouse_event: pygame.event.Event, clicked):
+        """
+        When mouse left button is clicked, check if object is dragable.
+        If so, add it to dragged and save position.
+        """
+        if isinstance(clicked, Dragable):
+            self.dragged_object = clicked
+            self.move_dragged_on_top()
+            self.mouse_offset = (mouse_event.pos[0] - self.dragged_object.rect.x,
+                                 mouse_event.pos[1] - self.dragged_object.rect.y)
+
+    def mouse_down_right_button(self, mouse_event: pygame.event.Event, clicked):
+        """
+        On mouse right button set flag.
+        """
+        self.right_button_down = True
 
     def mouse_down(self, mouse_event: pygame.event.Event):
+        """
+        Get clicked object and position. Decide which button was pressed.
+        """
         clicked = self.get_clicked(mouse_event=mouse_event)
         self.start_pos = mouse_event.pos
-        # left-click
         if mouse_event.button == 1:
-            self.left_button_down = True
-            if isinstance(clicked, Dragable):
-                self.dragged_object = clicked
-                self.mouse_offset = (mouse_event.pos[0] - self.dragged_object.rect.x,
-                                     mouse_event.pos[1] - self.dragged_object.rect.y)
+            self.mouse_down_left_button(mouse_event, clicked)
 
-        # right-click
         elif mouse_event.button == 3:
-            self.right_button_down = True
+            self.mouse_down_right_button(mouse_event, clicked)
+
+    def mouse_up_left_button(self, mouse_event: pygame.event.Event, clicked):
+        """
+        If mouse hasn't moved since down click - object is clicked.
+        Else object was dragged and will be dropped here.
+        """
+        if self.is_moved():
+            # drop
+            if clicked == self.dragged_object:
+                if self.dragged_object:
+                    self.dragged_object.drop_into(self.end_pos)
+
+        else:
+            # click
+            if clicked:
+                if 'left_upclicked_trigger' in clicked.__dict__:
+                    clicked.left_upclicked_trigger()
+
+                else:
+                    clicked.left_upclick(mouse_event=mouse_event)
+
+        self.left_button_down = False
+        self.dragged_object = None
+
+    def mouse_up_right_button(self, mouse_event: pygame.event.Event, clicked):
+        """
+        Right now - nothing happens.
+        """
+        self.right_button_down = False
 
     def mouse_up(self, mouse_event: pygame.event.Event):
+        """
+        Get upclicked and position. Decide which button was upclicked.
+        """
         clicked = self.get_clicked(mouse_event=mouse_event)
         self.end_pos = mouse_event.pos
         # left-upclick
         if mouse_event.button == 1:
-            # check if mouse moved - tap
-            if self.is_moved():
-                print('moved')
-                # drop
-                if clicked == self.dragged_object:
-                    if self.dragged_object:
-                        self.dragged_object.drop_into(self.end_pos)
-            else:
-                print('not moved')
-                # click
-                if clicked:
-                    if 'left_upclicked_trigger' in clicked.__dict__:
-                        print('trigger')
-                        clicked.left_upclicked_trigger()
-                    else:
-                        print('upclick')
-                        clicked.left_upclick(mouse_event=mouse_event)
-
-            self.left_button_down = False
-            self.dragged_object = None
+            self.mouse_up_left_button(mouse_event, clicked)
 
         elif mouse_event.button == 3:
             # right-upclick
-            self.right_button_down = False
+            self.mouse_up_right_button(mouse_event, clicked)
 
     def update(self):
+        """
+        When object is dragged, it should have the same position as mouse.
+        Offset is a distance between place where mouse is touching the object
+        and it's center.
+        """
         if self.dragged_object:
             self.dragged_object.rect.x = pygame.mouse.get_pos()[0] - self.mouse_offset[0]
             self.dragged_object.rect.y = pygame.mouse.get_pos()[1] - self.mouse_offset[1]
