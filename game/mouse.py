@@ -39,7 +39,7 @@ class Mouse:
         Returns true if between click and upclick position was changed.
         """
         return self.start_pos != self.end_pos
-    
+
     def move_dragged_on_top(self):
         """
         When object is dragged it is drawn last - always above other objects.
@@ -90,11 +90,7 @@ class Mouse:
         else:
             # click
             if clicked:
-                if 'left_upclicked_trigger' in clicked.__dict__:
-                    clicked.left_upclicked_trigger()
-
-                else:
-                    clicked.left_upclick(mouse_event=mouse_event)
+                clicked.left_upclick(mouse_event=mouse_event)
 
         self.left_button_down = False
         self.dragged_object = None
