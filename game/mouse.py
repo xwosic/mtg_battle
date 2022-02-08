@@ -1,12 +1,11 @@
-from platform import python_branch
 import pygame
 from game.clickable import Clickable
 from game.game_object import GameObject
 from typing import List
 
+
 class Game:
     pass
-
 
 
 class Mouse:
