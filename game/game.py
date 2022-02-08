@@ -70,7 +70,7 @@ class Game:
             self.mouse.mouse_up(event)
         elif event.type == pygame.MOUSEBUTTONDOWN:
             self.mouse.mouse_down(event)
-        
+
     def handle_events(self):
         for event in pygame.event.get():
             self.on_event(event)
@@ -78,8 +78,9 @@ class Game:
     def update(self):
         self.screen.screen.fill(self.screen.background_color)
         # player update
+        self.mouse.update()
         [player.update() for player in self.players]
-        self.sprite_group.update(self)
+        self.sprite_group.update()
         pygame.display.update()
 
     def clean_up(self):

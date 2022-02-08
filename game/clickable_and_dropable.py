@@ -33,7 +33,7 @@ class ClickableDropable(Clickable):
             self.left_upclicked_trigger(mouse_event=mouse_event, **kwargs)
         else:
             # dragged over and drop
-            self.drop_trigger(mouse_event=mouse_event, **kwargs)      
+            self.drop_trigger(mouse_event=mouse_event, **kwargs)
   
         self.left_clicked = False
         return super().left_upclick(mouse_event, **kwargs)

@@ -70,6 +70,6 @@ class CardZone(Zone):
             if self.is_rotated():
                 coordinate_dict[coordinate].rect.centerx = self.rect.x + self.rect.width // 2
                 coordinate_dict[coordinate].rect.centery = self.rect.y + space_y * (number + 1)
-            else:            
+            else:    
                 coordinate_dict[coordinate].rect.centerx = self.rect.x + space_x * (number + 1)
                 coordinate_dict[coordinate].rect.centery = self.rect.y + self.rect.height // 2
