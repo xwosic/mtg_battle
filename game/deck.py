@@ -1,8 +1,8 @@
 import pygame
-from game.clickable import Clickable
 from pathlib import Path
 from mtg_deck_reader import read_deck
 from game.card import Card
+from game.pile import Pile, PileVisualization
 import random
 
 
@@ -10,26 +10,11 @@ class Player:
     pass
 
 
-class Deck:
-    pass
-
-
-class DeckVisualization(Clickable):
-    WIDTH = 63 * 1
-    HEIGHT = 88 * 1
-
-    def __init__(self, name: str, deck: Deck, **kwargs):
-        super().__init__(width=self.WIDTH, height=self.HEIGHT, **kwargs)
-        self.name = name
-        self.deck = deck
+class DeckVisualization(PileVisualization):
 
     def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
-        self.deck.draw()
+        self.pile.draw()
         return super().left_upclick(mouse_event, **kwargs)
-
-    def put_card_on_top(self, card_view):
-        self.deck.cards.append(card_view.name)
-        card_view.kill()
 
 
 class Deck:
@@ -42,7 +27,7 @@ class Deck:
                  **kwargs):
         self.name = name
         self.player = player
-        self.view = DeckVisualization(name=name, deck=self, **kwargs)
+        self.view = DeckVisualization(pile=self, **kwargs)
         self.DEFAULT_PATH = default_path if default_path else self.DEFAULT_PATH
         deck_setup = self.get_cards_from_txt(name)
         self.cards = self.create_deck(deck_setup)
@@ -67,6 +52,9 @@ class Deck:
         return cards
 
     def draw(self):
+        """
+        Put top card of deck and place it in hand.
+        """
         if self.cards:
             card_name = self.cards.pop()
             self.player.hand.add_card(Card(game=self.view.game,
