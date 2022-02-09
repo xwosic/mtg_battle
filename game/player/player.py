@@ -1,10 +1,9 @@
-from game.piles.deck import Deck
 from game.player.lands import Lands
 from game.player.battlefield import Battlefield
 from game.player.zone import Zone
 from .hand import Hand
 from typing import Callable
-from game.piles.pile import Pile
+from game.piles import Pile, Deck
 
 
 class Game:
