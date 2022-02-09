@@ -1,8 +1,5 @@
-from game.deck import Deck
-from game.player.lands import Lands
-from game.player.battlefield import Battlefield
-from game.player.zone import Zone
-from .hand import Hand
+from game.piles import Pile, Deck
+from game.zones import Battlefield, Hand, Lands, Zone
 from typing import Callable
 
 
@@ -34,7 +31,11 @@ class Player(Zone):
         self.battlefield = self.create_cardzone(Battlefield, x_ratio=0, y_ratio=0, w_ratio=1, h_ratio=0.3, **kwargs)
         self.zones = [self.lands, self.hand, self.battlefield]
 
-        self.deck = self.create_deck(deck_name=deck, x_ratio=0.1, y_ratio=0.75, **kwargs)
+        self.deck = self.create_deck(deck_name=deck, x_ratio=0.17, y_ratio=0.8, **kwargs)
+        self.graveyard = self.create_pile(x_ratio=0.05, y_ratio=0.8, **kwargs)
+        self.exile = self.create_pile(x_ratio=0.05, y_ratio=0.5, **kwargs)
+        self.command_zone = self.create_pile(x_ratio=0.17, y_ratio=0.5, **kwargs)
+        self.piles = [self.deck, self.graveyard, self.exile, self.command_zone]
 
     def calculate_position(self,
                            x_ratio: float,
@@ -43,6 +44,7 @@ class Player(Zone):
                            h_ratio: float = 1.0,
                            **kwargs):
         """
+        Calculate position when player is rotated.
         """
         if self.is_rotated():
             x_ratio, y_ratio = y_ratio, x_ratio
@@ -65,16 +67,10 @@ class Player(Zone):
         Creates CardZone based on player's width and hieght ratio.
         Requires w and h in kwargs.
         """
-        return zone_type(**self.calculate_position(x_ratio, y_ratio, w_ratio, h_ratio, **kwargs),
-                         c=c,
-                         player=self,
-                         game=self.game)
+        position_dict = self.calculate_position(x_ratio, y_ratio, w_ratio, h_ratio, **kwargs)
+        return zone_type(player=self, game=self.game, c=c, **position_dict)
 
-    def create_deck(self,
-                    deck_name: str,
-                    x_ratio: float,
-                    y_ratio: float,
-                    **kwargs):
+    def create_deck(self, deck_name: str, x_ratio: float, y_ratio: float, **kwargs):
         deck_position = self.calculate_position(x_ratio, y_ratio, **kwargs)
         return Deck(game=self.game,
                     player=self,
@@ -84,6 +80,15 @@ class Player(Zone):
                     x=deck_position['x'],
                     y=deck_position['y'])
 
+    def create_pile(self, x_ratio: float, y_ratio: float, **kwargs):
+        deck_position = self.calculate_position(x_ratio, y_ratio, **kwargs)
+        return Pile(game=self.game,
+                    groups=[self.game.sprite_group],
+                    color=self.color,
+                    x=deck_position['x'],
+                    y=deck_position['y'])
+
     def update(self):
+        [pile.update() for pile in self.piles]
         [zone.update() for zone in self.zones]
         return super().update()

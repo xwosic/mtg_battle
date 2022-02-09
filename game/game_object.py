@@ -43,7 +43,9 @@ class GameObject(pygame.sprite.Sprite):
         size_to_set = (int(self.image.get_width() * scale), int(self.image.get_height() * scale))
         image = pygame.transform.scale(self.image, size_to_set).convert_alpha()
         self.image = image
+        position = self.rect.center
         self.rect = self.image.get_rect()
+        self.rect.center = position
 
     def update(self) -> None:
         self.game.screen.screen.blit(pygame.transform.flip(self.image, flip_x=False, flip_y=False),

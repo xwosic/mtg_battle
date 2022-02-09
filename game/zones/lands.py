@@ -1,4 +1,4 @@
-from game.player.card_zone import CardZone
+from game.zones.card_zone import CardZone
 
 
 class Player:
