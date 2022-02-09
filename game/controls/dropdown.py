@@ -1,7 +1,6 @@
-import pygame
+from game.controls.button import Button
 from game.game_object import GameObject
 from typing import List
-from game.controls.button import Button
 
 
 class Game:
@@ -9,11 +8,11 @@ class Game:
 
 
 class Dropdown(GameObject):
-    def __init__(self, options: dict, **kwargs):
+    def __init__(self, options: dict, button_w=200, button_h=100, **kwargs):
         super().__init__(**kwargs)
         mapping = self.create_mapping(options)
-        self.options = self.create_buttons(mapping)
-        print(mapping)
+        self.buttons = self.create_buttons(mapping)
+        self.distribute_buttons(self.buttons, button_w, button_h)
 
     def create_mapping(self, options: dict):
         """
@@ -23,30 +22,34 @@ class Dropdown(GameObject):
         out:
             mapping = {<method name>: <method object>, ...}
         """
-        class_instance = options['instance']
-        mapping = {
-            'instance': class_instance,
-            'methods': {}
-        }
+        mapping = {}
         for option_name in options['options']:
-            mapping['methods'][option_name] = class_instance.__getattribute__(option_name)
+            mapping[option_name] = getattr(options['instance'], option_name)
 
         return mapping
 
     def create_buttons(self, mapping: dict) -> List[Button]:
         buttons = []
-        index = 0
-        for method_name, method in mapping['methods'].items():
-            buttons.append(Button(game=self.game,
-                                  groups=[self.game.sprite_group],
-                                  y=index*15,
-                                  option_title=method_name,
+        for method_name, method in mapping.items():
+            buttons.append(Button(option_title=method_name,
                                   option_method=method,
-                                  instance=mapping['instance']))
-            index += 1
+                                  game=self.game,
+                                  groups=[self.game.sprite_group]))
 
         return buttons
 
+    def distribute_buttons(self, buttons: List[Button], button_w: int, button_h: int):
+        for number, button in enumerate(buttons):
+            button.rect.x = self.rect.x
+            button.rect.y = self.rect.y + number * button_h
+            button.rect.width = button_w
+            button.rect.height = button_h
+            button.adapt_to_new_size()
+
+        self.rect.width = button_w
+        self.rect.height = len(buttons) * button_h
+        self.adapt_to_new_size()
+
     def update(self) -> None:
         super().update()
-        [option.update() for option in self.options]
+        [button.update() for button in self.buttons]

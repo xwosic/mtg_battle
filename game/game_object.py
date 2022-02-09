@@ -21,6 +21,7 @@ class GameObject(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.game = game
         self.selected = False
+        self.color = color
 
         if image:
             size_to_set = (int(image.get_width() * scale), int(image.get_height() * scale))
@@ -28,7 +29,7 @@ class GameObject(pygame.sprite.Sprite):
             self.image = image
         else:
             self.image = pygame.Surface([width, height])
-            self.image.fill(color)
+            self.image.fill(self.color)
 
         self.rect = self.image.get_rect()
         self.rect.x = x if x else 0
@@ -38,6 +39,10 @@ class GameObject(pygame.sprite.Sprite):
         if groups is not None:
             for group in groups:
                 group.add(self)
+
+    def adapt_to_new_size(self):
+        self.image = pygame.Surface((self.rect.width, self.rect.height))
+        self.image.fill(self.color)
 
     def change_scale(self, scale):
         size_to_set = (int(self.image.get_width() * scale), int(self.image.get_height() * scale))
