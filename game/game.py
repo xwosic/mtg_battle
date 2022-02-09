@@ -2,6 +2,7 @@ from typing import List
 from game.mouse import Mouse
 from game.screen import Screen
 from game.player import Player
+from game.controls.dropdown import Dropdown
 import pygame
 
 
@@ -40,6 +41,11 @@ class Game:
         #                            scale=1, c=(0, 0, 255),
         #                            x=self.screen.width//2, y=self.screen.height,
         #                            w=self.screen.height, h=self.screen.width//2, a=270.0))
+
+        d = Dropdown(game=self, groups=[self.sprite_group], options={'instance': self.players[0], 'options': ['hello_world']},
+        x=100, y=100)
+
+
 
     # def add_cards(self, num: int):
     #     # lands
