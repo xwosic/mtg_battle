@@ -2,7 +2,7 @@ import pygame
 from pathlib import Path
 from mtg_deck_reader import read_deck
 from game.card import Card
-from game.pile import Pile, PileVisualization
+from game.piles.pile import Pile, PileVisualization
 import random
 
 
