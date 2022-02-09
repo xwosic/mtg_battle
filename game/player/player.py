@@ -1,9 +1,6 @@
-from game.player.lands import Lands
-from game.player.battlefield import Battlefield
-from game.player.zone import Zone
-from .hand import Hand
-from typing import Callable
 from game.piles import Pile, Deck
+from game.zones import Battlefield, Hand, Lands, Zone
+from typing import Callable
 
 
 class Game:
