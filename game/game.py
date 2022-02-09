@@ -25,12 +25,22 @@ class Game:
         self.screen = Screen(tittle='mtg_battle', width=1200, height=600)
         self.mouse = Mouse(game=self)
         self.running = True
-        self.players.append(Player(game=self, deck='Reap the Tides', scale=1, c=(0, 0, 0),   x=0, y=self.screen.height//2, w=self.screen.width, h=self.screen.height//2, a=0.0))    # black
-        # self.players.append(Player(game=self, deck='Lorehold Legacies', scale=1, c=(255, 0, 0), x=self.screen.width//2, y=0, w=self.screen.height, h=self.screen.width//2, a=90.0))   # red
-        self.players.append(Player(game=self, deck='Lorehold Legacies', scale=1, c=(0, 255, 0), x=self.screen.width, y=self.screen.height//2, w=self.screen.width, h=self.screen.height//2, a=180.0))  # green
-        # self.players.append(Player(game=self, deck='Reap the Tides', scale=1, c=(0, 0, 255), x=self.screen.width//2, y=self.screen.height, w=self.screen.height, h=self.screen.width//2, a=270.0))  # blue
-        # for n, p in enumerate(self.players):
-        #     self.add_cards(n)
+        self.players.append(Player(game=self, deck='Reap the Tides',
+                                   scale=1, c=(0, 0, 0),
+                                   x=0, y=self.screen.height//2,
+                                   w=self.screen.width, h=self.screen.height//2, a=0.0))
+        # self.players.append(Player(game=self, deck='Lorehold Legacies',
+        #                            scale=1, c=(255, 0, 0),
+        #                            x=self.screen.width//2, y=0,
+        #                            w=self.screen.height, h=self.screen.width//2, a=90.0))
+        self.players.append(Player(game=self, deck='Lorehold Legacies',
+                                   scale=1, c=(0, 255, 0),
+                                   x=self.screen.width, y=self.screen.height//2,
+                                   w=self.screen.width, h=self.screen.height//2, a=180.0))
+        # self.players.append(Player(game=self, deck='Reap the Tides',
+        #                            scale=1, c=(0, 0, 255),
+        #                            x=self.screen.width//2, y=self.screen.height,
+        #                            w=self.screen.height, h=self.screen.width//2, a=270.0))
 
     def add_cards(self, num: int):
         # lands
@@ -70,7 +80,7 @@ class Game:
             self.mouse.mouse_up(event)
         elif event.type == pygame.MOUSEBUTTONDOWN:
             self.mouse.mouse_down(event)
-        
+
     def handle_events(self):
         for event in pygame.event.get():
             self.on_event(event)
@@ -78,8 +88,9 @@ class Game:
     def update(self):
         self.screen.screen.fill(self.screen.background_color)
         # player update
+        self.mouse.update()
         [player.update() for player in self.players]
-        self.sprite_group.update(self)
+        self.sprite_group.update()
         pygame.display.update()
 
     def clean_up(self):

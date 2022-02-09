@@ -18,7 +18,7 @@ class Screen:
             self.size = size
             self.width = self.size[0]
             self.height = self.size[1]
-        
+
         self.up_right_corner = (self.width, 0)
         self.up_left_corner = (0, 0)
         self.bottom_right_corner = (self.width, self.height)
@@ -31,9 +31,9 @@ class Screen:
         # display
         self.screen = pygame.display.set_mode(self.size)
         pygame.display.set_caption(tittle)
-    
+
     def draw_text(self, text, font=None, text_color=(0, 0, 0), x=0, y=0):
-        if font == None:
+        if font is None:
             font = self.text_font
 
         img = self.text_font.render(text, True, text_color)
