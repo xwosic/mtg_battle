@@ -25,7 +25,13 @@ class PileVisualization(Clickable):
 
     def put_card_on_top(self, card_view):
         self.pile.cards.append(card_view.name)
+        self.image = card_view.image
+        self.change_scale(self.WIDTH / self.image.get_width())
         card_view.kill()
+
+    def update(self) -> None:
+        if self.image:
+            super().update()
 
 
 class Pile:
@@ -36,3 +42,6 @@ class Pile:
     def shuffle(self):
         if len(self.cards) > 1:
             random.shuffle(self.cards)
+
+    def update(self):
+        self.view.update()

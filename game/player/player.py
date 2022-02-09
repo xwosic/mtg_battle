@@ -67,16 +67,10 @@ class Player(Zone):
         Creates CardZone based on player's width and hieght ratio.
         Requires w and h in kwargs.
         """
-        return zone_type(**self.calculate_position(x_ratio, y_ratio, w_ratio, h_ratio, **kwargs),
-                         c=c,
-                         player=self,
-                         game=self.game)
+        position_dict = self.calculate_position(x_ratio, y_ratio, w_ratio, h_ratio, **kwargs)
+        return zone_type(player=self, game=self.game, c=c, **position_dict)
 
-    def create_deck(self,
-                    deck_name: str,
-                    x_ratio: float,
-                    y_ratio: float,
-                    **kwargs):
+    def create_deck(self, deck_name: str, x_ratio: float, y_ratio: float, **kwargs):
         deck_position = self.calculate_position(x_ratio, y_ratio, **kwargs)
         return Deck(game=self.game,
                     player=self,
@@ -86,10 +80,7 @@ class Player(Zone):
                     x=deck_position['x'],
                     y=deck_position['y'])
 
-    def create_pile(self,
-                    x_ratio: float,
-                    y_ratio: float,
-                    **kwargs):
+    def create_pile(self, x_ratio: float, y_ratio: float, **kwargs):
         deck_position = self.calculate_position(x_ratio, y_ratio, **kwargs)
         return Pile(game=self.game,
                     groups=[self.game.sprite_group],
@@ -98,5 +89,6 @@ class Player(Zone):
                     y=deck_position['y'])
 
     def update(self):
+        [pile.update() for pile in self.piles]
         [zone.update() for zone in self.zones]
         return super().update()
