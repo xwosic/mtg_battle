@@ -14,10 +14,15 @@ class DeckVisualization(PileVisualization):
     def __init__(self, pile: Pile, **kwargs):
         super().__init__(pile, **kwargs)
         self.face_up = False
+        self.right_click_options = ['search']
 
     def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         self.pile.draw()
         return super().left_upclick(mouse_event, **kwargs)
+    
+    # def search(self, card_name: str):
+
+
 
 
 class Deck(Pile):

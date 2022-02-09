@@ -55,8 +55,12 @@ class Player(Zone):
         zone_h = int(kwargs['h'] * h_ratio)
         return {'x': zone_x, 'y': zone_y, 'w': zone_w, 'h': zone_h, 'a': self.a}
     
-    def hello_world(self):
-        print('hello!')
+    def hello_world1(self):
+        print('hello1!')
+    def hello_world2(self):
+        print('hello2!')
+    def hello_world3(self):
+        print('hello3!')
 
     def create_cardzone(self,
                         zone_type: Callable,

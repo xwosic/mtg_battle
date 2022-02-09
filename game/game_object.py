@@ -52,6 +52,13 @@ class GameObject(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = position
 
+    def draw_text(self, text, font=None, text_color=(0, 0, 0), x=0, y=0):
+        if font is None:
+            font = self.game.screen.text_font
+
+        img = self.game.screen.text_font.render(text, True, text_color)
+        self.image.blit(img, (x, y))
+
     def update(self) -> None:
         self.game.screen.screen.blit(pygame.transform.flip(self.image, flip_x=False, flip_y=False),
                                      (self.rect.x, self.rect.y))

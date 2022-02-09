@@ -42,7 +42,7 @@ class Game:
         #                            x=self.screen.width//2, y=self.screen.height,
         #                            w=self.screen.height, h=self.screen.width//2, a=270.0))
 
-        d = Dropdown(game=self, groups=[self.sprite_group], options={'instance': self.players[0], 'options': ['hello_world']},
+        d = Dropdown(game=self, groups=[self.sprite_group], options={'instance': self.players[0], 'options': ['hello_world1', 'hello_world2', 'hello_world3']},
         x=100, y=100)
 
 

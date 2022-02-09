@@ -9,6 +9,7 @@ class Clickable(GameObject):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.right_click_options = []
 
     def left_click(self, mouse_event: pygame.event.Event, **kwargs):
         pass
@@ -27,3 +28,7 @@ class Clickable(GameObject):
 
     def update(self) -> None:
         return super().update()
+
+    @property
+    def options(self):
+        return {'instance': self, 'options': self.right_click_options}

@@ -13,3 +13,7 @@ class Button(Clickable):
     def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         self.method()
         return super().left_upclick(mouse_event, **kwargs)
+
+    def update(self) -> None:
+        super().update()
+        self.draw_text(self.title, x=self.rect.x, y=self.rect.y)
