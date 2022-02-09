@@ -25,9 +25,12 @@ class PileVisualization(Clickable):
 
     def put_card_on_top(self, card_view):
         self.pile.cards.append(card_view.name)
+        self.get_image_from_card(card_view)
+        card_view.kill()
+
+    def get_image_from_card(self, card_view):
         self.image = card_view.image
         self.change_scale(self.WIDTH / self.image.get_width())
-        card_view.kill()
 
     def update(self) -> None:
         if self.image:
