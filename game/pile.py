@@ -34,5 +34,5 @@ class Pile:
         self.view = PileVisualization(pile=self, **kwargs)
 
     def shuffle(self):
-        if self.cards:
+        if len(self.cards) > 1:
             random.shuffle(self.cards)

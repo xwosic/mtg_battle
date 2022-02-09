@@ -17,7 +17,7 @@ class DeckVisualization(PileVisualization):
         return super().left_upclick(mouse_event, **kwargs)
 
 
-class Deck:
+class Deck(Pile):
     DEFAULT_PATH = 'decks'
 
     def __init__(self,
@@ -25,9 +25,10 @@ class Deck:
                  name: str,
                  default_path: str = None,
                  **kwargs):
+        super().__init__(**kwargs)
+        self.view = DeckVisualization(pile=self, **kwargs)
         self.name = name
         self.player = player
-        self.view = DeckVisualization(pile=self, **kwargs)
         self.DEFAULT_PATH = default_path if default_path else self.DEFAULT_PATH
         deck_setup = self.get_cards_from_txt(name)
         self.cards = self.create_deck(deck_setup)
@@ -60,7 +61,3 @@ class Deck:
             self.player.hand.add_card(Card(game=self.view.game,
                                            groups=[self.player.game.sprite_group],
                                            name=card_name))
-
-    def shuffle(self):
-        if self.cards:
-            random.shuffle(self.cards)
