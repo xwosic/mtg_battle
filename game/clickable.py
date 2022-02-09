@@ -1,5 +1,6 @@
 import pygame
 from game.game_object import GameObject
+from typing import Tuple
 
 
 class Clickable(GameObject):
@@ -20,6 +21,9 @@ class Clickable(GameObject):
 
     def right_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         pass
+
+    def is_clicked(self, pos: Tuple[int, int]) -> bool:
+        return self.rect.collidepoint(pos)
 
     def update(self) -> None:
         return super().update()

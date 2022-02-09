@@ -18,6 +18,12 @@ class Dragable(Clickable):
         the first matching and removed from previous one.
         """
         for player in self.game.players:
+            for pile in player.piles:
+                if pile.view.is_clicked(pos):
+                    self.loc.remove_card(self)
+                    self.loc = None
+                    pile.view.put_card_on_top(self)
+
             for zone in player.zones:
                 if zone.is_clicked(pos):
                     self.loc.remove_card(self)

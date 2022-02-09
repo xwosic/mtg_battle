@@ -4,6 +4,7 @@ from game.player.battlefield import Battlefield
 from game.player.zone import Zone
 from .hand import Hand
 from typing import Callable
+from game.pile import Pile
 
 
 class Game:
@@ -34,7 +35,9 @@ class Player(Zone):
         self.battlefield = self.create_cardzone(Battlefield, x_ratio=0, y_ratio=0, w_ratio=1, h_ratio=0.3, **kwargs)
         self.zones = [self.lands, self.hand, self.battlefield]
 
-        self.deck = self.create_deck(deck_name=deck, x_ratio=0.1, y_ratio=0.75, **kwargs)
+        self.deck = self.create_deck(deck_name=deck, x_ratio=0.17, y_ratio=0.75, **kwargs)
+        self.graveyard = self.create_pile(x_ratio=0.05, y_ratio=0.75, **kwargs)
+        self.piles = [self.deck, self.graveyard]
 
     def calculate_position(self,
                            x_ratio: float,
@@ -80,6 +83,17 @@ class Player(Zone):
                     player=self,
                     groups=[self.game.sprite_group],
                     name=deck_name,
+                    color=self.color,
+                    x=deck_position['x'],
+                    y=deck_position['y'])
+
+    def create_pile(self,
+                    x_ratio: float,
+                    y_ratio: float,
+                    **kwargs):
+        deck_position = self.calculate_position(x_ratio, y_ratio, **kwargs)
+        return Pile(game=self.game,
+                    groups=[self.game.sprite_group],
                     color=self.color,
                     x=deck_position['x'],
                     y=deck_position['y'])

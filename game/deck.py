@@ -27,6 +27,10 @@ class DeckVisualization(Clickable):
         self.deck.draw()
         return super().left_upclick(mouse_event, **kwargs)
 
+    def put_card_on_top(self, card_view):
+        self.deck.cards.append(card_view.name)
+        card_view.kill()
+
 
 class Deck:
     DEFAULT_PATH = 'decks'
