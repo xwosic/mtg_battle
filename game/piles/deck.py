@@ -13,7 +13,7 @@ class Player:
 class DeckVisualization(PileVisualization):
     def __init__(self, pile: Pile, **kwargs):
         super().__init__(pile, **kwargs)
-        self.face_up = True
+        self.face_up = False
 
     def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         self.pile.draw()
