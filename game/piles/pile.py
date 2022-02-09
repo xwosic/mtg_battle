@@ -1,6 +1,7 @@
 import pygame
-from game.clickable import Clickable
 import random
+from game.clickable import Clickable
+from game.card import Card
 from typing import List
 
 
@@ -19,6 +20,7 @@ class PileVisualization(Clickable):
     def __init__(self, pile: Pile, **kwargs):
         super().__init__(width=self.WIDTH, height=self.HEIGHT, **kwargs)
         self.pile = pile
+        self.face_up = False
 
     def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         return super().left_upclick(mouse_event, **kwargs)
@@ -33,14 +35,29 @@ class PileVisualization(Clickable):
         self.change_scale(self.WIDTH / self.image.get_width())
 
     def update(self) -> None:
-        if self.image:
-            super().update()
+        if self.pile.cards:
+            if self.image:
+                super().update()
+
+            else:
+                if self.face_up:
+                    card = self.pile.get_top_card()
+                    if card is not None:
+                        self.get_image_from_card(card.view)
 
 
 class Pile:
     def __init__(self, **kwargs):
         self.cards: List[str] = []
         self.view = PileVisualization(pile=self, **kwargs)
+
+    def get_top_card(self) -> Card:
+        if self.cards:
+            name = self.cards[-1]
+            card = Card(name=name, game=self.view.game)
+            card.view.kill()
+            return card
+        return None
 
     def shuffle(self):
         if len(self.cards) > 1:
