@@ -15,8 +15,8 @@ class Deck:
 
 
 class DeckVisualization(Clickable):
-    WIDTH = 63 * 2
-    HEIGHT = 88 * 2
+    WIDTH = 63 * 1
+    HEIGHT = 88 * 1
 
     def __init__(self, name: str, deck: Deck, **kwargs):
         super().__init__(width=self.WIDTH, height=self.HEIGHT, **kwargs)

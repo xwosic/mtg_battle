@@ -35,9 +35,11 @@ class Player(Zone):
         self.battlefield = self.create_cardzone(Battlefield, x_ratio=0, y_ratio=0, w_ratio=1, h_ratio=0.3, **kwargs)
         self.zones = [self.lands, self.hand, self.battlefield]
 
-        self.deck = self.create_deck(deck_name=deck, x_ratio=0.17, y_ratio=0.75, **kwargs)
-        self.graveyard = self.create_pile(x_ratio=0.05, y_ratio=0.75, **kwargs)
-        self.piles = [self.deck, self.graveyard]
+        self.deck = self.create_deck(deck_name=deck, x_ratio=0.17, y_ratio=0.8, **kwargs)
+        self.graveyard = self.create_pile(x_ratio=0.05, y_ratio=0.8, **kwargs)
+        self.exile = self.create_pile(x_ratio=0.05, y_ratio=0.5, **kwargs)
+        self.command_zone = self.create_pile(x_ratio=0.17, y_ratio=0.5, **kwargs)
+        self.piles = [self.deck, self.graveyard, self.exile, self.command_zone]
 
     def calculate_position(self,
                            x_ratio: float,
@@ -46,6 +48,7 @@ class Player(Zone):
                            h_ratio: float = 1.0,
                            **kwargs):
         """
+        Calculate position when player is rotated.
         """
         if self.is_rotated():
             x_ratio, y_ratio = y_ratio, x_ratio
