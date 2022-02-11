@@ -41,34 +41,6 @@ class Game:
         #                            x=self.screen.width//2, y=self.screen.height,
         #                            w=self.screen.height, h=self.screen.width//2, a=270.0))
 
-    # def add_cards(self, num: int):
-    #     # lands
-    #     self.players[num].lands.add_card(Card(game=self, name='Forest'))
-    #     self.players[num].lands.add_card(Card(game=self, name='Forest'))
-    #     self.players[num].lands.add_card(Card(game=self, name='Forest'))
-    #     self.players[num].lands.add_card(Card(game=self, name='Forest'))
-    #     self.players[num].lands.add_card(Card(game=self, name='Forest'))
-    #     self.players[num].lands.add_card(Card(game=self, name='Island'))
-    #     self.players[num].lands.add_card(Card(game=self, name='Island'))
-    #     self.players[num].lands.add_card(Card(game=self, name='Island'))
-    #     self.players[num].lands.add_card(Card(game=self, name='Island'))
-    #     self.players[num].lands.add_card(Card(game=self, name='Island'))
-    #     self.players[num].lands.add_card(Card(game=self, name='Island'))
-    #     self.players[num].lands.add_card(Card(game=self, name='Island'))
-    #     # battlefield
-    #     self.players[num].battlefield.add_card(Card(game=self, name='Sun Titan'))
-    #     self.players[num].battlefield.add_card(Card(game=self, name='Acidic Slime'))
-    #     self.players[num].battlefield.add_card(Card(game=self, name='Ancient Den'))
-    #     self.players[num].battlefield.add_card(Card(game=self, name='Banishing Light'))
-    #     # hand
-    #     self.players[num].hand.add_card(Card(game=self, name='Angel of the Ruins'))
-    #     self.players[num].hand.add_card(Card(game=self, name='Arcane Denial'))
-    #     self.players[num].hand.add_card(Card(game=self, name='Forest'))
-    #     self.players[num].hand.add_card(Card(game=self, name='Island'))
-    #     self.players[num].hand.add_card(Card(game=self, name='Cleansing Nova'))
-    #     self.players[num].hand.add_card(Card(game=self, name='Coiling Oracle'))
-    #     self.players[num].hand.add_card(Card(game=self, name='Doomskar'))
-
     def on_event(self, event):
         if event.type == pygame.QUIT:
             self.running = False
