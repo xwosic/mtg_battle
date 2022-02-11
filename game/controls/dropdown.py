@@ -17,22 +17,25 @@ class Dropdown(GameObject):
     def create_mapping(self, options: dict):
         """
         in:
-            options = {'instance': <class instance>, 'options': List[str]}
+            options = {'instance': <class instance>, 'options': Dict[dict]}
 
         out:
-            mapping = {<method name>: <method object>, ...}
+            mapping = {<method name>: {'method': <method object>, 'kwargs': {...}}, ...}
         """
         mapping = {}
-        for option_name in options['options']:
-            mapping[option_name] = getattr(options['instance'], option_name)
-
+        for method_name, option_kwargs in options['options'].items():
+            mapping[method_name] = {}
+            mapping[method_name]['method'] = getattr(options['instance'], method_name)
+            mapping[method_name]['kwargs'] = option_kwargs
+        print(mapping)
         return mapping
 
     def create_buttons(self, mapping: dict) -> List[Button]:
         buttons = []
-        for method_name, method in mapping.items():
+        for method_name, method_dict in mapping.items():
             buttons.append(Button(option_title=method_name,
-                                  option_method=method,
+                                  option_method=method_dict['method'],
+                                  method_kwargs=method_dict['kwargs'],
                                   game=self.game,
                                   groups=[self.game.sprite_group]))
 
