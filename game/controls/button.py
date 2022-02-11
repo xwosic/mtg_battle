@@ -16,4 +16,4 @@ class Button(Clickable):
 
     def update(self) -> None:
         super().update()
-        self.draw_text(self.title, x=self.rect.x, y=self.rect.y)
+        self.draw_text(self.title)
