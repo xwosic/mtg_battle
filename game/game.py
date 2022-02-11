@@ -1,4 +1,5 @@
 import pygame
+from game.controls.dropdown import Dropdown
 from game.mouse import Mouse
 from game.player import Player
 from game.screen import Screen
@@ -42,9 +43,11 @@ class Game:
         #                            x=self.screen.width//2, y=self.screen.height,
         #                            w=self.screen.height, h=self.screen.width//2, a=270.0))
 
-        
-        f = Fog(game=self, groups=[self.sprite_group], alpha=127, x=100, y=100, width=100, height=100, color=(0, 0, 0))
-        Fog(game=self, groups=[self.sprite_group], alpha=127, victims=[f], x=self.screen.width//2, y=self.screen.height//2, width=self.screen.width, height=self.screen.height, color=(0, 0, 0))
+        f = Fog(game=self, groups=[self.sprite_group], alpha=127, x=self.screen.width//2, y=self.screen.height//2,
+                width=self.screen.width, height=self.screen.height, color=(0, 0, 0))
+        d = Dropdown(game=self, groups=[self.sprite_group],
+                     options={'instance': self.players[0].deck, 'options': {'draw': {}}})
+        f.kill_with_me = [d]
 
     def on_event(self, event):
         if event.type == pygame.QUIT:
