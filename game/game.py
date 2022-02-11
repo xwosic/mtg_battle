@@ -43,8 +43,7 @@ class Game:
         #                            x=self.screen.width//2, y=self.screen.height,
         #                            w=self.screen.height, h=self.screen.width//2, a=270.0))
 
-        f = Fog(game=self, groups=[self.sprite_group], alpha=127, x=self.screen.width//2, y=self.screen.height//2,
-                width=self.screen.width, height=self.screen.height, color=(0, 0, 0))
+        f = Fog.full_screen_fog(game=self)
         d = Dropdown(game=self, groups=[self.sprite_group],
                      options={'instance': self.players[0].deck, 'options': {'draw': {}}})
         f.kill_with_me = [d]

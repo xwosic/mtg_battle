@@ -19,3 +19,21 @@ class Fog(Clickable):
 
         self.kill()
         return super().left_upclick(**kwargs)
+
+    @classmethod
+    def full_screen_fog(cls, game):
+        """
+        Standard Fog factory.
+        """
+        kwargs = {
+            'game': game,
+            'groups': [game.sprite_group],
+            'alpha': 127,
+            'x': game.screen.width // 2,
+            'y': game.screen.height // 2,
+            'width': game.screen.width,
+            'height': game.screen.height,
+            'color': (0, 0, 0)
+        }
+
+        return cls(**kwargs)
