@@ -1,8 +1,9 @@
-from typing import List
-from game.mouse import Mouse
-from game.screen import Screen
-from game.player import Player
 import pygame
+from game.mouse import Mouse
+from game.player import Player
+from game.screen import Screen
+from typing import List
+from game.controls.fog import Fog
 
 
 class Game:
@@ -40,6 +41,10 @@ class Game:
         #                            scale=1, c=(0, 0, 255),
         #                            x=self.screen.width//2, y=self.screen.height,
         #                            w=self.screen.height, h=self.screen.width//2, a=270.0))
+
+        
+        f = Fog(game=self, groups=[self.sprite_group], alpha=127, x=100, y=100, width=100, height=100, color=(0, 0, 0))
+        Fog(game=self, groups=[self.sprite_group], alpha=127, victims=[f], x=self.screen.width//2, y=self.screen.height//2, width=self.screen.width, height=self.screen.height, color=(0, 0, 0))
 
     def on_event(self, event):
         if event.type == pygame.QUIT:

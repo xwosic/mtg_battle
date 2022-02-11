@@ -58,6 +58,10 @@ class GameObject(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = position
 
+    def change_image_alpha(self, new_alpha: int):
+        self.old_image = self.image.copy()
+        self.image.set_alpha(new_alpha)
+
     def draw_text(self, text, font=None, text_color=(0, 0, 0), x=0, y=0):
         """
         Write text on the middle of object.
