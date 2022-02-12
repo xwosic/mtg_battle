@@ -1,6 +1,8 @@
 bugs:
   - wrong card download:
     description: wrong card is downloaded (with similar name)
+    status: pending
   
   - cards return to zone when put aside:
     cause: Dragable.loc is not cleared when card is not put to another zone
+    status: done
