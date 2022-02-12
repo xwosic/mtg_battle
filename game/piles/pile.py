@@ -24,8 +24,11 @@ class PileVisualization(Clickable):
         self.face_up = False
 
     def right_upclick(self, mouse_event: pygame.event.Event, **kwargs):
-        SearchCardView(game=self.game, pile=self.pile)
+        self.search()
         return super().right_upclick(mouse_event, **kwargs)
+    
+    def search(self):
+        SearchCardView(game=self.game, pile=self.pile)
 
     def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         return super().left_upclick(mouse_event, **kwargs)

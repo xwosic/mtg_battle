@@ -7,14 +7,14 @@ class Fog(Clickable):
     def __init__(self, alpha=128, victims: List[GameObject] = [], **kwargs):
         super().__init__(**kwargs)
         self.change_image_alpha(alpha)
-        self.kill_with_me = victims
+        self.victims = victims
 
     def left_upclick(self, **kwargs):
         """
         Disapear on click.
         Cancels 'transaction'.
         """
-        for victim in self.kill_with_me:
+        for victim in self.victims:
             victim.kill()
 
         self.kill()

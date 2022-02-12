@@ -30,7 +30,7 @@ class SearchCardView:
                                    width=200,
                                    height=50)
 
-        self.fog.kill_with_me = [self.search_box, self.view]
+        self.fog.victims = [self.search_box, self.view]
 
         # activate search box
         self.search_box.left_upclick()

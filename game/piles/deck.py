@@ -2,6 +2,7 @@ import pygame
 from pathlib import Path
 from mtg_deck_reader import read_deck
 from game.card import Card
+from game.controls.dropdown_view import DropdownView
 from game.piles.pile import Pile, PileVisualization
 from mtg_api.sync import check_which_card_to_download
 from mtg_api.asyncho import download_cards
@@ -40,7 +41,13 @@ class DeckVisualization(PileVisualization):
     def __init__(self, pile: Pile, **kwargs):
         super().__init__(pile, **kwargs)
         self.face_up = False
-        self.right_click_options = ['search']
+        self.right_click_options = {
+                     'draw': {'instance': self.pile, 'kwargs': {}},
+                     'search': {'instance': self, 'kwargs': {}}
+                     }
+
+    def right_upclick(self, mouse_event: pygame.event.Event, **kwargs):
+        DropdownView(game=self.game, options=self.right_click_options)
 
     def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         self.pile.draw()
