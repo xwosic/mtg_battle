@@ -31,3 +31,10 @@ class SearchCardView:
                                    height=50)
 
         self.fog.kill_with_me = [self.search_box, self.view]
+
+        # activate search box
+        self.search_box.left_upclick()
+        # get all cards
+        cards = self.pile.match_card_name('')
+        # and display then
+        self.view.create_view(cards)
