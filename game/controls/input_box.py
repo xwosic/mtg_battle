@@ -6,10 +6,10 @@ class InputBox(Clickable):
 
     def __init__(self, text='', **kwargs):
         super().__init__(**kwargs)
-        self.image = self.font.render(text, True, self.color)
-        self.font = pygame.font.Font(None, 32)
         self.keyboard = self.game.keyboard
         self.text = text
+        self.font = pygame.font.Font(None, 32)
+        self.image = self.font.render(self.text, True, self.color)
         self.adapt_to_new_size()
 
     def left_upclick(self, **kwargs):
