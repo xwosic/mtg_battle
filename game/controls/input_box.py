@@ -3,11 +3,10 @@ from game.clickable import Clickable
 
 
 class InputBox(Clickable):
-
-    def __init__(self, text='', send_to=None, always_send=False, **kwargs):
+    def __init__(self, text='', send_to_callable=None, always_send=False, **kwargs):
         super().__init__(**kwargs)
         self.keyboard = self.game.keyboard
-        self.send_to = send_to
+        self.send_to_callable = send_to_callable
         self.always_send = always_send
         self.text = text
         self.font = pygame.font.Font(None, 32)
@@ -57,8 +56,13 @@ class InputBox(Clickable):
         return super().kill()
 
     def send(self):
-        if self.send_to:
-            result = self.send_to(self.text)
+        """
+        Sends text to mapped Callable of prints to console.
+        If always_send flag is set - text will be send each
+        time keyboard is pressed.
+        """
+        if self.send_to_callable:
+            result = self.send_to_callable(self.text)
             print(result)
         else:
             print(self.text)

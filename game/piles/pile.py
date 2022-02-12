@@ -26,8 +26,11 @@ class PileVisualization(Clickable):
         self.face_up = False
 
     def right_upclick(self, mouse_event: pygame.event.Event, **kwargs):
-        Fog.full_screen_fog(game=self.game)
-        InputBox(game=self.game, always_send=True, send_to=self.pile.match_card_name)
+        fog = Fog.full_screen_fog(game=self.game)
+        search_box = InputBox(game=self.game,
+                              always_send=True,
+                              send_to_callable=self.pile.match_card_name)
+        fog.kill_with_me = [search_box]
         return super().right_upclick(mouse_event, **kwargs)
 
     def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
