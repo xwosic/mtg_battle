@@ -51,7 +51,6 @@ class DeckVisualization(PileVisualization):
 
     def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         self.pile.draw()
-        return super().left_upclick(mouse_event, **kwargs)
 
 
 class Deck(Pile):
