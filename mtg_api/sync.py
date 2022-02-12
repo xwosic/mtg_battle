@@ -25,7 +25,7 @@ def check_which_card_to_download(card_names: List[str], folder: Union[str, Path]
     for card in card_names:
         if card not in existing_cards:
             to_download.append(card)
-    
+
     return to_download
 
 

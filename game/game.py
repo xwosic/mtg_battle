@@ -35,35 +35,25 @@ class Game:
                                    scale=1, c=(0, 0, 0),
                                    x=0, y=self.screen.height//2,
                                    w=self.screen.width, h=self.screen.height//2, a=0.0))
-        # self.players.append(Player(game=self, deck='Lorehold Legacies',
-        #                            scale=1, c=(255, 0, 0),
-        #                            x=self.screen.width//2, y=0,
-        #                            w=self.screen.height, h=self.screen.width//2, a=90.0))
         self.players.append(Player(game=self, deck='Lorehold Legacies',
                                    scale=1, c=(0, 255, 0),
                                    x=self.screen.width, y=self.screen.height//2,
                                    w=self.screen.width, h=self.screen.height//2, a=180.0))
-        # self.players.append(Player(game=self, deck='Reap the Tides',
-        #                            scale=1, c=(0, 0, 255),
-        #                            x=self.screen.width//2, y=self.screen.height,
-        #                            w=self.screen.height, h=self.screen.width//2, a=270.0))
-
-        f = Fog.full_screen_fog(game=self)
-        d = Dropdown(game=self, groups=[self.sprite_group],
-                     options={'instance': self.players[0].deck, 'options': {'draw': {}}})
-        b = InputBox(game=self, groups=[self.sprite_group], always_send=True, x=400, y=400, width=50, height=50)
-        f.kill_with_me = [d, b]
 
     def on_event(self, event):
         if event.type == pygame.QUIT:
             self.running = False
+
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 self.running = False
+
             else:
                 self.keyboard.keyboard_clicked(event)
+
         elif event.type == pygame.MOUSEBUTTONUP:
             self.mouse.mouse_up(event)
+
         elif event.type == pygame.MOUSEBUTTONDOWN:
             self.mouse.mouse_down(event)
 
@@ -73,7 +63,6 @@ class Game:
 
     def update(self):
         self.screen.screen.fill(self.screen.background_color)
-        # player update
         self.mouse.update()
         [player.update() for player in self.players]
         self.sprite_group.update()
