@@ -1,13 +1,10 @@
 import pygame
-from game.controls.input_box import InputBox
-from game.controls.dropdown import Dropdown
 from game.keyboard import Keyboard
 from game.mouse import Mouse
 from game.player import Player
 from game.screen import Screen
 from game.piles.deck import download_all_decks_images
 from typing import List
-from game.controls.fog import Fog
 
 
 class Game:
