@@ -1,5 +1,7 @@
 import pygame
+from game.controls.input_box import InputBox
 from game.controls.dropdown import Dropdown
+from game.keyboard import Keyboard
 from game.mouse import Mouse
 from game.player import Player
 from game.screen import Screen
@@ -25,6 +27,7 @@ class Game:
         pygame.init()
         self.screen = Screen(tittle='mtg_battle', width=1200, height=600)
         self.mouse = Mouse(game=self)
+        self.keyboard = Keyboard(game=self)
         self.running = True
         self.players.append(Player(game=self, deck='Reap the Tides',
                                    scale=1, c=(0, 0, 0),
@@ -47,6 +50,7 @@ class Game:
         d = Dropdown(game=self, groups=[self.sprite_group],
                      options={'instance': self.players[0].deck, 'options': {'draw': {}}})
         f.kill_with_me = [d]
+        b = InputBox(game=self, groups=[self.sprite_group], x=400, y=400)
 
     def on_event(self, event):
         if event.type == pygame.QUIT:
@@ -54,6 +58,8 @@ class Game:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 self.running = False
+            else:
+                self.keyboard.keyboard_clicked(event)
         elif event.type == pygame.MOUSEBUTTONUP:
             self.mouse.mouse_up(event)
         elif event.type == pygame.MOUSEBUTTONDOWN:

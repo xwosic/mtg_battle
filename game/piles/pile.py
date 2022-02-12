@@ -52,6 +52,11 @@ class Pile:
         self.view = PileVisualization(pile=self, **kwargs)
 
     def get_top_card(self) -> Card:
+        """
+        Get top card of Pile as Card instance.
+        Returned card is detached from all group and won't be displayed.
+        Card can be added to another group.
+        """
         if self.cards:
             name = self.cards[-1]
             card = Card(name=name, game=self.view.game)
@@ -62,6 +67,12 @@ class Pile:
     def shuffle(self):
         if len(self.cards) > 1:
             random.shuffle(self.cards)
+
+    def match_card_name(self, value: str) -> List[str]:
+        """
+        Returns list of matching card names.
+        """
+        return [name for name in self.cards if value.lower() in name.lower()]
 
     def update(self):
         self.view.update()
