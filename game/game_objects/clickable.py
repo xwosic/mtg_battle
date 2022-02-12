@@ -1,5 +1,5 @@
 import pygame
-from game.game_object import GameObject
+from .game_object import GameObject
 from typing import Tuple
 
 

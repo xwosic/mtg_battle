@@ -1,5 +1,5 @@
-from game.clickable import Clickable
-from game.game_object import GameObject
+from game.game_objects.clickable import Clickable
+from game.game_objects.game_object import GameObject
 from typing import List
 
 

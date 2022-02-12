@@ -1,9 +1,9 @@
 import pygame
 import random
-from game.clickable import Clickable
 from game.card import Card
-from typing import List
 from game.controls.search_card_view import SearchCardView
+from game.game_objects.clickable import Clickable
+from typing import List
 
 
 class Player:

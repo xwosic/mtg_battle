@@ -1,4 +1,4 @@
-from game.clickable import Clickable
+from .clickable import Clickable
 
 
 class Dragable(Clickable):

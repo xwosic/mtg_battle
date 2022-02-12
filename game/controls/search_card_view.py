@@ -7,7 +7,7 @@ drag cards from view to board
 
 from game.controls.fog import Fog
 from .input_box import InputBox
-from .view import CardView
+from .card_view import CardView
 
 
 class SearchCardView:

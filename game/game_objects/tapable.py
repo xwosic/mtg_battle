@@ -1,5 +1,5 @@
 import pygame
-from game.dragable import Dragable
+from .dragable import Dragable
 
 
 class Tapable(Dragable):

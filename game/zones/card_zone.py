@@ -1,5 +1,5 @@
 import pygame
-from game.zones.zone import Zone
+from .zone import Zone
 from game.card import Card, CardVisualization
 
 

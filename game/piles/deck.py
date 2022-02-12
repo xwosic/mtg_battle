@@ -1,12 +1,12 @@
 import pygame
-from pathlib import Path
-from mtg_deck_reader import read_deck
+import random
 from game.card import Card
 from game.controls.dropdown_view import DropdownView
 from game.piles.pile import Pile, PileVisualization
-from mtg_api.sync import check_which_card_to_download
 from mtg_api.asyncho import download_cards
-import random
+from mtg_api.sync import check_which_card_to_download
+from mtg_deck_reader import read_deck
+from pathlib import Path
 
 
 def download_all_decks_images():

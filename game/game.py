@@ -1,8 +1,6 @@
 import pygame
-from game.keyboard import Keyboard
-from game.mouse import Mouse
+from game.hardware import Keyboard, Mouse, Screen
 from game.player import Player
-from game.screen import Screen
 from game.piles.deck import download_all_decks_images
 from typing import List
 

@@ -13,7 +13,7 @@ Example:
 
 """
 from game.controls.button import Button
-from game.game_object import GameObject
+from game.game_objects.game_object import GameObject
 from typing import List
 
 
