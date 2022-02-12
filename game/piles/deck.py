@@ -89,6 +89,8 @@ class Deck(Pile):
         if self.cards:
             card_name = self.cards.pop()
             self.view.image = None
-            self.player.hand.add_card(Card(game=self.view.game,
-                                           groups=[self.player.game.sprite_group],
-                                           name=card_name))
+            card = Card(game=self.view.game,
+                        groups=[self.player.game.sprite_group],
+                        name=card_name)
+            card.view.rect.center = self.view.rect.center
+            self.player.hand.add_card(card)
