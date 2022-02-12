@@ -3,7 +3,33 @@ from pathlib import Path
 from mtg_deck_reader import read_deck
 from game.card import Card
 from game.piles.pile import Pile, PileVisualization
+from mtg_api.sync import check_which_card_to_download
+from mtg_api.asyncho import download_cards
 import random
+
+
+def download_all_decks_images():
+    deck_names = get_deck_filenames()
+    for deck_name in deck_names:
+        get_deck_images(deck_name)
+
+
+def get_deck_filenames(path='decks'):
+    path_to_decks = Path(path)
+    deck_filenames = []
+    for filename in path_to_decks.iterdir():
+        if filename.is_file():
+            deck_filenames.append(filename)
+
+    return deck_filenames
+
+
+def get_deck_images(deck_path: str):
+    path_to_cards = Path('cards')
+    deck = read_deck(deck_path)
+    deck = list(deck['mainboard'].keys())
+    cards_to_download = check_which_card_to_download(deck, path_to_cards)
+    download_cards(cards_to_download, path_to_cards)
 
 
 class Player:

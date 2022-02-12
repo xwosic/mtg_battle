@@ -5,6 +5,7 @@ from game.keyboard import Keyboard
 from game.mouse import Mouse
 from game.player import Player
 from game.screen import Screen
+from game.piles.deck import download_all_decks_images
 from typing import List
 from game.controls.fog import Fog
 
@@ -24,6 +25,7 @@ class Game:
         self.players: List[Player] = []
 
     def on_init(self):
+        download_all_decks_images()
         pygame.init()
         self.screen = Screen(tittle='mtg_battle', width=1200, height=600)
         self.mouse = Mouse(game=self)
