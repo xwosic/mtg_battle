@@ -75,6 +75,7 @@ class Pile:
     def shuffle(self):
         if len(self.cards) > 1:
             random.shuffle(self.cards)
+            self.view.image = None
 
     def match_card_name(self, value: str) -> List[str]:
         """

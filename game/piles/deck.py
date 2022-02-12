@@ -43,7 +43,8 @@ class DeckVisualization(PileVisualization):
         self.face_up = False
         self.right_click_options = {
                      'draw': {'instance': self.pile, 'kwargs': {}},
-                     'search': {'instance': self, 'kwargs': {}}
+                     'search': {'instance': self, 'kwargs': {}},
+                     'shuffle': {'instance': self.pile, 'kwargs': {}}
                      }
 
     def right_upclick(self, mouse_event: pygame.event.Event, **kwargs):
