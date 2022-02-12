@@ -49,7 +49,7 @@ class Game:
         f = Fog.full_screen_fog(game=self)
         d = Dropdown(game=self, groups=[self.sprite_group],
                      options={'instance': self.players[0].deck, 'options': {'draw': {}}})
-        b = InputBox(game=self, groups=[self.sprite_group], x=400, y=400, width=50, height=50)
+        b = InputBox(game=self, groups=[self.sprite_group], always_send=True, x=400, y=400, width=50, height=50)
         f.kill_with_me = [d, b]
 
     def on_event(self, event):

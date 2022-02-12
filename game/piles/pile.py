@@ -4,6 +4,9 @@ from game.clickable import Clickable
 from game.card import Card
 from typing import List
 
+from game.controls.fog import Fog
+from game.controls.input_box import InputBox
+
 
 class Player:
     pass
@@ -21,6 +24,11 @@ class PileVisualization(Clickable):
         super().__init__(width=self.WIDTH, height=self.HEIGHT, **kwargs)
         self.pile = pile
         self.face_up = False
+
+    def right_upclick(self, mouse_event: pygame.event.Event, **kwargs):
+        Fog.full_screen_fog(game=self.game)
+        InputBox(game=self.game, always_send=True, send_to=self.pile.match_card_name)
+        return super().right_upclick(mouse_event, **kwargs)
 
     def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         return super().left_upclick(mouse_event, **kwargs)

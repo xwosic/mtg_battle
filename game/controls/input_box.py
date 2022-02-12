@@ -4,12 +4,15 @@ from game.clickable import Clickable
 
 class InputBox(Clickable):
 
-    def __init__(self, text='', **kwargs):
+    def __init__(self, text='', send_to=None, always_send=False, **kwargs):
         super().__init__(**kwargs)
         self.keyboard = self.game.keyboard
+        self.send_to = send_to
+        self.always_send = always_send
         self.text = text
         self.font = pygame.font.Font(None, 32)
         self.image = self.font.render(self.text, True, self.color)
+        self.game.sprite_group.add(self)
         self.adapt_to_new_size()
 
     def left_upclick(self, **kwargs):
@@ -31,12 +34,16 @@ class InputBox(Clickable):
         or sends it (if it was enter).
         """
         if event.key == pygame.K_RETURN:
-            print(self.text)
+            self.send()
             self.text = ''
         elif event.key == pygame.K_BACKSPACE:
             self.text = self.text[:-1]
+            if self.always_send:
+                self.send()
         else:
             self.text += event.unicode
+            if self.always_send:
+                self.send()
         # Re-render the text.
         self.image = self.font.render(self.text, True, self.color)
 
@@ -48,6 +55,13 @@ class InputBox(Clickable):
     def kill(self) -> None:
         self.keyboard.disconnect()
         return super().kill()
+
+    def send(self):
+        if self.send_to:
+            result = self.send_to(self.text)
+            print(result)
+        else:
+            print(self.text)
 
     def update(self) -> None:
         super().update()
