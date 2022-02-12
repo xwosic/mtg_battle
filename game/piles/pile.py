@@ -3,9 +3,7 @@ import random
 from game.clickable import Clickable
 from game.card import Card
 from typing import List
-
-from game.controls.fog import Fog
-from game.controls.input_box import InputBox
+from game.controls.search_card_view import SearchCardView
 
 
 class Player:
@@ -26,11 +24,7 @@ class PileVisualization(Clickable):
         self.face_up = False
 
     def right_upclick(self, mouse_event: pygame.event.Event, **kwargs):
-        fog = Fog.full_screen_fog(game=self.game)
-        search_box = InputBox(game=self.game,
-                              always_send=True,
-                              send_to_callable=self.pile.match_card_name)
-        fog.kill_with_me = [search_box]
+        SearchCardView(game=self.game, pile=self.pile)
         return super().right_upclick(mouse_event, **kwargs)
 
     def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
@@ -84,6 +78,10 @@ class Pile:
         Returns list of matching card names.
         """
         return [name for name in self.cards if value.lower() in name.lower()]
+
+    def remove_card(self, card_name: str):
+        if card_name in self.cards:
+            self.cards.remove(card_name)
 
     def update(self):
         self.view.update()
