@@ -1,6 +1,6 @@
-from typing import Tuple
 import pygame
 from math import cos, sin, pi
+from typing import Tuple
 
 
 class Game:
