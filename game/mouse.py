@@ -99,6 +99,10 @@ class Mouse:
         """
         Right now - nothing happens.
         """
+        clicked = self.get_clicked(mouse_event=mouse_event)
+        if clicked:
+            clicked.right_upclick(mouse_event=mouse_event)
+
         self.right_button_down = False
 
     def mouse_up(self, mouse_event: pygame.event.Event):

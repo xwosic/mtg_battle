@@ -23,6 +23,7 @@ class Screen:
         self.up_left_corner = (0, 0)
         self.bottom_right_corner = (self.width, self.height)
         self.bottom_left_corner = (0, self.height)
+        self.center = (self.width // 2, self.height // 2)
 
         # apperiance
         self.text_font = text_font if text_font else pygame.font.SysFont('calibri', 15)

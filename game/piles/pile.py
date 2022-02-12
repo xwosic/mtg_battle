@@ -3,6 +3,7 @@ import random
 from game.clickable import Clickable
 from game.card import Card
 from typing import List
+from game.controls.search_card_view import SearchCardView
 
 
 class Player:
@@ -21,6 +22,10 @@ class PileVisualization(Clickable):
         super().__init__(width=self.WIDTH, height=self.HEIGHT, **kwargs)
         self.pile = pile
         self.face_up = False
+
+    def right_upclick(self, mouse_event: pygame.event.Event, **kwargs):
+        SearchCardView(game=self.game, pile=self.pile)
+        return super().right_upclick(mouse_event, **kwargs)
 
     def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         return super().left_upclick(mouse_event, **kwargs)
@@ -52,6 +57,11 @@ class Pile:
         self.view = PileVisualization(pile=self, **kwargs)
 
     def get_top_card(self) -> Card:
+        """
+        Get top card of Pile as Card instance.
+        Returned card is detached from all group and won't be displayed.
+        Card can be added to another group.
+        """
         if self.cards:
             name = self.cards[-1]
             card = Card(name=name, game=self.view.game)
@@ -62,6 +72,16 @@ class Pile:
     def shuffle(self):
         if len(self.cards) > 1:
             random.shuffle(self.cards)
+
+    def match_card_name(self, value: str) -> List[str]:
+        """
+        Returns list of matching card names.
+        """
+        return [name for name in self.cards if value.lower() in name.lower()]
+
+    def remove_card(self, card_name: str):
+        if card_name in self.cards:
+            self.cards.remove(card_name)
 
     def update(self):
         self.view.update()

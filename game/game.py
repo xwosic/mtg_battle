@@ -1,8 +1,12 @@
-from typing import List
-from game.mouse import Mouse
-from game.screen import Screen
-from game.player import Player
 import pygame
+from game.controls.input_box import InputBox
+from game.controls.dropdown import Dropdown
+from game.keyboard import Keyboard
+from game.mouse import Mouse
+from game.player import Player
+from game.screen import Screen
+from typing import List
+from game.controls.fog import Fog
 
 
 class Game:
@@ -23,6 +27,7 @@ class Game:
         pygame.init()
         self.screen = Screen(tittle='mtg_battle', width=1200, height=600)
         self.mouse = Mouse(game=self)
+        self.keyboard = Keyboard(game=self)
         self.running = True
         self.players.append(Player(game=self, deck='Reap the Tides',
                                    scale=1, c=(0, 0, 0),
@@ -41,12 +46,20 @@ class Game:
         #                            x=self.screen.width//2, y=self.screen.height,
         #                            w=self.screen.height, h=self.screen.width//2, a=270.0))
 
+        f = Fog.full_screen_fog(game=self)
+        d = Dropdown(game=self, groups=[self.sprite_group],
+                     options={'instance': self.players[0].deck, 'options': {'draw': {}}})
+        b = InputBox(game=self, groups=[self.sprite_group], always_send=True, x=400, y=400, width=50, height=50)
+        f.kill_with_me = [d, b]
+
     def on_event(self, event):
         if event.type == pygame.QUIT:
             self.running = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 self.running = False
+            else:
+                self.keyboard.keyboard_clicked(event)
         elif event.type == pygame.MOUSEBUTTONUP:
             self.mouse.mouse_up(event)
         elif event.type == pygame.MOUSEBUTTONDOWN:

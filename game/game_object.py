@@ -32,8 +32,8 @@ class GameObject(pygame.sprite.Sprite):
             self.image.fill(self.color)
 
         self.rect = self.image.get_rect()
-        self.rect.x = x if x else 0
-        self.rect.y = y if y else 0
+        self.rect.x = x if x else self.game.screen.center[0] + self.rect.width // 2
+        self.rect.y = y if y else self.game.screen.center[1] + self.rect.height // 2
         self.rect.center = (self.rect.x, self.rect.y)
 
         if groups is not None:
@@ -57,6 +57,10 @@ class GameObject(pygame.sprite.Sprite):
         position = self.rect.center
         self.rect = self.image.get_rect()
         self.rect.center = position
+
+    def change_image_alpha(self, new_alpha: int):
+        self.old_image = self.image.copy()
+        self.image.set_alpha(new_alpha)
 
     def draw_text(self, text, font=None, text_color=(0, 0, 0), x=0, y=0):
         """
