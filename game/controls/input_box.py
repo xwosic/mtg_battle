@@ -2,27 +2,34 @@ import pygame
 from game.clickable import Clickable
 
 
-COLOR_INACTIVE = pygame.Color('lightskyblue3')
-COLOR_ACTIVE = pygame.Color('dodgerblue2')
-
-
 class InputBox(Clickable):
 
     def __init__(self, text='', **kwargs):
         super().__init__(**kwargs)
-        self.text = text
-        self.font = pygame.font.Font(None, 32)
         self.image = self.font.render(text, True, self.color)
+        self.font = pygame.font.Font(None, 32)
         self.keyboard = self.game.keyboard
+        self.text = text
         self.adapt_to_new_size()
 
-    def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
+    def left_upclick(self, **kwargs):
         """
-        When clicked - connect to keyboard.
+        When clicked - connects/disconnects to keyboard.
         """
-        self.keyboard.connect(self)
+        if self.selected:
+            self.keyboard.disconnect()
+            self.selected = False
+        else:
+            self.selected = True
+            self.keyboard.connect(self)
 
     def keyboard_input(self, event):
+        """
+        Gets key from event then:
+        adds it to text (if it is text)
+        or deletes (if it was backspace)
+        or sends it (if it was enter).
+        """
         if event.key == pygame.K_RETURN:
             print(self.text)
             self.text = ''
