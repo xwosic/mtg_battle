@@ -1,6 +1,6 @@
 import pygame
 from typing import Callable
-from game.game_objects.clickable import Clickable
+from game.game_objects import Clickable
 
 
 class Button(Clickable):

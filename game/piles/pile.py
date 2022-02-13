@@ -2,7 +2,7 @@ import pygame
 import random
 from game.card import Card
 from game.controls.search_card_view import SearchCardView
-from game.game_objects.clickable import Clickable
+from game.game_objects import Clickable
 from typing import List
 
 

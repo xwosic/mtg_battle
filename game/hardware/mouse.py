@@ -1,6 +1,5 @@
 import pygame
-from game.game_objects.clickable import Clickable
-from game.game_objects.dragable import Dragable
+from game.game_objects import Clickable, Dragable
 
 
 class Game:
