@@ -31,6 +31,7 @@ class SearchCardView:
                                    height=50)
 
         self.fog.victims = [self.search_box, self.view]
+        self.fog.action_on_kill = self.pile.shuffle
 
         # activate search box
         self.search_box.left_upclick()
