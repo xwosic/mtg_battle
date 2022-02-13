@@ -11,14 +11,12 @@ class CardZone(Zone):
     def add_card(self, card):
         if isinstance(card, CardVisualization):
             self.cards.add(card)
-            # self.rotate_card_if_new(card)
             card.loc = self
             if len(self.cards) > 0:
                 self.distribute_cards()
 
         elif isinstance(card, Card):
             self.cards.add(card.view)
-            # self.rotate_card_if_new(card.view)
             card.view.loc = self
             if len(self.cards) > 0:
                 self.distribute_cards()

@@ -2,6 +2,7 @@ import pygame
 import random
 from game.card import Card
 from game.controls.dropdown_view import DropdownView
+from game.controls.scry_view import ScryView
 from game.piles.pile import Pile, PileVisualization
 from mtg_api.asyncho import download_cards
 from mtg_api.sync import check_which_card_to_download
@@ -42,30 +43,32 @@ class DeckVisualization(PileVisualization):
         super().__init__(pile, **kwargs)
         self.face_up = False
         self.right_click_options = {
-                     'draw': {'instance': self.pile, 'kwargs': {}},
                      'search': {'instance': self, 'kwargs': {}},
-                     'shuffle': {'instance': self.pile, 'kwargs': {}}
+                     'shuffle': {'instance': self.pile, 'kwargs': {}},
+                     'scry': {'instance': self, 'kwargs': {}}
                      }
 
     def right_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         DropdownView(game=self.game, options=self.right_click_options)
 
+
     def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         self.pile.draw()
+
+    def scry(self):
+        ScryView(game=self.game, pile=self.pile)
 
 
 class Deck(Pile):
     DEFAULT_PATH = 'decks'
 
     def __init__(self,
-                 player: Player,
                  name: str,
                  default_path: str = None,
                  **kwargs):
         super().__init__(**kwargs)
         self.view = DeckVisualization(pile=self, **kwargs)
         self.name = name
-        self.player = player
         self.DEFAULT_PATH = default_path if default_path else self.DEFAULT_PATH
         deck_setup = self.get_cards_from_txt(name)
         self.cards = self.create_deck(deck_setup)
@@ -88,6 +91,19 @@ class Deck(Pile):
                 cards.append(name)
 
         return cards
+
+    def scry(self, number_of_cards: str):
+        """
+        Returns x top cards.
+        """
+        try:
+            number_of_cards = int(number_of_cards)
+        except ValueError:
+            return []
+
+        if number_of_cards <= len(self.cards):
+            if self.cards:
+                return self.cards[-number_of_cards:]
 
     def draw(self):
         """

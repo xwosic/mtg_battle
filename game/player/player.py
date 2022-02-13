@@ -84,6 +84,7 @@ class Player(Zone):
         deck_position = self.calculate_position(x_ratio, y_ratio, **kwargs)
         return Pile(game=self.game,
                     groups=[self.game.sprite_group],
+                    player=self,
                     color=self.color,
                     x=deck_position['x'],
                     y=deck_position['y'])

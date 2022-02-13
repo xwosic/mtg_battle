@@ -11,7 +11,7 @@ class CardView(CardZone):
     def create_view(self, cards_names: List[str]):
         self.kill()
         for name in cards_names:
-            card = Card(game=self.game, name=name)
+            card = Card(game=self.game, name=name, x=self.game.screen.width, y=0)
             card.loc = self
             self.add_card(card)
 

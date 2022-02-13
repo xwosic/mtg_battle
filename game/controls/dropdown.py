@@ -60,6 +60,9 @@ class Dropdown(GameObject):
         """
         Gives shape and places buttons in rectangle space.
         """
+        self.rect.x = (self.game.screen.width - button_w) // 2
+        self.rect.y = (self.game.screen.height - len(self.buttons) * button_h) // 2
+
         for number, button in enumerate(buttons):
             button.rect.x = self.rect.x
             button.rect.y = self.rect.y + number * button_h
