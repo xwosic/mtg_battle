@@ -153,7 +153,7 @@ class Mouse:
                         self.detach_card_detail_view()
 
             self.hover_over_object = hover_over_object
-    
+
     def detach_card_detail_view(self):
         self.hover_over_card_detail.mouse = None
         self.hover_over_card_detail = None
