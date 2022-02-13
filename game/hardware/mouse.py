@@ -141,22 +141,47 @@ class Mouse:
                         if self.hover_over_card_detail.name != self.hover_over_object.name:
                             # or replace with new one
                             self.detach_card_detail_view()
-                            self.hover_over_card_detail = CardDetailView(mouse=self, name=self.hover_over_object.name)
+                            self.hover_over_card_detail = self.create_card_detail_view(name=self.hover_over_object.name)
                     else:
                         # create new one
-                        self.hover_over_card_detail = CardDetailView(mouse=self, name=self.hover_over_object.name)
+                        self.hover_over_card_detail = self.create_card_detail_view(name=self.hover_over_object.name)
 
                 else:
                     # delete card detail view or do nothing
                     if self.hover_over_card_detail:
-                        # detach card detail (it will remove itself)
                         self.detach_card_detail_view()
 
             self.hover_over_object = hover_over_object
 
     def detach_card_detail_view(self):
+        """
+        Detach card detail (it will remove itself).
+        """
         self.hover_over_card_detail.mouse = None
         self.hover_over_card_detail = None
+
+    def create_card_detail_view(self, name: str):
+        mouse_quarter = self.which_quarter()
+
+        return CardDetailView(mouse=self, name=name, mouse_quarter=mouse_quarter)
+
+    def which_quarter(self):
+        """
+        Returns quarter of screen where mouse is.
+        """
+        middle_x, middle_y = self.game.screen.center
+        x, y = pygame.mouse.get_pos()
+        if x >= middle_x and y >= middle_y:
+            return 'br'
+
+        elif x >= middle_x and y < middle_y:
+            return 'tr'
+
+        elif x < middle_x and y >= middle_y:
+            return 'bl'
+
+        elif x < middle_x and y < middle_y:
+            return 'tl'
 
     def update(self):
         """

@@ -45,12 +45,28 @@ class CardView(GameObject):
 
 
 class CardDetailView(CardView):
-    def __init__(self, mouse, **kwargs):
-        if kwargs.get('game') is None:
-            kwargs['game'] = mouse.game
-
-        super().__init__(x=0, y=0, **kwargs)
+    def __init__(self, mouse, mouse_quarter, **kwargs):
         self.mouse = mouse
+        kwargs['game'] = mouse.game if kwargs.get('game') is None else kwargs['game']
+
+        super().__init__(**kwargs)
+        self.place_in_quarter(mouse_quarter)
+
+    def place_in_quarter(self, mouse_quarter):
+        """
+        Place card detail in opposite quarter to actual mouse position.
+        """
+        if mouse_quarter == 'br':
+            x, y = 0, 0
+        elif mouse_quarter == 'bl':
+            x, y = self.game.screen.width - self.rect.width, 0
+        elif mouse_quarter == 'tl':
+            x, y = self.game.screen.width - self.rect.width, self.game.screen.height - self.rect.height
+        elif mouse_quarter == 'tr':
+            x, y = 0, self.game.screen.height - self.rect.height
+
+        self.rect.x = x
+        self.rect.y = y
 
     def update(self) -> None:
         if self.mouse is None:
