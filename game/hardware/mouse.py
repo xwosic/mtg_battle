@@ -140,7 +140,7 @@ class Mouse:
                         # maintain
                         if self.hover_over_card_detail.name != self.hover_over_object.name:
                             # or replace with new one
-                            self.hover_over_card_detail.mouse = None
+                            self.detach_card_detail_view()
                             self.hover_over_card_detail = CardDetailView(mouse=self, name=self.hover_over_object.name)
                     else:
                         # create new one
@@ -150,10 +150,13 @@ class Mouse:
                     # delete card detail view or do nothing
                     if self.hover_over_card_detail:
                         # detach card detail (it will remove itself)
-                        self.hover_over_card_detail.mouse = None
-                        self.hover_over_card_detail = None
+                        self.detach_card_detail_view()
 
             self.hover_over_object = hover_over_object
+    
+    def detach_card_detail_view(self):
+        self.hover_over_card_detail.mouse = None
+        self.hover_over_card_detail = None
 
     def update(self):
         """
@@ -164,6 +167,9 @@ class Mouse:
         if timeout is met.
         """
         if self.dragged_object:
+            if self.hover_over_card_detail:
+                self.detach_card_detail_view()
+
             self.dragged_object.rect.x = pygame.mouse.get_pos()[0] - self.mouse_offset[0]
             self.dragged_object.rect.y = pygame.mouse.get_pos()[1] - self.mouse_offset[1]
 
