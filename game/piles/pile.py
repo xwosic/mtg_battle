@@ -33,10 +33,16 @@ class PileVisualization(Clickable):
         self.search()
         return super().left_upclick(mouse_event, **kwargs)
 
-    def put_card_on_top(self, card_view):
-        self.pile.cards.append(card_view.name)
-        self.get_image_from_card(card_view)
-        card_view.kill()
+    def put_card_on_top(self, *card_views):
+        for card_view in card_views:
+            self.pile.cards.append(card_view.name)
+            self.get_image_from_card(card_view)
+            card_view.kill()
+
+    def put_card_on_bottom(self, *card_views):
+        for card_view in card_views:
+            self.pile.cards.insert(0, card_view.name)
+            card_view.kill()
 
     def get_image_from_card(self, card_view):
         self.image = card_view.image

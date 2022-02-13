@@ -51,12 +51,11 @@ class DeckVisualization(PileVisualization):
     def right_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         DropdownView(game=self.game, options=self.right_click_options)
 
-
     def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         self.pile.draw()
 
     def scry(self):
-        ScryView(game=self.game, pile=self.pile)
+        ScryView(game=self.game, player=self.pile.player, pile=self.pile)
 
 
 class Deck(Pile):
