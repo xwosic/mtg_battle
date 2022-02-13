@@ -1,5 +1,8 @@
+from typing import Tuple
 import pygame
 from game.game_objects import Clickable, Dragable
+from game.card import CardDetailView, CardVisualization
+from time import perf_counter
 
 
 class Game:
@@ -19,12 +22,16 @@ class Mouse:
         self.start_pos = None
         self.end_pos = None
         self.mouse_offset = (0, 0)
+        self.hover_over_refresh_timeout = 0.25
+        self.hover_over_last_refresh = perf_counter()
+        self.hover_over_object = None
+        self.hover_over_card_detail = None
 
-    def get_clicked(self, mouse_event: pygame.event.Event):
+    def get_hover_over_clickable(self, position: Tuple[int, int]):
         """
-        Get clicked object which was on top of clicked objects.
+        Get Clickable object which was on top of clicked objects.
         """
-        clicked = [g_obj for g_obj in self.game.sprite_group.sprites() if g_obj.rect.collidepoint(mouse_event.pos)]
+        clicked = [g_obj for g_obj in self.game.sprite_group.sprites() if g_obj.rect.collidepoint(position)]
         clicked_object = None
         for on_top in reversed(clicked):
             if isinstance(on_top, Clickable):
@@ -67,7 +74,7 @@ class Mouse:
         """
         Get clicked object and position. Decide which button was pressed.
         """
-        clicked = self.get_clicked(mouse_event=mouse_event)
+        clicked = self.get_hover_over_clickable(position=mouse_event.pos)
         self.start_pos = mouse_event.pos
         if mouse_event.button == 1:
             self.mouse_down_left_button(mouse_event, clicked)
@@ -98,7 +105,7 @@ class Mouse:
         """
         Right now - nothing happens.
         """
-        clicked = self.get_clicked(mouse_event=mouse_event)
+        clicked = self.get_hover_over_clickable(position=mouse_event.pos)
         if clicked:
             clicked.right_upclick(mouse_event=mouse_event)
 
@@ -108,7 +115,7 @@ class Mouse:
         """
         Get upclicked and position. Decide which button was upclicked.
         """
-        clicked = self.get_clicked(mouse_event=mouse_event)
+        clicked = self.get_hover_over_clickable(position=mouse_event.pos)
         self.end_pos = mouse_event.pos
         # left-upclick
         if mouse_event.button == 1:
@@ -118,12 +125,47 @@ class Mouse:
             # right-upclick
             self.mouse_up_right_button(mouse_event, clicked)
 
+    def check_hover_over(self):
+        now = perf_counter()
+        if now - self.hover_over_last_refresh > self.hover_over_refresh_timeout:
+            self.hover_over_last_refresh = now
+
+            hover_over_object = self.get_hover_over_clickable(position=pygame.mouse.get_pos())
+
+            if self.hover_over_object == hover_over_object:
+                # second time the same object
+                if isinstance(self.hover_over_object, CardVisualization):
+                    # create card detail view or maintain existing one
+                    if self.hover_over_card_detail:
+                        # maintain
+                        if self.hover_over_card_detail.name != self.hover_over_object.name:
+                            # or replace with new one
+                            self.hover_over_card_detail.mouse = None
+                            self.hover_over_card_detail = CardDetailView(mouse=self, name=self.hover_over_object.name)
+                    else:
+                        # create new one
+                        self.hover_over_card_detail = CardDetailView(mouse=self, name=self.hover_over_object.name)
+
+                else:
+                    # delete card detail view or do nothing
+                    if self.hover_over_card_detail:
+                        # detach card detail (it will remove itself)
+                        self.hover_over_card_detail.mouse = None
+                        self.hover_over_card_detail = None
+
+            self.hover_over_object = hover_over_object
+
     def update(self):
         """
         When object is dragged, it should have the same position as mouse.
         Offset is a distance between place where mouse is touching the object
         and it's center.
+        Also checks if mouse hovers overs card and display card's detail view
+        if timeout is met.
         """
         if self.dragged_object:
             self.dragged_object.rect.x = pygame.mouse.get_pos()[0] - self.mouse_offset[0]
             self.dragged_object.rect.y = pygame.mouse.get_pos()[1] - self.mouse_offset[1]
+
+        else:
+            self.check_hover_over()

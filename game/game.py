@@ -1,5 +1,4 @@
 import pygame
-from game.card.card_detail_view import CardDetailView
 from game.hardware import Keyboard, Mouse, Screen
 from game.player import Player
 from game.piles.deck import download_all_decks_images
@@ -35,8 +34,6 @@ class Game:
                                    scale=1, c=(0, 255, 0),
                                    x=self.screen.width, y=self.screen.height//2,
                                    w=self.screen.width, h=self.screen.height//2, a=180.0))
-
-        CardDetailView(name='Rout', game=self, x=0, y=0)
 
     def on_event(self, event):
         if event.type == pygame.QUIT:

@@ -3,10 +3,10 @@ from game.game_objects import GameObject
 from pathlib import Path
 
 
-tmp_scale = 3.0
+tmp_scale = 4.0
 
 
-class CardDetailView(GameObject):
+class CardView(GameObject):
     WIDTH = int(63 * tmp_scale)
     HEIGHT = int(88 * tmp_scale)
     DEFAULT_PATH = 'cards'
@@ -17,17 +17,13 @@ class CardDetailView(GameObject):
                  **kwargs):
         self.name = name
         image = self.find_image(name)
-        unified_scale = self.unify_scale(image, **kwargs)
-        scale = scale * unified_scale if scale else unified_scale
-        super().__init__(image=image, scale=scale, **kwargs)
+        super().__init__(image=image, **kwargs)
         self.game.sprite_group.add(self)
 
         if kwargs.get('x') is not None:
-            print(kwargs.get('x'))
             self.rect.x = self.rect.x + self.rect.width // 2
 
         if kwargs.get('y') is not None:
-            print(kwargs.get('y'))
             self.rect.y = self.rect.y + self.rect.height // 2
 
     def find_image(self, name: str):
@@ -46,3 +42,18 @@ class CardDetailView(GameObject):
         ratio = actual_width / self.WIDTH
         scale_to_unify = 1 / ratio
         return scale_to_unify
+
+
+class CardDetailView(CardView):
+    def __init__(self, mouse, **kwargs):
+        if kwargs.get('game') is None:
+            kwargs['game'] = mouse.game
+
+        super().__init__(x=0, y=0, **kwargs)
+        self.mouse = mouse
+
+    def update(self) -> None:
+        if self.mouse is None:
+            self.kill()
+
+        return super().update()
