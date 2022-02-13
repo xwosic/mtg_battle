@@ -3,6 +3,7 @@ import random
 from game.card import Card
 from game.controls.dropdown_view import DropdownView
 from game.controls.scry_view import ScryView
+from game.controls.search_card_view import SearchCardView
 from game.piles.pile import Pile, PileVisualization
 from mtg_api.asyncho import download_cards
 from mtg_api.sync import check_which_card_to_download
@@ -53,6 +54,9 @@ class DeckVisualization(PileVisualization):
 
     def left_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         self.pile.draw()
+
+    def search(self):
+        SearchCardView(game=self.game, pile=self.pile, shuffle_after_search=True)
 
     def scry(self):
         ScryView(game=self.game, player=self.pile.player, pile=self.pile)
