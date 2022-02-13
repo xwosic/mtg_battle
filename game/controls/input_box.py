@@ -1,5 +1,5 @@
 import pygame
-from game.clickable import Clickable
+from game.game_objects import Clickable
 
 
 class InputBox(Clickable):

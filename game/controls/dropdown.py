@@ -5,16 +5,15 @@ Example:
     Dropdown(game=<Game>,
              groups=[<Game>.sprite_group],
              options={
-                 'instance': <Game>.players[0].deck,
                  'options': {
-                     'draw': {}
+                     'draw': {'instance': <Game>.players[0].deck}
                  }
              }
     )
 
 """
 from game.controls.button import Button
-from game.game_object import GameObject
+from game.game_objects import GameObject
 from typing import List
 
 
@@ -28,26 +27,28 @@ class Dropdown(GameObject):
         mapping = self.create_mapping(options)
         self.buttons = self.create_buttons(mapping)
         self.distribute_buttons(self.buttons, button_w, button_h)
+        self.victims = self.buttons
 
     def create_mapping(self, options: dict):
         """
         in:
-            options = {'instance': <class instance>, 'options': {'method_name': {<kwargs>}'}}
+            options = {'method_name': {'instance': <class instance>, 'kwargs': {<kwargs>}'}}
 
         out:
             mapping = {<method name>: {'method': <method object>, 'kwargs': {...}}, ...}
         """
         mapping = {}
-        for method_name, option_kwargs in options['options'].items():
-            mapping[method_name] = {'method': getattr(options['instance'], method_name),
-                                    'kwargs': option_kwargs}
+        for method_name, option_dict in options.items():
+            mapping[method_name] = {'method': getattr(option_dict['instance'], method_name),
+                                    'kwargs': option_dict['kwargs']}
 
         return mapping
 
     def create_buttons(self, mapping: dict) -> List[Button]:
         buttons = []
         for method_name, method_dict in mapping.items():
-            buttons.append(Button(option_title=method_name,
+            buttons.append(Button(parent=self,
+                                  option_title=method_name,
                                   option_method=method_dict['method'],
                                   method_kwargs=method_dict['kwargs'],
                                   game=self.game,
@@ -74,8 +75,8 @@ class Dropdown(GameObject):
         """
         When dropdown is killed, it removes it's buttons.
         """
-        for button in self.buttons:
-            button.kill()
+        for victim in self.victims:
+            victim.kill()
 
         super().kill()
 

@@ -7,7 +7,7 @@ drag cards from view to board
 
 from game.controls.fog import Fog
 from .input_box import InputBox
-from .view import CardView
+from .card_view import CardView
 
 
 class SearchCardView:
@@ -30,4 +30,12 @@ class SearchCardView:
                                    width=200,
                                    height=50)
 
-        self.fog.kill_with_me = [self.search_box, self.view]
+        self.fog.victims = [self.search_box, self.view]
+        self.fog.action_on_kill = self.pile.shuffle
+
+        # activate search box
+        self.search_box.left_upclick()
+        # get all cards
+        cards = self.pile.match_card_name('')
+        # and display then
+        self.view.create_view(cards)

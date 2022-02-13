@@ -15,17 +15,17 @@ def check_which_card_to_download(card_names: List[str], folder: Union[str, Path]
         # there are no downloaded cards
         folder.mkdir(parents=True)
         return card_names
-    
+
     existing_cards = []
     for file in folder.iterdir():
         if file.is_file():
             existing_cards.append(file.stem)
-    
+
     to_download = []
     for card in card_names:
         if card not in existing_cards:
             to_download.append(card)
-    
+
     return to_download
 
 

@@ -1,5 +1,5 @@
 import pygame
-from game.tapable import Tapable
+from game.game_objects import Tapable
 from pathlib import Path
 
 
