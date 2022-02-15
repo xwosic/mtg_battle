@@ -46,7 +46,7 @@ class DeckVisualization(PileVisualization):
         self.right_click_options = {
                      'search': {'instance': self, 'kwargs': {}},
                      'shuffle': {'instance': self.pile, 'kwargs': {}},
-                     'scry': {'instance': self, 'kwargs': {}}
+                     'scry': {'instance': self, 'kwargs': {'number_of_cards': 1}}
                      }
 
     def right_upclick(self, mouse_event: pygame.event.Event, **kwargs):
@@ -58,7 +58,7 @@ class DeckVisualization(PileVisualization):
     def search(self):
         SearchCardView(game=self.game, pile=self.pile, shuffle_after_search=True)
 
-    def scry(self):
+    def scry(self, number_of_cards=1):
         ScryView(game=self.game, player=self.pile.player, pile=self.pile)
 
 
