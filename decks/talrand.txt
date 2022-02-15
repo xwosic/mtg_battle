@@ -1,0 +1,64 @@
+1 Talrand, Sky Summoner
+1 Aetherize
+1 Anticipate
+1 Arrester's Admonition
+1 Atemsis, All-Seeing
+1 Blink of an Eye
+1 Burnished Hart
+1 Call to Mind
+1 Clear the Mind
+1 Coastal Discovery
+1 Commander's Sphere
+1 Crashing Tide
+1 Curator's Ward
+1 Curse of Verbosity
+1 Diamond Mare
+1 Dictate of Kruphix
+1 Dismiss into Dream
+1 Engulf the Shore
+1 Entrancing Melody
+1 Essence Scatter
+1 Exclude
+1 Expel from Orazca
+1 Favorable Winds
+1 Fog Bank
+1 Fumble
+1 Heraldic Banner
+1 Hieroglyphic Illumination
+1 Impulse
+1 Insidious Will
+1 Into the Roil
+37 Island
+1 Jace's Sanctum
+1 Jace, Wielder of Mysteries
+1 Kumena's Awakening
+1 Mana Geode
+1 Metallurgic Summonings
+1 Mystic Sanctuary
+1 Negate
+1 Perilous Voyage
+1 Pilgrim's Eye
+1 Precognitive Perception
+1 Rapid Hybridization
+1 Reality Shift
+1 Reliquary Tower
+1 Repulse
+1 River's Rebuke
+1 Shimmer of Possibility
+1 Sift
+1 Sky Diamond
+1 Sleep
+1 Spell Pierce
+1 Sphinx of Jwar Isle
+1 Sphinx of Magosi
+1 Sphinx of the Final Word
+1 String of Disappearances
+1 Supreme Will
+1 Swarm Intelligence
+1 Telling Time
+1 Tezzeret's Ambition
+1 Thought Collapse
+1 Turn to Frog
+1 Unstable Obelisk
+1 Unwind
+1 Windreader Sphinx

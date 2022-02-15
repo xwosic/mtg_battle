@@ -26,11 +26,11 @@ class Game:
         self.mouse = Mouse(game=self)
         self.keyboard = Keyboard(game=self)
         self.running = True
-        self.players.append(Player(game=self, deck='Reap the Tides',
+        self.players.append(Player(game=self, deck='talrand',
                                    scale=1, c=(0, 0, 0),
                                    x=0, y=self.screen.height//2,
                                    w=self.screen.width, h=self.screen.height//2, a=0.0))
-        self.players.append(Player(game=self, deck='Lorehold Legacies',
+        self.players.append(Player(game=self, deck='Discaaarghd',
                                    scale=1, c=(0, 255, 0),
                                    x=self.screen.width, y=self.screen.height//2,
                                    w=self.screen.width, h=self.screen.height//2, a=180.0))
