@@ -62,6 +62,7 @@ class Game:
             for player in self.players:
                 yield player.untap()
                 yield player.deck.draw()
+                # todo: hide cards
 
     def update(self):
         self.screen.screen.fill(self.screen.background_color)
