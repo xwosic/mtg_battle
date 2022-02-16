@@ -89,6 +89,12 @@ class Player(Zone):
                     x=deck_position['x'],
                     y=deck_position['y'])
 
+    def untap(self):
+        for zone in self.zones:
+            for card in zone.cards:
+                if card.tapped:
+                    card.untap = True
+
     def update(self):
         [pile.update() for pile in self.piles]
         [zone.update() for zone in self.zones]

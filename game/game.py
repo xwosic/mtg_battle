@@ -18,6 +18,7 @@ class Game:
         self.sprite_group = pygame.sprite.Group()
         # pointers to players
         self.players: List[Player] = []
+        self.turn = self.turns_gen()
 
     def on_init(self):
         download_all_decks_images()
@@ -55,6 +56,12 @@ class Game:
     def handle_events(self):
         for event in pygame.event.get():
             self.on_event(event)
+
+    def turns_gen(self):
+        while self.running:
+            for player in self.players:
+                yield player.untap()
+                yield player.deck.draw()
 
     def update(self):
         self.screen.screen.fill(self.screen.background_color)
