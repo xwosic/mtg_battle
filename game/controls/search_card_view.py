@@ -11,7 +11,7 @@ from .card_view import CardView
 
 
 class SearchCardView:
-    def __init__(self, game, pile):
+    def __init__(self, game, pile, shuffle_after_search=False):
         self.game = game
         self.pile = pile
         self.fog = Fog.full_screen_fog(self.game)
@@ -31,7 +31,8 @@ class SearchCardView:
                                    height=50)
 
         self.fog.victims = [self.search_box, self.view]
-        self.fog.action_on_kill = self.pile.shuffle
+        if shuffle_after_search:
+            self.fog.action_on_kill = self.pile.shuffle
 
         # activate search box
         self.search_box.left_upclick()

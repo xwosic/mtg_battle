@@ -3,13 +3,19 @@ from game.game_objects import Clickable
 
 
 class InputBox(Clickable):
-    def __init__(self, text='', send_to_callable=None, always_send=False, send_call_result_to=None, **kwargs):
+    def __init__(self, text='',
+                 send_to_callable=None,
+                 always_send=False,
+                 send_call_result_to=None,
+                 min_width=200,
+                 **kwargs):
         super().__init__(**kwargs)
         self.keyboard = self.game.keyboard
         self.send_to_callable = send_to_callable
         self.send_call_result_to = send_call_result_to
         self.always_send = always_send
         self.text = text
+        self.min_width = min_width
         self.font = pygame.font.Font(None, 32)
         self.image = self.font.render(self.text, True, self.color)
         self.game.sprite_group.add(self)
@@ -48,7 +54,7 @@ class InputBox(Clickable):
         self.image = self.font.render(self.text, True, self.color)
 
         # Resize the box if the text is too long.
-        width = max(200, self.image.get_width()+10)
+        width = max(self.min_width, self.image.get_width()+10)
         self.rect.w = width
         self.adapt_to_new_size()
 

@@ -16,7 +16,8 @@ class GameObject(pygame.sprite.Sprite):
                  height=10,
                  color=(255, 255, 255),
                  image: pygame.Surface = None,
-                 scale=1.0):
+                 scale=1.0,
+                 **kwargs):
 
         pygame.sprite.Sprite.__init__(self)
         self.game = game

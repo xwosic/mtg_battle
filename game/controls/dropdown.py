@@ -13,6 +13,7 @@ Example:
 
 """
 from game.controls.button import Button
+from game.controls.value_button import ValueButton
 from game.game_objects import GameObject
 from typing import List
 
@@ -47,12 +48,20 @@ class Dropdown(GameObject):
     def create_buttons(self, mapping: dict) -> List[Button]:
         buttons = []
         for method_name, method_dict in mapping.items():
-            buttons.append(Button(parent=self,
-                                  option_title=method_name,
-                                  option_method=method_dict['method'],
-                                  method_kwargs=method_dict['kwargs'],
-                                  game=self.game,
-                                  groups=[self.game.sprite_group]))
+            if method_dict['kwargs']:
+                buttons.append(ValueButton(parent=self,
+                                           option_title=method_name,
+                                           option_method=method_dict['method'],
+                                           method_kwargs=method_dict['kwargs'],
+                                           game=self.game,
+                                           groups=[self.game.sprite_group]))
+            else:
+                buttons.append(Button(parent=self,
+                                      option_title=method_name,
+                                      option_method=method_dict['method'],
+                                      method_kwargs=method_dict['kwargs'],
+                                      game=self.game,
+                                      groups=[self.game.sprite_group]))
 
         return buttons
 
@@ -60,6 +69,9 @@ class Dropdown(GameObject):
         """
         Gives shape and places buttons in rectangle space.
         """
+        self.rect.x = (self.game.screen.width - button_w) // 2
+        self.rect.y = (self.game.screen.height - len(self.buttons) * button_h) // 2
+
         for number, button in enumerate(buttons):
             button.rect.x = self.rect.x
             button.rect.y = self.rect.y + number * button_h
