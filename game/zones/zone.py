@@ -25,6 +25,7 @@ class Zone:
         self.x, self.y = x, y
         self.w, self.h = self.calculate_rotation(w,  h, self.a, self.scale)
         self.color = c
+        self.selected = False
 
         self.tl = (self.x, self.y)
         self.bl = (self.x, self.y + self.h)
@@ -70,7 +71,8 @@ class Zone:
         pass
 
     def update(self):
-        pygame.draw.rect(self.game.screen.screen,
-                         self.color,
-                         self.rect,
-                         width=1)
+        if self.selected:
+            pygame.draw.rect(self.game.screen.screen,
+                             self.color,
+                             self.rect,
+                             width=1)

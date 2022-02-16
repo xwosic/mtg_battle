@@ -60,8 +60,11 @@ class Game:
     def turns_gen(self):
         while self.running:
             for player in self.players:
-                yield player.untap()
-                yield player.deck.draw()
+                yield player.before_untap()
+                player.untap()
+                yield player.before_draw()
+                player.deck.draw()
+                player.after_draw()
                 # todo: hide cards
 
     def update(self):

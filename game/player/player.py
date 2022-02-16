@@ -89,11 +89,22 @@ class Player(Zone):
                     x=deck_position['x'],
                     y=deck_position['y'])
 
+    def before_untap(self):
+        for zone in self.zones:
+            zone.selected = True
+
     def untap(self):
         for zone in self.zones:
+            zone.selected = False
             for card in zone.cards:
                 if card.tapped:
                     card.untap = True
+
+    def before_draw(self):
+        self.deck.view.selected = True
+
+    def after_draw(self):
+        self.deck.view.selected = False
 
     def update(self):
         [pile.update() for pile in self.piles]
