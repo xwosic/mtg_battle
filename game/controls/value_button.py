@@ -65,7 +65,6 @@ class ValueButton(Button):
         """
         If clicked - trigger mapped instance method.
         """
-        print(self.method_kwargs)
         self.method(**self.method_kwargs)
         if self.parent:
             self.parent.kill()

@@ -59,7 +59,7 @@ class DeckVisualization(PileVisualization):
         SearchCardView(game=self.game, pile=self.pile, shuffle_after_search=True)
 
     def scry(self, number_of_cards=1):
-        ScryView(game=self.game, player=self.pile.player, pile=self.pile)
+        ScryView(game=self.game, player=self.pile.player, pile=self.pile, number_of_cards=number_of_cards)
 
 
 class Deck(Pile):
