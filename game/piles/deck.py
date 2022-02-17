@@ -120,3 +120,4 @@ class Deck(Pile):
                         name=card_name)
             card.view.rect.center = self.view.rect.center
             self.player.hand.add_card(card)
+        self.view.selected = False

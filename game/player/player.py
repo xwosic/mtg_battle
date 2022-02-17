@@ -103,9 +103,6 @@ class Player(Zone):
     def before_draw(self):
         self.deck.view.selected = True
 
-    def after_draw(self):
-        self.deck.view.selected = False
-
     def update(self):
         [pile.update() for pile in self.piles]
         [zone.update() for zone in self.zones]

@@ -42,6 +42,9 @@ class ScryView:
                                    width=200,
                                    height=50)
 
+        self.view.selected = True
+        self.view_bottom_cards.selected = True
+        self.view_top_cards.selected = True
         self.fog.victims = [self.search_box, self.view, self.view_bottom_cards, self.view_top_cards]
 
         # activate search box

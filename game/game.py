@@ -31,8 +31,8 @@ class Game:
                                    scale=1, c=(0, 0, 0),
                                    x=0, y=self.screen.height//2,
                                    w=self.screen.width, h=self.screen.height//2, a=0.0))
-        self.players.append(Player(game=self, deck='Discaaarghd',
-                                   scale=1, c=(0, 255, 0),
+        self.players.append(Player(game=self, deck='Wait_for_kraken',
+                                   scale=1, c=(255, 0, 0),
                                    x=self.screen.width, y=self.screen.height//2,
                                    w=self.screen.width, h=self.screen.height//2, a=180.0))
 
@@ -61,10 +61,9 @@ class Game:
         while self.running:
             for player in self.players:
                 yield player.before_untap()
-                player.untap()
+                yield player.untap()
                 yield player.before_draw()
-                player.deck.draw()
-                player.after_draw()
+                yield player.deck.draw()
                 # todo: hide cards
 
     def update(self):

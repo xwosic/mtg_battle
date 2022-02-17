@@ -26,7 +26,7 @@ class InputBox(Clickable):
         When clicked - connects/disconnects to keyboard.
         """
         if self.selected:
-            self.keyboard.disconnect()
+            self.keyboard.disconnect(self)
             self.selected = False
         else:
             self.selected = True
@@ -59,7 +59,7 @@ class InputBox(Clickable):
         self.adapt_to_new_size()
 
     def kill(self) -> None:
-        self.keyboard.disconnect()
+        self.keyboard.disconnect(self)
         return super().kill()
 
     def send(self):

@@ -87,4 +87,4 @@ class GameObject(pygame.sprite.Sprite):
                                      (self.rect.x, self.rect.y))
 
         if self.selected:
-            pygame.draw.rect(self.game.screen.screen, (0, 255, 0), self.rect, width=1)
+            pygame.draw.rect(self.game.screen.screen, (0, 255, 0), self.rect, width=3)
