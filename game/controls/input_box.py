@@ -50,6 +50,10 @@ class InputBox(Clickable):
             self.text += event.unicode
             if self.always_send:
                 self.send()
+
+        self.render_text()
+
+    def render_text(self):
         # Re-render the text.
         self.image = self.font.render(self.text, True, self.color)
 
