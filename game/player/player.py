@@ -94,7 +94,11 @@ class Player(Zone):
                     y=deck_position['y'])
 
     def create_life_counter(self, init_healh: int, **kwargs):
-        dice_position = self.calculate_position(x_ratio=0.5, y_ratio=0.5, w_ratio=0.05, h_ratio=0.1, **kwargs)
+        dice_position = self.calculate_position(x_ratio=0.11,
+                                                y_ratio=0.8,
+                                                w_ratio=0.05,
+                                                h_ratio=0.1,
+                                                **kwargs)
         return DiceCounter(init_value=init_healh,
                            game=self.game,
                            groups=[self.game.sprite_group],
