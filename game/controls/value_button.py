@@ -46,7 +46,6 @@ class ValueButton(Button):
 
     def save_new_value(self, text_value):
         self.method_kwargs[self.first_key] = text_value
-        print(self.method_kwargs)
 
     def adapt_to_new_size(self):
         super().adapt_to_new_size()
