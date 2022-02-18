@@ -1,3 +1,4 @@
+from game.controls.counter import DiceCounter
 from game.piles import Pile, Deck
 from game.zones import Battlefield, Hand, Lands, Zone
 from typing import Callable
@@ -36,6 +37,9 @@ class Player(Zone):
         self.exile = self.create_pile(x_ratio=0.05, y_ratio=0.5, **kwargs)
         self.command_zone = self.create_pile(x_ratio=0.17, y_ratio=0.5, **kwargs)
         self.piles = [self.deck, self.graveyard, self.exile, self.command_zone]
+
+        self.health = 40
+        self.life_counter = self.create_life_counter(init_healh=self.health, **kwargs)
 
     def calculate_position(self,
                            x_ratio: float,
@@ -88,6 +92,16 @@ class Player(Zone):
                     color=self.color,
                     x=deck_position['x'],
                     y=deck_position['y'])
+
+    def create_life_counter(self, init_healh: int, **kwargs):
+        dice_position = self.calculate_position(x_ratio=0.5, y_ratio=0.5, w_ratio=0.05, h_ratio=0.1, **kwargs)
+        return DiceCounter(init_value=init_healh,
+                           game=self.game,
+                           groups=[self.game.sprite_group],
+                           x=dice_position['x'],
+                           y=dice_position['y'],
+                           width=dice_position['w'],
+                           height=dice_position['h'])
 
     def before_untap(self):
         for zone in self.zones:
