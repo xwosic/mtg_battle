@@ -1,6 +1,7 @@
 import pygame
 from game.game_objects import Tapable
 from pathlib import Path
+from game.controls.dropdown_view import DropdownView
 
 
 class Card:
@@ -30,6 +31,10 @@ class CardVisualization(Tapable):
         scale = scale * unified_scale if scale else unified_scale
         super().__init__(image=image, scale=scale, **kwargs)
         self.game.sprite_group.add(self)
+        self.right_click_options = {'attach': {'instance': self, 'kwargs': {}}}
+
+    def right_upclick(self, mouse_event: pygame.event.Event, **kwargs):
+        DropdownView(game=self.game, options=self.right_click_options)
 
     def find_image(self, name: str):
         """

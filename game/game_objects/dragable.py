@@ -20,6 +20,10 @@ class Dragable(Clickable):
         """
 
         for player in self.game.players:
+            if 'CardVisualization' in self.default_drops:
+                print('drop on card')
+                return
+
             if 'Pile' in self.default_drops:
                 for pile in player.piles:
                     if pile.view.is_clicked(pos):
