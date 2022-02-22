@@ -16,6 +16,7 @@ Applicable on cards and tokens and without them.
 """
 
 import pygame
+import random
 from game.game_objects import Attachable
 
 
@@ -69,14 +70,24 @@ class DiceCounter(Attachable):
     @classmethod
     def create_card_counter(cls, card, init_value: int):
         number_of_counters = len([counter for counter in card.attached_things if isinstance(counter, DiceCounter)])
-        offset_x = card.rect.width // 4 * 3
+        quarter_of_width = card.rect.width // 4
         quarter_of_height = card.rect.height // 4
-        offset_y = - quarter_of_height * (number_of_counters)
+        if 0 <= number_of_counters <= 4:
+            offset_x = card.rect.width
+            offset_y = quarter_of_height * (number_of_counters)
+        elif 5 <= number_of_counters <= 8:
+            offset_x = card.rect.width - (number_of_counters - 4) * quarter_of_width
+            offset_y = card.rect.height
+        else:
+            return
+
         offset = (offset_x, offset_y)
+        color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
         dice = cls(init_value=init_value,
                    reversed=True,
                    game=card.game,
                    groups=[card.game.sprite_group],
-                   width=20,
-                   height=20)
+                   color=color,
+                   width=quarter_of_width,
+                   height=quarter_of_height)
         dice.attach_me_to_card(card, offset=offset)

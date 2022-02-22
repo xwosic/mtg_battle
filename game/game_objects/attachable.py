@@ -35,6 +35,8 @@ class Attachable(Dragable):
                 # set offset
                 if offset:
                     self.attach_offset = offset
+                else:
+                    self.attach_offset = (card.rect.width // 2, card.rect.height // 2)
 
     def detach(self):
         """
@@ -50,8 +52,7 @@ class Attachable(Dragable):
         Attached thing will be following card to which it is attached to.
         """
         if self.is_attached:
-            card_x, card_y = self.loc.rect.center
-            self.rect.x = card_x + self.attach_offset[0]
-            self.rect.y = card_y + self.attach_offset[1]
+            self.rect.x = self.loc.rect.x + self.attach_offset[0]
+            self.rect.y = self.loc.rect.y + self.attach_offset[1]
 
         super().update()
