@@ -20,10 +20,15 @@ class Dragable(Clickable):
         """
 
         for player in self.game.players:
+            if 'CardVisualization' in self.default_drops:
+                print('drop on card')
+                return
+
             if 'Pile' in self.default_drops:
                 for pile in player.piles:
                     if pile.view.is_clicked(pos):
-                        self.loc.remove_card(self)
+                        if self.loc:
+                            self.loc.remove_card(self)
                         self.loc = None
                         pile.view.put_card_on_top(self)
                         return
@@ -31,7 +36,8 @@ class Dragable(Clickable):
             if 'CardZone' in self.default_drops:
                 for zone in player.zones:
                     if zone.is_clicked(pos):
-                        self.loc.remove_card(self)
+                        if self.loc:
+                            self.loc.remove_card(self)
                         self.loc = None
                         zone.add_card(self)
                         return

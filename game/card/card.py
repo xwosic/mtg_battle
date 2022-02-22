@@ -1,6 +1,8 @@
 import pygame
 from game.game_objects import Tapable
 from pathlib import Path
+from game.controls.dropdown_view import DropdownView
+from game.controls.counter import DiceCounter
 
 
 class Card:
@@ -30,6 +32,10 @@ class CardVisualization(Tapable):
         scale = scale * unified_scale if scale else unified_scale
         super().__init__(image=image, scale=scale, **kwargs)
         self.game.sprite_group.add(self)
+        self.right_click_options['add_counter'] = {'instance': self, 'kwargs': {'value': 1}}
+
+    def right_upclick(self, mouse_event: pygame.event.Event, **kwargs):
+        DropdownView(game=self.game, options=self.right_click_options)
 
     def find_image(self, name: str):
         """
@@ -55,6 +61,12 @@ class CardVisualization(Tapable):
         scale_to_unify = 1 / ratio
         return scale_to_unify
 
+    def add_counter(self, value):
+        DiceCounter.create_card_counter(card=self, init_value=value)
+
+    def __repr__(self):
+        return f'CardVisualization(name={self.card.name})'
+
 
 class Card:
     def __init__(self,
@@ -62,3 +74,6 @@ class Card:
                  **kwargs):
         self.name = name
         self.view = CardVisualization(card=self, name=name, **kwargs)
+
+    def __repr__(self):
+        return f'Card(name={self.name})'

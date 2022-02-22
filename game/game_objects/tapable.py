@@ -1,8 +1,8 @@
 import pygame
-from .dragable import Dragable
+from .attachable import Attachable
 
 
-class Tapable(Dragable):
+class Tapable(Attachable):
     """
     Class inheriting after Tapable has tap and untap functionality.
     """

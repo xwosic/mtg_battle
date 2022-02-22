@@ -26,6 +26,8 @@ class Mouse:
         self.hover_over_last_refresh = perf_counter()
         self.hover_over_object = None
         self.hover_over_card_detail = None
+        # select element
+        self.method_on_select = None
 
     def get_hover_over_clickable(self, position: Tuple[int, int]):
         """
@@ -58,7 +60,7 @@ class Mouse:
         When mouse left button is clicked, check if object is dragable.
         If so, add it to dragged and save position.
         """
-        if isinstance(clicked, Dragable):
+        if isinstance(clicked, Dragable) and not self.method_on_select:
             self.dragged_object = clicked
             self.move_dragged_on_top()
             self.mouse_offset = (mouse_event.pos[0] - self.dragged_object.rect.x,
@@ -87,19 +89,25 @@ class Mouse:
         If mouse hasn't moved since down click - object is clicked.
         Else object was dragged and will be dropped here.
         """
-        if self.is_moved():
-            # drop
-            if clicked == self.dragged_object:
-                if self.dragged_object:
-                    self.dragged_object.drop_into(self.end_pos)
+        if self.method_on_select:
+            self.method_on_select(clicked)
+            self.method_on_select = None
 
         else:
-            # click
-            if clicked:
-                clicked.left_upclick(mouse_event=mouse_event)
+            if self.is_moved():
+                # drop
+                if clicked == self.dragged_object:
+                    if self.dragged_object:
+                        self.dragged_object.drop_into(self.end_pos)
+
+            else:
+                # click
+                if clicked:
+                    clicked.left_upclick(mouse_event=mouse_event)
+
+            self.dragged_object = None
 
         self.left_button_down = False
-        self.dragged_object = None
 
     def mouse_up_right_button(self, mouse_event: pygame.event.Event, clicked):
         """

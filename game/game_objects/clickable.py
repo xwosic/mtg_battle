@@ -28,7 +28,3 @@ class Clickable(GameObject):
 
     def update(self) -> None:
         return super().update()
-
-    @property
-    def options(self):
-        return {'instance': self, 'options': self.right_click_options}
