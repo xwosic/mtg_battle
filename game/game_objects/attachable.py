@@ -16,7 +16,7 @@ class Attachable(Dragable):
         """
         self.game.mouse.method_on_select = self.attach_me_to_card
 
-    def attach_me_to_card(self, card):
+    def attach_me_to_card(self, card, offset=None):
         """
         Check if card is not attaching to itself
         and if card is not in things attached to itself (circular attachment).
@@ -31,6 +31,10 @@ class Attachable(Dragable):
                 # change dropdown options
                 self.right_click_options.pop('attach')
                 self.right_click_options['detach'] = {'instance': self, 'kwargs': {}}
+
+                # set offset
+                if offset:
+                    self.attach_offset = offset
 
     def detach(self):
         """
