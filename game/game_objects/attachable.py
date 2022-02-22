@@ -13,10 +13,14 @@ class Attachable(Dragable):
     def attach_me_to_card(self, card):
         self.loc = card
         self.is_attached = True
+        self.right_click_options.pop('attach')
+        self.right_click_options['deattach'] = {'instance': self, 'kwargs': {}}
 
     def deattach(self):
-        self.loc = None
+        self.loc = self.loc.loc
         self.is_attached = False
+        self.right_click_options.pop('deattach')
+        self.right_click_options['attach'] = {'instance': self, 'kwargs': {}}
 
     def update(self):
         if self.is_attached:
