@@ -31,7 +31,6 @@ class CardVisualization(Tapable):
         scale = scale * unified_scale if scale else unified_scale
         super().__init__(image=image, scale=scale, **kwargs)
         self.game.sprite_group.add(self)
-        self.right_click_options = {'attach': {'instance': self, 'kwargs': {}}}
 
     def right_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         DropdownView(game=self.game, options=self.right_click_options)
@@ -60,6 +59,9 @@ class CardVisualization(Tapable):
         scale_to_unify = 1 / ratio
         return scale_to_unify
 
+    def __repr__(self):
+        return f'CardVisualization(name={self.card.name})'
+
 
 class Card:
     def __init__(self,
@@ -67,3 +69,6 @@ class Card:
                  **kwargs):
         self.name = name
         self.view = CardVisualization(card=self, name=name, **kwargs)
+
+    def __repr__(self):
+        return f'Card(name={self.name})'
