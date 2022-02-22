@@ -60,7 +60,7 @@ class Mouse:
         When mouse left button is clicked, check if object is dragable.
         If so, add it to dragged and save position.
         """
-        if isinstance(clicked, Dragable):
+        if isinstance(clicked, Dragable) and not self.method_on_select:
             self.dragged_object = clicked
             self.move_dragged_on_top()
             self.mouse_offset = (mouse_event.pos[0] - self.dragged_object.rect.x,
