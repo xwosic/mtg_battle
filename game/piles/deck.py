@@ -3,6 +3,7 @@ import random
 from game.card import Card
 from game.controls.dropdown_view import DropdownView
 from game.controls.scry_view import ScryView
+from game.controls.surveil_view import SurveilView
 from game.controls.search_card_view import SearchCardView
 from game.piles.pile import Pile, PileVisualization
 from mtg_api.asyncho import download_cards
@@ -46,7 +47,8 @@ class DeckVisualization(PileVisualization):
         self.right_click_options = {
                      'search': {'instance': self, 'kwargs': {}},
                      'shuffle': {'instance': self.pile, 'kwargs': {}},
-                     'scry': {'instance': self, 'kwargs': {'number_of_cards': 1}}
+                     'scry': {'instance': self, 'kwargs': {'number_of_cards': 1}},
+                     'surveil': {'instance': self, 'kwargs': {'number_of_cards': 1}}
                      }
 
     def right_upclick(self, mouse_event: pygame.event.Event, **kwargs):
@@ -59,7 +61,10 @@ class DeckVisualization(PileVisualization):
         SearchCardView(game=self.game, pile=self.pile, shuffle_after_search=True)
 
     def scry(self, number_of_cards=1):
-        ScryView(game=self.game, player=self.pile.player, pile=self.pile)
+        ScryView(game=self.game, player=self.pile.player, pile=self.pile, number_of_cards=number_of_cards)
+
+    def surveil(self, number_of_cards=1):
+        SurveilView(game=self.game, player=self.pile.player, pile=self.pile, number_of_cards=number_of_cards)
 
 
 class Deck(Pile):
@@ -120,3 +125,4 @@ class Deck(Pile):
                         name=card_name)
             card.view.rect.center = self.view.rect.center
             self.player.hand.add_card(card)
+        self.view.selected = False

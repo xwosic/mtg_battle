@@ -18,6 +18,7 @@ class Game:
         self.sprite_group = pygame.sprite.Group()
         # pointers to players
         self.players: List[Player] = []
+        self.turn = self.turns_gen()
 
     def on_init(self):
         download_all_decks_images()
@@ -30,8 +31,8 @@ class Game:
                                    scale=1, c=(0, 0, 0),
                                    x=0, y=self.screen.height//2,
                                    w=self.screen.width, h=self.screen.height//2, a=0.0))
-        self.players.append(Player(game=self, deck='Discaaarghd',
-                                   scale=1, c=(0, 255, 0),
+        self.players.append(Player(game=self, deck='welder',
+                                   scale=1, c=(255, 0, 0),
                                    x=self.screen.width, y=self.screen.height//2,
                                    w=self.screen.width, h=self.screen.height//2, a=180.0))
 
@@ -55,6 +56,15 @@ class Game:
     def handle_events(self):
         for event in pygame.event.get():
             self.on_event(event)
+
+    def turns_gen(self):
+        while self.running:
+            for player in self.players:
+                yield player.before_untap()
+                yield player.untap()
+                yield player.before_draw()
+                yield player.deck.draw()
+                # todo: hide cards
 
     def update(self):
         self.screen.screen.fill(self.screen.background_color)

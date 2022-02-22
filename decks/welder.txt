@@ -1,0 +1,73 @@
+1 Goblin Welder 
+1 Daretti, Scrap Savant
+1 Myr Sire
+1 Steel Overseer
+1 Audacious Reshapers
+1 Burnished Hart
+1 Feldon of the Third Path
+1 Filigree Familiar
+1 Ghirapur Gearcrafter
+1 Laelia, the Blade Reforged
+1 Pia Nalaar  
+1 Pilgrim's Eye  
+1 Quicksmith Genius  
+1 Scrap Trawler  
+1 Thopter Engineer  
+1 Pia and Kiran Nalaar  
+1 Solemn Simulacrum  
+1 Barrage Ogre  
+1 Combustible Gearhulk  
+1 Darksteel Sentinel  
+1 Duplicant  
+1 Hellkite Tyrant  
+1 Hoard-Smelter Dragon  
+1 Ruin Grinder  
+1 Scuttling Doom Engine  
+1 Steel Hellkite  
+1 Thopter Assembly  
+1 Hellkite Igniter  
+1 Meteor Golem  
+1 Myr Battlesphere  
+1 Bosh, Iron Golem  
+1 Triplicate Titan   
+1 Inventor's Goggles  
+1 Pyrite Spellbomb  
+1 Sol Ring  
+1 Voyager Staff  
+1 Witch's Oven  
+1 Arcane Signet  
+1 Ichor Wellspring  
+1 Key to the City  
+1 Mind Stone  
+1 Mycosynth Wellspring  
+1 Swiftfoot Boots  
+1 Battlemage's Bracers  
+1 Commander's Sphere  
+1 Cursed Mirror  
+1 Darksteel Ingot  
+1 Darksteel Plate  
+1 Hierophant's Chalice  
+1 Mana Geode  
+1 Manalith  
+1 Sculpting Steel  
+1 Thousand-Year Elixir  
+1 Unstable Obelisk  
+1 Worn Powerstone  
+1 Hedron Archive  
+1 Seer's Sundial  
+1 Tamiyo's Journal  
+1 Dreamstone Hedron
+1 Galvanic Blast  
+1 Abrade  
+1 Shrapnel Blast  
+1 Welding Sparks
+1 Faithless Looting  
+1 Chain Reaction
+1 Command Tower  
+1 Cryptic Caves  
+1 Darksteel Citadel  
+1 Forgotten Cave  
+1 Foundry of the Consuls  
+1 Great Furnace  
+28 Mountain  
+1 Phyrexia's Core  

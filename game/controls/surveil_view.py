@@ -3,7 +3,7 @@ from .input_box import InputBox
 from .card_view import CardView
 
 
-class ScryView:
+class SurveilView:
     def __init__(self, game, player, pile, number_of_cards=None):
         self.game = game
         self.player = player
@@ -20,7 +20,7 @@ class ScryView:
         self.view_bottom_cards = CardView(game=self.game,
                                           pile=self.pile,
                                           player=self.player,
-                                          method_on_kill=self.pile.view.put_card_on_bottom,
+                                          method_on_kill=self.player.graveyard.view.put_card_on_top,
                                           x=self.game.screen.width//5,
                                           y=self.game.screen.height//2,
                                           w=self.game.screen.width//5,

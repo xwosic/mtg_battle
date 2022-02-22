@@ -20,6 +20,7 @@ def read_deck(path: Union[Path, str]) -> dict:
 
             number, *name = card.split(' ')
             name = ' '.join(name).strip('\n')
+            name = name.strip()
             cards[destination][name] = int(number)
 
     return cards

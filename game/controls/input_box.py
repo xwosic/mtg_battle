@@ -26,7 +26,7 @@ class InputBox(Clickable):
         When clicked - connects/disconnects to keyboard.
         """
         if self.selected:
-            self.keyboard.disconnect()
+            self.keyboard.disconnect(self)
             self.selected = False
         else:
             self.selected = True
@@ -50,6 +50,10 @@ class InputBox(Clickable):
             self.text += event.unicode
             if self.always_send:
                 self.send()
+
+        self.render_text()
+
+    def render_text(self):
         # Re-render the text.
         self.image = self.font.render(self.text, True, self.color)
 
@@ -59,7 +63,7 @@ class InputBox(Clickable):
         self.adapt_to_new_size()
 
     def kill(self) -> None:
-        self.keyboard.disconnect()
+        self.keyboard.disconnect(self)
         return super().kill()
 
     def send(self):

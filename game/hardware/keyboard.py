@@ -9,9 +9,14 @@ class Keyboard:
     def connect(self, output):
         self.output = output
 
-    def disconnect(self):
-        self.output = None
+    def disconnect(self, who_disconnects):
+        if self.output is who_disconnects:
+            self.output = None
 
     def keyboard_clicked(self, event: pygame.event.Event):
         if self.output:
             self.output.keyboard_input(event)
+
+        else:
+            if event.key == pygame.K_SPACE:
+                next(self.game.turn)
