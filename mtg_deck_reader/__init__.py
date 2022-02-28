@@ -1,1 +1,1 @@
-from .reader import read_deck
+from .reader import DeckReader

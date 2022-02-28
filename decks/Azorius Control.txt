@@ -19,11 +19,3 @@
 8 Plains
 8 Island
 4 Tranquil Cove
-
-1 Archon of Sun's Grace
-2 Banishing Light
-2 Glass Casket
-2 Skyclave Apparition
-3 Confounding Conundrum
-3 Mystical Dispute
-2 Essence Scatter

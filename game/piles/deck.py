@@ -8,7 +8,7 @@ from game.controls.search_card_view import SearchCardView
 from game.piles.pile import Pile, PileVisualization
 from mtg_api.asyncho import download_cards
 from mtg_api.sync import check_which_card_to_download
-from mtg_deck_reader import read_deck
+from mtg_deck_reader import DeckReader
 from pathlib import Path
 
 
@@ -30,10 +30,16 @@ def get_deck_filenames(path='decks'):
 
 def get_deck_images(deck_path: str):
     path_to_cards = Path('cards')
-    deck = read_deck(deck_path)
-    deck = list(deck['mainboard'].keys())
-    cards_to_download = check_which_card_to_download(deck, path_to_cards)
+    deck_reader = DeckReader(deck_path)
+    deck = deck_reader.read_deck()
+    # mainboard
+    mainboard = list(deck['mainboard'].keys())
+    cards_to_download = check_which_card_to_download(mainboard, path_to_cards)
     download_cards(cards_to_download, path_to_cards)
+    # tokens
+    tokens = list(deck['tokens'].keys())
+    tokens_to_download = check_which_card_to_download(tokens, path_to_cards)
+    download_cards(tokens_to_download, path_to_cards, is_token=True)
 
 
 class Player:
@@ -87,7 +93,7 @@ class Deck(Pile):
         Get dict of mainboard and sideboard.
         """
         path_to_deck = Path.joinpath(Path(self.DEFAULT_PATH), f'{name}.txt')
-        return read_deck(path_to_deck)
+        return DeckReader(path_to_deck).read_deck()
 
     def create_deck(self, deck_setup: dict):
         """

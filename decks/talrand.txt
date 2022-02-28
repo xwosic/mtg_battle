@@ -62,3 +62,7 @@
 1 Unstable Obelisk
 1 Unwind
 1 Windreader Sphinx
+
+Tokens
+1 Beast
+1 Thopter
