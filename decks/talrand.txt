@@ -64,6 +64,6 @@
 1 Windreader Sphinx
 
 Tokens
-1 Beast
-1 Thopter
-1 Drake
+name:Beast
+name:Thopter
+name:Drake

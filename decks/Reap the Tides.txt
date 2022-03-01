@@ -75,10 +75,12 @@ Mainboard
 15 Forest
 15 Island
 
+# each token should have name specified
 tokens
-1 Copy
-1 Beast
-1 Plant
-1 Elephant
-1 Saproling
-1 Illusion
+name:Copy
+name:Beast power:3 toughness:3 color:green
+name:Beast power:4 toughness:4 color:green
+name:Plant
+name:Elephant
+name:Saproling
+name:Illusion oracle:flying color:blue power:1 toughness:1

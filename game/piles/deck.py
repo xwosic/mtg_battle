@@ -48,7 +48,7 @@ def get_deck_images(deck_path: str):
     # tokens
     tokens = list(deck['tokens'].keys())
     tokens_to_download = check_which_card_to_download(tokens, path_to_cards)
-    download_cards(tokens_to_download, path_to_cards, is_token=True)
+    download_cards(tokens_to_download, path_to_cards, token_queries=deck['tokens'])
 
 
 class Player:

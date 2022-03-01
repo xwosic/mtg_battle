@@ -29,10 +29,11 @@ async def get_card_image(card_name: str,
 
 async def get_token_image(token_name: str,
                           path_to_cards: Union[Path, str],
+                          query: dict = None,
                           default_url: str = 'https://api.scryfall.com/cards/search'):
     print(f'downloading |#__| {token_name}')
     response_body = {}
-    query = await create_query(type='token', name=token_name)
+    query = await create_query(type='token', **query)
     order = 'order=released'
     print(default_url + '?' + query + '&' + order)
     async with aiohttp.ClientSession() as session:
@@ -76,22 +77,21 @@ async def download_card(url: str,
                 await f.close()
 
 
-async def execute_tasks(cards_to_download: List[str], path_to_cards: Union[Path, str], is_token=False):
+async def execute_tasks(cards_to_download: List[str], path_to_cards: Union[Path, str], token_queries: dict = None):
     tasks = []
     for card in cards_to_download:
-        print('creating task for', card)
-        if is_token:
-            tasks.append(get_token_image(token_name=card, path_to_cards=path_to_cards))
+        if token_queries:
+            tasks.append(get_token_image(token_name=card, path_to_cards=path_to_cards, query=token_queries[card]))
         else:
             tasks.append(get_card_image(card_name=card, path_to_cards=path_to_cards))
 
     await asyncio.gather(*tasks)
 
 
-def download_cards(cards_to_download: List[str], path_to_cards: Path, is_token=False):
+def download_cards(cards_to_download: List[str], path_to_cards: Path, token_queries: dict = None):
     loop = asyncio.get_event_loop()
     try:
-        loop.run_until_complete(execute_tasks(cards_to_download, path_to_cards, is_token=is_token))
+        loop.run_until_complete(execute_tasks(cards_to_download, path_to_cards, token_queries=token_queries))
 
     except Exception as ex:
         print('loop exception:', ex)

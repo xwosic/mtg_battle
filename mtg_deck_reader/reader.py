@@ -15,8 +15,11 @@ class DeckReader:
         }
         self.destination = 'mainboard'
 
+    def create_name(self, **kwargs):
+        return 'token__' + '_'.join([f'{k}_{v}' for k, v in kwargs.items()])
+
     def skip_empty(self, line: str):
-        return line.startswith('\n')
+        return line.startswith('\n') or line.startswith('#')
 
     def check_destination(self, line: str):
         line = line.strip()
@@ -27,11 +30,23 @@ class DeckReader:
         return False
 
     def add_card(self, line: str):
-        number, *name = line.split(' ')
-        name = ' '.join(name).strip('\n')
-        name = name.strip()
-        self.cards[self.destination][name] = int(number)
-        return f'{name} added to deck in quantity: {number}'
+        if self.destination in ['mainboard', 'sideboard', 'commander']:
+            number, *name = line.split(' ')
+            name = ' '.join(name).strip('\n')
+            name = name.strip()
+            self.cards[self.destination][name] = int(number)
+            return f'{name} added to deck in quantity: {number}'
+
+        elif self.destination == 'tokens':
+            line = line.strip(' ').strip('\n')
+            query = line.split(' ')
+            search_query_dict = {}
+            for q in query:
+                k, v = q.split(':')
+                search_query_dict[k] = v
+            name = self.create_name(**search_query_dict)
+            self.cards[self.destination][name] = search_query_dict
+            return search_query_dict
 
     def check_line(self, file_line: str):
         line = file_line.lower()
