@@ -1,4 +1,8 @@
+
+Commander
 1 Aesi, Tyrant of Gyre Strait
+
+Mainboard
 1 Avenger of Zendikar
 1 Trench Behemoth
 1 Stumpsquall Hydra
@@ -71,4 +75,10 @@
 15 Forest
 15 Island
 
-
+tokens
+1 Copy
+1 Beast
+1 Plant
+1 Elephant
+1 Saproling
+1 Illusion

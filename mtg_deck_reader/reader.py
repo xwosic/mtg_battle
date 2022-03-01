@@ -44,6 +44,6 @@ class DeckReader:
     def read_deck(self) -> dict:
         with open(self.path, 'r') as deck:
             for line in deck:
-                print(self.check_line(line))
+                self.check_line(line)
 
         return self.cards
