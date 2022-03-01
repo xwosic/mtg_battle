@@ -79,3 +79,15 @@
 1 Temple of the False God
 12 Mountain
 8 Plains
+
+Tokens
+name:Thopter pow:1 tou:1
+name:Myr pow:1 tou:1
+name:copy
+name:Clue
+name:Food
+name:Golem pow:3 tou:3 o:trample
+name:Golem pow:3 tou:3 o:flying
+name:Golem pow:3 tou:3 o:vigilance
+name:Construct
+name:Treasure
