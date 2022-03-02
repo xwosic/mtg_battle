@@ -46,7 +46,7 @@ async def get_token_image(token_name: str,
     await download_card(url=image_url, card_name=token_name, path_to_cards=path_to_cards)
 
 
-async def get_the_most_recent_image_url(response: dict, size: str = 'normal'):
+async def get_the_most_recent_image_url(response: dict, size: str = 'small'):
     first_token = response['data'][0]
     url = first_token['image_uris'][size]
     return url

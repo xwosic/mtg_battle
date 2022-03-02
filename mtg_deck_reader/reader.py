@@ -19,7 +19,9 @@ class DeckReader:
         return 'token__' + '_'.join([f'{k}_{v}' for k, v in kwargs.items()])
 
     def skip_empty(self, line: str):
-        return line.startswith('\n') or line.startswith('#')
+        return (line.startswith('\n') 
+                or line.startswith('#')
+                or line.startswith(' '))
 
     def check_destination(self, line: str):
         line = line.strip()
@@ -58,7 +60,11 @@ class DeckReader:
 
     def read_deck(self) -> dict:
         with open(self.path, 'r') as deck:
-            for line in deck:
-                self.check_line(line)
+            for num, line in enumerate(deck):
+                try:
+                    self.check_line(line)
+                except Exception as ex:
+                    print('deck:', str(self.path), 'line:', num + 1, 'error: ', str(ex))
+                    raise
 
         return self.cards
