@@ -42,8 +42,17 @@ class DeckReader:
         elif self.destination == 'tokens':
             line = line.strip(' ').strip('\n')
             query = line.split(' ')
+            length = len(query)
+            query_with_spaces = []
+            for num, phrase in enumerate(query):
+                if ':' not in phrase:
+                    if num > 0 and length > 1:
+                        query_with_spaces[num - 1] += '%20' + phrase
+                else:
+                    query_with_spaces.append(phrase)
+
             search_query_dict = {}
-            for q in query:
+            for q in query_with_spaces:
                 k, v = q.split(':')
                 search_query_dict[k] = v
             name = self.create_name(**search_query_dict)

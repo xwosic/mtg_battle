@@ -77,7 +77,7 @@ Mainboard
 
 # each token should have name specified
 tokens
-name:Copy
+name:copy
 name:Beast power:3 toughness:3 color:green
 name:Beast power:4 toughness:4 color:green
 name:Plant

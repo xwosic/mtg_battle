@@ -47,9 +47,14 @@ async def get_token_image(token_name: str,
 
 
 async def get_the_most_recent_image_url(response: dict, size: str = 'small'):
-    first_token = response['data'][0]
-    url = first_token['image_uris'][size]
-    return url
+    data = response['data']
+    for card in data:
+        try:
+            url = card['image_uris'][size]
+            return url
+        except KeyError:
+            pass
+    raise ValueError(f'There is no image uri for: {response}')
 
 
 async def create_query(**kwargs):

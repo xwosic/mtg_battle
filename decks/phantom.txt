@@ -80,7 +80,7 @@ mainboard
 1 Tranquil Cove   
 
 tokens
-name:Copy
+name:copy
 name:Replicated o:Add
 name:Boar pow:2 tou:2 c:g
 name:Dragon pow:5 tou:5
