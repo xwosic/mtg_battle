@@ -1,4 +1,7 @@
+Commander
 1 Talrand, Sky Summoner
+
+Mainboard
 1 Aetherize
 1 Anticipate
 1 Arrester's Admonition
@@ -62,3 +65,10 @@
 1 Unstable Obelisk
 1 Unwind
 1 Windreader Sphinx
+
+Tokens
+name:Beast
+name:Thopter
+name:Drake
+name:Construct
+name:Frog power:3 toughness:3 color:green

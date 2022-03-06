@@ -1,0 +1,71 @@
+COMMANDER 
+1 Ayara, First of Locthwain  
+  
+mainboard
+1 Archfiend's Vessel  
+1 Cauldron Familiar  
+1 Mardu Shadowspear  
+1 Sanitarium Skeleton  
+1 Serrated Scorpion  
+1 Apprentice Necromancer  
+1 Burglar Rat  
+1 Elderfang Disciple  
+1 Elvish Doomsayer  
+1 Kalastria Healer  
+1 Orzhov Enforcer  
+1 Reassembling Skeleton  
+1 Siege Zombie  
+1 Tattered Mummy  
+1 Agadeem Occultist  
+1 Ammit Eternal  
+1 Big Game Hunter  
+1 Bloodthirsty Aerialist  
+1 Filigree Familiar  
+1 Loyal Subordinate  
+1 Marauding Blight-Priest  
+1 Nocturnal Feeder  
+1 Servant of Tymaret  
+1 Abyssal Specter  
+1 Ravenous Chupacabra  
+1 Solemn Simulacrum  
+1 Vindictive Vampire  
+1 Author of Shadows  
+1 Epicure of Blood  
+1 Junji, the Midnight Sky  
+1 Massacre Girl  
+1 Syr Konrad, the Grim  
+1 Archfiend of Sorrows  
+1 Bane of Bala Ged  
+1 Archfiend of Despair  
+1 Avatar of Woe  
+1 Witch's Oven  
+1 Arcane Signet  
+1 Bontu's Monument  
+1 Argentum Armor  
+1 Cast Down  
+1 Bake into a Pie  
+1 Blood Curdle  
+1 Bone Shards  
+1 Severed Strands  
+1 Ashen Powder  
+1 Blood for Bones  
+1 Beacon of Unrest  
+1 Destroy the Evidence  
+1 Kaya's Ghostform  
+1 Attrition  
+1 Bastion of Remembrance  
+1 Inevitable End  
+1 Ill-Gotten Inheritance  
+1 Revenge of Ravens  
+1 Exquisite Blood  
+1 Open the Graves  
+1 Sanguine Bond  
+40 Swamp  
+1 Witch's Cottage 
+
+tokens
+name:food
+name:demon pow:5 tou:5 o:flying
+name:spirit pow:1 tou:1 o:flying c:b
+name:human soldier pow:1 tou:1 c:w
+name:zombie pow:2 tou:2 c:b

@@ -1,1 +1,4 @@
-from .reader import read_deck
+from .reader import DeckReader
+
+
+__all__ = [DeckReader]

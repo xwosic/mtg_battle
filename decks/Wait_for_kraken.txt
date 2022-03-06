@@ -11,3 +11,8 @@
 3 Omen of the Sea
 4 Ominous Seas
 22 Island
+
+Tokens
+name:illusion pow:0 tou:2 c:blue
+name:tentacle pow:1 tou:1 c:u
+name:kraken pow:8 tou:8 c:blue

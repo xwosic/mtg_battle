@@ -1,4 +1,8 @@
+
+Commander
 1 Aesi, Tyrant of Gyre Strait
+
+Mainboard
 1 Avenger of Zendikar
 1 Trench Behemoth
 1 Stumpsquall Hydra
@@ -71,4 +75,12 @@
 15 Forest
 15 Island
 
-
+# each token should have name specified
+tokens
+name:copy
+name:Beast power:3 toughness:3 color:green
+name:Beast power:4 toughness:4 color:green
+name:Plant
+name:Elephant
+name:Saproling
+name:Illusion oracle:flying color:blue power:1 toughness:1

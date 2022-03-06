@@ -24,6 +24,10 @@ class Attachable(Dragable):
         """
         if card is not self:
             if card not in self.attached_things:
+                if 'name' in self.__dict__:
+                    # cards has names
+                    self.loc.remove_card(self)
+
                 self.loc = card
                 self.loc.attached_things.append(self)
                 self.is_attached = True
