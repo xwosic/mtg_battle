@@ -51,6 +51,11 @@ class Attachable(Dragable):
         self.right_click_options.pop('detach')
         self.right_click_options['attach'] = {'instance': self, 'kwargs': {}}
 
+    def kill(self) -> None:
+        for thing in self.attached_things:
+            thing.kill()
+        return super().kill()
+
     def update(self):
         """
         Attached thing will be following card to which it is attached to.

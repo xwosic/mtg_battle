@@ -9,4 +9,19 @@ bugs:
   
   - card search view for bottom player is shifted aside:
     cause: unknown after draw cards are in good positions
+    status: done
+  
+  - second player has bugs in sry and surveil:
+    status: pending
+  
+  - counter doesn't hide after card is gone:
+    status: done
+
+  - counter doesn't change position during tap/untap:
+    status: pending
+
+  - errors during card download should be user-friendly:
+    status: pending
+
+  - case sensitive checking if token is downloaded:
     status: pending
