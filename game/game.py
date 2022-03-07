@@ -27,11 +27,11 @@ class Game:
         self.mouse = Mouse(game=self)
         self.keyboard = Keyboard(game=self)
         self.running = True
-        self.players.append(Player(game=self, deck='do_not_attack',
+        self.players.append(Player(game=self, deck='saprolings',
                                    scale=1, c=(0, 0, 0),
                                    x=0, y=self.screen.height//2,
                                    w=self.screen.width, h=self.screen.height//2, a=0.0))
-        self.players.append(Player(game=self, deck='elves',
+        self.players.append(Player(game=self, deck='bu_mill',
                                    scale=1, c=(255, 0, 0),
                                    x=self.screen.width, y=self.screen.height//2,
                                    w=self.screen.width, h=self.screen.height//2, a=180.0))

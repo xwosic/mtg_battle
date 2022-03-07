@@ -1,0 +1,32 @@
+Mainboard
+1 Birds of Paradise
+1 Utopia Mycon  
+1 Beastcaller Savant  
+1 Deathspore Thallid  
+1 Elvish Farmer 
+1 Spore Flower  
+4 Sporecrown Thallid  
+3 Thallid Shell-Dweller  
+1 Thelon of Havenwood  
+1 Vitaspore Thallid  
+1 Psychotrope Thallid  
+1 Slimefoot, the Stowaway  
+3 Thallid Germinator  
+1 Thorn Thallid  
+1 Pallid Mycoderm  
+3 Sporesower Thallid  
+1 Thallid Soothsayer  
+1 Mycoloth  
+1 Savage Thallid    
+4 Tendershoot Dryad 
+2 Cryptolith Rite
+1 Fungal Bloom  
+1 Awakening Zone
+1 Beastmaster Ascension
+1 Bow of Nylea 
+1 Ancient Ziggurat  
+1 Archway Commons  
+20 Forest  
+  
+Tokens
+name:saproling
