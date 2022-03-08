@@ -25,3 +25,9 @@ bugs:
 
   - case sensitive checking if token is downloaded:
     status: pending
+  
+  - mill:
+    status: pending
+  
+  - put card on bottom:
+    status: pending

@@ -35,7 +35,6 @@ async def get_token_image(token_name: str,
     response_body = {}
     query = await create_query(type='token', **query)
     order = 'order=released'
-    print(default_url + '?' + query + '&' + order)
     async with aiohttp.ClientSession() as session:
         async with session.get(default_url + '?' + query + '&' + order) as response:
             if response.status == 200:

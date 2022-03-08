@@ -65,7 +65,7 @@ class DeckReader:
             return 'skipping empty line'
         if self.check_destination(line):
             return f'destination changed to {self.destination}'
-        return self.add_card(file_line)
+        return self.add_card(line)
 
     def read_deck(self) -> dict:
         with open(self.path, 'r') as deck:
