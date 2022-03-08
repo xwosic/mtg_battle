@@ -33,6 +33,8 @@ class CardVisualization(Tapable):
         super().__init__(image=image, scale=scale, **kwargs)
         self.game.sprite_group.add(self)
         self.right_click_options['add_counter'] = {'instance': self, 'kwargs': {'value': 1}}
+        self.right_click_options['put_card_on_top'] = {'instance': self, 'kwargs': {}}
+        self.right_click_options['put_card_on_bottom'] = {'instance': self, 'kwargs': {}}
 
     def right_upclick(self, mouse_event: pygame.event.Event, **kwargs):
         DropdownView(game=self.game, options=self.right_click_options)
@@ -63,6 +65,38 @@ class CardVisualization(Tapable):
 
     def add_counter(self, value):
         DiceCounter.create_card_counter(card=self, init_value=value)
+
+    def put_card_on_bottom(self):
+        """
+        When this option is chosen.
+        Mouse's method_on_select is set and next clicked
+        object will be passed to put_me_on_bottom method.
+        """
+        self.game.mouse.method_on_select = self.put_me_on_bottom
+
+    def put_me_on_bottom(self, clicked):
+        if 'type' in clicked.__dict__:
+            if clicked.type == 'pile_visualization':
+                if self.loc:
+                    self.loc.remove_card(self)
+
+                clicked.put_card_on_bottom(self)
+
+    def put_card_on_top(self):
+        """
+        When this option is chosen.
+        Mouse's method_on_select is set and next clicked
+        object will be passed to put_me_on_top method.
+        """
+        self.game.mouse.method_on_select = self.put_me_on_top
+
+    def put_me_on_top(self, clicked):
+        if 'type' in clicked.__dict__:
+            if clicked.type == 'pile_visualization':
+                if self.loc:
+                    self.loc.remove_card(self)
+
+                clicked.put_card_on_top(self)
 
     def __repr__(self):
         return f'CardVisualization(name={self.card.name})'

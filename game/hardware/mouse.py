@@ -27,7 +27,7 @@ class Mouse:
         self.hover_over_object = None
         self.hover_over_card_detail = None
         # select element
-        self.method_on_select = None
+        self._method_on_select = None
 
     def get_hover_over_clickable(self, position: Tuple[int, int]):
         """
@@ -60,7 +60,7 @@ class Mouse:
         When mouse left button is clicked, check if object is dragable.
         If so, add it to dragged and save position.
         """
-        if isinstance(clicked, Dragable) and not self.method_on_select:
+        if isinstance(clicked, Dragable) and not self._method_on_select:
             self.dragged_object = clicked
             self.move_dragged_on_top()
             self.mouse_offset = (mouse_event.pos[0] - self.dragged_object.rect.x,
@@ -89,8 +89,10 @@ class Mouse:
         If mouse hasn't moved since down click - object is clicked.
         Else object was dragged and will be dropped here.
         """
-        if self.method_on_select:
-            self.method_on_select(clicked)
+        if self._method_on_select:
+            # if option like "attach" or "put on bottom" was selected
+            # clicked object will be send to method
+            self._method_on_select(clicked)
             self.method_on_select = None
 
         else:
@@ -208,3 +210,11 @@ class Mouse:
 
         else:
             self.check_hover_over()
+
+    @property
+    def method_on_select(self):
+        return self._method_on_select
+
+    @method_on_select.setter
+    def method_on_select(self, new_method):
+        self._method_on_select = new_method

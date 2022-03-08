@@ -20,6 +20,7 @@ class PileVisualization(Clickable):
 
     def __init__(self, pile: Pile, **kwargs):
         super().__init__(width=self.WIDTH, height=self.HEIGHT, **kwargs)
+        self.type = 'pile_visualization'
         self.pile = pile
         self.face_up = False
 
@@ -64,6 +65,7 @@ class Pile:
     def __init__(self,
                  player: Player,
                  **kwargs):
+        self.type = 'pile'
         self.player = player
         self.cards: List[str] = []
         self.view = PileVisualization(pile=self, **kwargs)
