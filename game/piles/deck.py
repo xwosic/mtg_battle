@@ -64,7 +64,8 @@ class DeckVisualization(PileVisualization):
                      'shuffle': {'instance': self.pile, 'kwargs': {}},
                      'scry': {'instance': self, 'kwargs': {'number_of_cards': 1}},
                      'surveil': {'instance': self, 'kwargs': {'number_of_cards': 1}},
-                     'add_token': {'instance': self, 'kwargs': {}}
+                     'mill': {'instance': self.pile, 'kwargs': {'number_of_cards': 1}},
+                     'add_token': {'instance': self, 'kwargs': {}},
                      }
 
     def right_upclick(self, mouse_event: pygame.event.Event, **kwargs):
@@ -149,9 +150,20 @@ class Deck(Pile):
         if self.cards:
             card_name = self.cards.pop()
             self.view.image = None
-            card = Card(game=self.view.game,
-                        groups=[self.player.game.sprite_group],
-                        name=card_name)
+            card = Card(game=self.view.game, name=card_name)
             card.view.rect.center = self.view.rect.center
             self.player.hand.add_card(card)
-        self.view.selected = False
+        # self.view.selected = False
+
+    def mill(self, number_of_cards: str):
+        try:
+            number_of_cards = int(number_of_cards)
+        except ValueError:
+            return
+
+        for _ in range(number_of_cards):
+            if self.cards:
+                card_name = self.cards.pop()
+                self.view.image = None
+                card = Card(game=self.view.game, name=card_name)
+                self.player.graveyard.view.put_card_on_top(card.view)

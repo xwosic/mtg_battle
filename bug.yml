@@ -11,7 +11,7 @@ bugs:
     cause: unknown after draw cards are in good positions
     status: done
   
-  - second player has bugs in sry and surveil:
+  - second player has bugs in scry and surveil:
     status: pending
   
   - counter doesn't hide after card is gone:
@@ -24,10 +24,10 @@ bugs:
     status: pending
 
   - case sensitive checking if token is downloaded:
-    status: pending
+    status: done
   
   - mill:
-    status: pending
+    status: done
   
   - put card on bottom:
     status: pending
