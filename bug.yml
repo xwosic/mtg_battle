@@ -18,7 +18,7 @@ bugs:
     status: done
 
   - counter doesn't change position during tap/untap:
-    status: pending
+    status: done
 
   - errors during card download should be user-friendly:
     status: pending
@@ -29,5 +29,5 @@ bugs:
   - mill:
     status: done
   
-  - put card on bottom:
-    status: pending
+  - put card on top and bottom:
+    status: done

@@ -22,25 +22,26 @@ class Attachable(Dragable):
         and if card is not in things attached to itself (circular attachment).
         If not - set loc to card and change options.
         """
-        if card is not self:
-            if card not in self.attached_things:
-                if 'name' in self.__dict__:
-                    # cards has names
-                    self.loc.remove_card(self)
+        if card:
+            if card is not self:
+                if card not in self.attached_things:
+                    if 'name' in self.__dict__:
+                        # cards has names
+                        self.loc.remove_card(self)
 
-                self.loc = card
-                self.loc.attached_things.append(self)
-                self.is_attached = True
+                    self.loc = card
+                    self.loc.attached_things.append(self)
+                    self.is_attached = True
 
-                # change dropdown options
-                self.right_click_options.pop('attach')
-                self.right_click_options['detach'] = {'instance': self, 'kwargs': {}}
+                    # change dropdown options
+                    self.right_click_options.pop('attach')
+                    self.right_click_options['detach'] = {'instance': self, 'kwargs': {}}
 
-                # set offset
-                if offset:
-                    self.attach_offset = offset
-                else:
-                    self.attach_offset = (card.rect.width // 2, card.rect.height // 2)
+                    # set offset
+                    if offset:
+                        self.attach_offset = offset
+                    else:
+                        self.attach_offset = (card.rect.width // 2, card.rect.height // 2)
 
     def detach(self):
         """
