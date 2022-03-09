@@ -1,4 +1,5 @@
 import pygame
+from game.controls.menu import Menu
 from game.hardware import Keyboard, Mouse, Screen
 from game.player import Player
 from game.piles.deck import download_all_decks_images
@@ -42,7 +43,7 @@ class Game:
 
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
-                self.running = False
+                Menu(self)
 
             else:
                 self.keyboard.keyboard_clicked(event)
@@ -72,6 +73,9 @@ class Game:
         [player.update() for player in self.players]
         self.sprite_group.update()
         pygame.display.update()
+
+    def exit(self):
+        self.running = False
 
     def clean_up(self):
         # save progress
