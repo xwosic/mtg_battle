@@ -38,7 +38,7 @@ class Player(Zone):
         self.command_zone = self.create_pile(x_ratio=0.17, y_ratio=0.5, **kwargs)
         self.piles = [self.deck, self.graveyard, self.exile, self.command_zone]
 
-        self.health = 40
+        self.health = 40 if 'health' not in kwargs else kwargs['health']
         self.life_counter = self.create_life_counter(init_healh=self.health, **kwargs)
 
     def calculate_position(self,
