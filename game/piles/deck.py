@@ -141,7 +141,10 @@ class Deck(Pile):
 
         if number_of_cards <= len(self.cards):
             if self.cards:
-                return self.cards[-number_of_cards:]
+                scry_cards = []
+                for _ in range(number_of_cards):
+                    scry_cards.append(self.cards.pop())
+                return scry_cards
 
     def draw(self):
         """

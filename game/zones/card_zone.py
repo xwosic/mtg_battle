@@ -28,7 +28,6 @@ class CardZone(Zone):
 
     def rotate_card_if_new(self, view):
         if view.loc is not self:
-            print('its new me')
             if self.is_rotated():
                 self.rotate_card(view)
 
