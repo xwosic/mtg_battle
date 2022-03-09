@@ -153,7 +153,7 @@ class Deck(Pile):
             card = Card(game=self.view.game, name=card_name)
             card.view.rect.center = self.view.rect.center
             self.player.hand.add_card(card)
-        # self.view.selected = False
+        self.view.selected = False
 
     def mill(self, number_of_cards: str):
         try:

@@ -20,11 +20,12 @@ async def get_card_image(card_name: str,
     response_body = json.loads(response_body)
 
     for card in response_body['cards']:
-        if card.get('imageUrl'):
-            await download_card(url=card['imageUrl'],
-                                card_name=card_name,
-                                path_to_cards=path_to_cards)
-            break
+        if str(card.get('name')).lower() == card_name:
+            if card.get('imageUrl'):
+                await download_card(url=card['imageUrl'],
+                                    card_name=card_name,
+                                    path_to_cards=path_to_cards)
+                break
 
 
 async def get_token_image(token_name: str,

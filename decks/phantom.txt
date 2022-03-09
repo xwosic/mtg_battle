@@ -81,7 +81,7 @@ mainboard
 
 tokens
 name:copy
-name:Replicated o:Add
+name:Replicated Ring o:Add
 name:Boar pow:2 tou:2 c:g
 name:Dragon pow:5 tou:5
 name:Bird pow:1 tou:1 o:flying c:white
