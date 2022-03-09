@@ -1,0 +1,25 @@
+22 Swamp
+2 Persistent Specimen  
+2 Vampiric Rites  
+4 Blood Artist  
+1 Bloodghast  
+1 Clattering Augur  
+2 Ghoulish Procession  
+3 Jadar, Ghoulcaller of Nephalia  
+1 Nether Traitor  
+4 Reassembling Skeleton  
+3 Attrition  
+3 Ayara, First of Locthwain  
+2 Blight Mound  
+1 Dark Prophecy
+1 Malevolent Awakening  
+1 Silversmote Ghoul  
+2 Death Tyrant  
+2 Ghoulcaller Gisa 
+2 Syr Konrad, the Grim  
+1 Harvester of Souls  
+ 
+tokens
+name:zombie c:b pow:2 tou:2
+name:zombie c:b pow:2 tou:2 o:decayed
+name:pest

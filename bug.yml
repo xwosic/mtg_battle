@@ -1,7 +1,7 @@
 bugs:
   - wrong card download:
     description: wrong card is downloaded (with similar name)
-    status: pending
+    status: done
   
   - cards return to zone when put aside:
     cause: Dragable.loc is not cleared when card is not put to another zone
@@ -9,4 +9,28 @@ bugs:
   
   - card search view for bottom player is shifted aside:
     cause: unknown after draw cards are in good positions
+    status: done
+  
+  - second player has bugs in scry and surveil:
+    status: pending
+  
+  - counter doesn't hide after card is gone:
+    status: done
+
+  - counter doesn't change position during tap/untap:
+    status: done
+
+  - errors during card download should be user-friendly:
+    status: pending
+
+  - case sensitive checking if token is downloaded:
+    status: done
+  
+  - mill:
+    status: done
+  
+  - put card on top and bottom:
+    status: done
+
+  - make scry and surveil borders bolder:
     status: pending

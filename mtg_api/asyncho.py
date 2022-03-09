@@ -20,11 +20,12 @@ async def get_card_image(card_name: str,
     response_body = json.loads(response_body)
 
     for card in response_body['cards']:
-        if card.get('imageUrl'):
-            await download_card(url=card['imageUrl'],
-                                card_name=card_name,
-                                path_to_cards=path_to_cards)
-            break
+        if str(card.get('name')).lower() == card_name:
+            if card.get('imageUrl'):
+                await download_card(url=card['imageUrl'],
+                                    card_name=card_name,
+                                    path_to_cards=path_to_cards)
+                break
 
 
 async def get_token_image(token_name: str,
@@ -35,7 +36,6 @@ async def get_token_image(token_name: str,
     response_body = {}
     query = await create_query(type='token', **query)
     order = 'order=released'
-    print(default_url + '?' + query + '&' + order)
     async with aiohttp.ClientSession() as session:
         async with session.get(default_url + '?' + query + '&' + order) as response:
             if response.status == 200:

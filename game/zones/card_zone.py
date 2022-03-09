@@ -10,16 +10,16 @@ class CardZone(Zone):
 
     def add_card(self, card):
         if isinstance(card, CardVisualization):
-            self.cards.add(card)
-            card.loc = self
-            if len(self.cards) > 0:
-                self.distribute_cards()
-
+            card_view = card
         elif isinstance(card, Card):
-            self.cards.add(card.view)
-            card.view.loc = self
-            if len(self.cards) > 0:
-                self.distribute_cards()
+            card_view = card.view
+        else:
+            return None
+
+        self.cards.add(card_view)
+        card_view.loc = self
+        if len(self.cards) > 0:
+            self.distribute_cards()
 
     def remove_card(self, card: CardVisualization):
         if card in self.cards:
@@ -28,7 +28,6 @@ class CardZone(Zone):
 
     def rotate_card_if_new(self, view):
         if view.loc is not self:
-            print('its new me')
             if self.is_rotated():
                 self.rotate_card(view)
 
