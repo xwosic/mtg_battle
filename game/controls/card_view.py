@@ -20,7 +20,6 @@ class CardView(CardZone):
         self.delete_cards()
         for name in cards_names:
             card = Card(game=self.game, name=name, x=self.game.screen.width, y=0)
-            card.loc = self
             self.add_card(card)
 
     def remove_card(self, card: CardVisualization):

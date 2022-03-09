@@ -31,3 +31,6 @@ bugs:
   
   - put card on top and bottom:
     status: done
+
+  - make scry and surveil borders bolder:
+    status: pending
