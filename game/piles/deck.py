@@ -1,3 +1,4 @@
+from typing import List
 import pygame
 import random
 from game.card import Card
@@ -19,7 +20,7 @@ def download_all_decks_images():
         get_deck_images(deck_name)
 
 
-def get_deck_filenames(path='decks'):
+def get_deck_filenames(path='decks') -> List[str]:
     path_to_decks = Path(path)
     deck_filenames = []
     for filename in path_to_decks.iterdir():
