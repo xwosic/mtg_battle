@@ -17,12 +17,12 @@ class Menu(DropdownView):
             self.new_player.send(('skip', 'this'))
 
         options = {
-            'new': {'instance': self, 'kwargs': {}},
+            'add_player': {'instance': self, 'kwargs': {}},
             'exit': {'instance': game, 'kwargs': {}}
         }
         super().__init__(game, options, **kwargs)
 
-    def new(self):
+    def add_player(self):
         """
         Get decks names and display them in list.
         """
@@ -49,7 +49,6 @@ class Menu(DropdownView):
         a = 0.0
         deck_name, health = yield 'ready'
         while True:
-            print('creating first player')
             if deck_name == 'skip' and health == 'this':
                 deck_name, health = yield
             else:
@@ -63,7 +62,6 @@ class Menu(DropdownView):
                                                  w=w,
                                                  h=h,
                                                  a=a)
-            print('creating second player')
             c = (255, 0, 0)
             x = game.screen.width
             y = game.screen.height//2
@@ -72,8 +70,7 @@ class Menu(DropdownView):
             a = 180.0
 
     def create_player(self, players_deck: str):
-        players_deck = players_deck.replace('_', ' ')
-        player = self.new_player.send((players_deck, 20))
-        print(player)
-        self.game.players.append(player)
-
+        if len(self.game.players) <= 1:
+            players_deck = players_deck.replace('_', ' ')
+            player = self.new_player.send((players_deck, 20))
+            self.game.players.append(player)
