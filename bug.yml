@@ -12,7 +12,7 @@ bugs:
     status: done
   
   - second player has bugs in scry and surveil:
-    status: pending
+    status: done
   
   - counter doesn't hide after card is gone:
     status: done
@@ -34,3 +34,6 @@ bugs:
 
   - make scry and surveil borders bolder:
     status: pending
+
+  - removing cards from piles doesn't work:
+    status: done
