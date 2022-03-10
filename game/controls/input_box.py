@@ -40,8 +40,9 @@ class InputBox(Clickable):
         or sends it (if it was enter).
         """
         if event.key == pygame.K_RETURN:
-            self.send()
-            self.text = ''
+            # self.send()
+            # self.text = ''
+            pass
         elif event.key == pygame.K_BACKSPACE:
             self.text = self.text[:-1]
             if self.always_send:

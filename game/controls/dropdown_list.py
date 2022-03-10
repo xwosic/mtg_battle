@@ -25,8 +25,12 @@ class DropdownList:
         return mock
 
     def create_list(self, game, options, **kwargs):
-        new_object = DropdownView.__new__(DropdownView)
+        dw = DropdownView.__new__(DropdownView)
         for method, method_dict in options.items():
-            method_dict['instance'] = new_object
-            new_object.__setattr__(method, self.create_option_function(method))
-        return DropdownView.__init__(new_object, game=game, options=options, **kwargs)
+            method_dict['instance'] = dw
+            dw.__setattr__(method, self.create_option_function(method))
+        DropdownView.__init__(dw, game=game, options=options, **kwargs)
+        dw.dropdown.distribute_buttons(dw.dropdown.buttons,
+                                       button_w=200,
+                                       button_h=game.screen.height//len(dw.dropdown.buttons))
+        return dw

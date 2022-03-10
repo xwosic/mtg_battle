@@ -29,16 +29,6 @@ class Game:
         self.keyboard = Keyboard(game=self)
         self.running = True
         Menu(self, groups=[self.sprite_group])
-        # self.players.append(Player(game=self,
-        #                            deck='saprolings',
-        #                            health=20,
-        #                            scale=1, c=(0, 0, 0),
-        #                            x=0, y=self.screen.height//2,
-        #                            w=self.screen.width, h=self.screen.height//2, a=0.0))
-        # self.players.append(Player(game=self, deck='sacrifice',
-        #                            scale=1, c=(255, 0, 0),
-        #                            x=self.screen.width, y=self.screen.height//2,
-        #                            w=self.screen.width, h=self.screen.height//2, a=180.0))
 
     def on_event(self, event):
         if event.type == pygame.QUIT:

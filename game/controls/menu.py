@@ -41,13 +41,13 @@ class Menu(DropdownView):
         game = self.game
         deck_name = 'foo'
         health = 'bar'
+        deck_name, health = yield 'ready'
         c = (0, 0, 0)
         x = 0
         y = game.screen.height//2
         w = game.screen.width
         h = game.screen.height//2
         a = 0.0
-        deck_name, health = yield 'ready'
         while True:
             if deck_name == 'skip' and health == 'this':
                 deck_name, health = yield
