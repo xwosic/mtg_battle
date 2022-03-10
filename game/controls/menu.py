@@ -8,7 +8,15 @@ class Menu(DropdownView):
     """
     This is parent class of all menu choises.
     After clicking on option, new submenu is created.
+
+    Life total is global for all instances.
+    First DropdownList instance sets life total.
+    Then next instance of DropdownList chooses deck.
+    And after this - player generator is called
+    with deck name and health values.
     """
+    PLAYERS_LIFE_TOTAL = 20
+
     def __init__(self, game, **kwargs) -> None:
         self.game = game
         self.new_player = self.player_generator()
@@ -23,6 +31,10 @@ class Menu(DropdownView):
         super().__init__(game, options, **kwargs)
 
     def add_player(self):
+        options = ['20', '30', '40']
+        DropdownList(self.game, options, self.set_life_total)
+
+    def choose_deck(self):
         """
         Get decks names and display them in list.
         """
@@ -72,5 +84,10 @@ class Menu(DropdownView):
     def create_player(self, players_deck: str):
         if len(self.game.players) <= 1:
             players_deck = players_deck.replace('_', ' ')
-            player = self.new_player.send((players_deck, 20))
+            player = self.new_player.send((players_deck, Menu.PLAYERS_LIFE_TOTAL))
             self.game.players.append(player)
+
+    def set_life_total(self, life: str):
+        life = int(life)
+        Menu.PLAYERS_LIFE_TOTAL = life
+        self.choose_deck()
