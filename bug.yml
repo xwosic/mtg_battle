@@ -37,3 +37,9 @@ bugs:
 
   - removing cards from piles doesn't work:
     status: done
+
+  - removing top card from graveyard doesn't change it's image (if some cards remains there):
+    status: pending
+
+  - dropdownlist has black space on bottom:
+    status: pending
