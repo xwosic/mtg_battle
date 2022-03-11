@@ -1,17 +1,16 @@
 mainboard
-2 Syr Konrad, the Grim 
+4 Syr Konrad, the Grim 
 4 Murder
 2 Sanitarium Skeleton  
 4 Reassembling Skeleton 
 3 Bloodchief's Thirst
 4 Dictate of Kruphix
-2 Psychic Corrosion
+4 Psychic Corrosion
 4 Blood Reckoning
-3 Dogged Pursuit
+2 Dogged Pursuit
 3 Ill-Gotten Inheritance
 4 Revenge of Ravens
-1 Patient Rebuilding
 4 Choked Estuary
-9 Island
-9 Swamp
+8 Island
+8 Swamp
 2 Reliquary Tower
