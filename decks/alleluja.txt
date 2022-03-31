@@ -1,0 +1,64 @@
+COMMANDER  
+1 Lyra Dawnbringer  
+  
+mainboard
+1 Bishop of Wings  
+1 Knight of the White Orchid  
+1 Loyal Warhound  
+1 Youthful Valkyrie  
+1 Angel of Vitality  
+1 Resplendent Angel  
+1 Righteous Valkyrie  
+1 Starnheim Aspirant  
+1 Angel of Condemnation  
+1 Angel of Finality  
+1 Angel of Jubilation  
+1 Angelic Field Marshal  
+1 Archangel of Tithes  
+1 Segovian Angel 
+1 Glorious Protector  
+1 Guardian Seraph  
+1 Legion Angel  
+2 Linvala, Keeper of Silence  
+1 Restoration Angel  
+1 Shalai, Voice of Plenty  
+1 Sublime Archangel  
+1 Thraben Watcher  
+1 Angel of Destiny  
+1 Angel of Invention  
+1 Archangel of Thune  
+1 Baneslayer Angel  
+1 Blinding Angel  
+1 Guardian of the Gateless  
+1 Herald of War  
+1 Sigarda's Vanguard  
+1 Adarkar Valkyrie  
+1 Admonition Angel  
+1 Angelic Guardian  
+1 Breathkeeper Seraph  
+1 Valkyrie Harbinger  
+1 Akroma, Vision of Ixidor  
+1 Angel of Serenity  
+1 Angel of the Ruins  
+1 Angelic Arbiter  
+1 Exquisite Archangel  
+1 Platinum Angel  
+1 Sephara, Sky's Blade  
+1 Akroma, Angel of Wrath  
+1 Avacyn, Angel of Hope  
+1 Sword of the Animist  
+1 Archaeomancer's Map  
+1 Cloud Key  
+1 Herald's Horn  
+1 Icon of Ancestry  
+1 Urza's Incubator  
+1 Door of Destinies  
+1 Vanquisher's Banner  
+1 Land Tax  
+1 Rally the Ranks  
+1 Shared Triumph  
+1 Radiant Destiny  
+1 Angelic Accord
+1 Myriad Landscape  
+39 Plains  
+1 Seraph Sanctuary  

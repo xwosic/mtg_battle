@@ -1,0 +1,87 @@
+COMMANDER
+1 Rograkh, Son of Rohgahh  
+mainboard
+1 Keleth, Sunmane Familiar  
+1 Sram, Senior Edificer  
+1 Adeline, Resplendent Cathar  
+1 Akiri, Fearless Voyager  
+1 Archetype of Courage  
+1 Ardenn, Intrepid Archaeologist  
+1 Laelia, the Blade Reforged  
+1 Angel of Jubilation  
+1 Angelic Field Marshal  
+1 Archangel of Tithes  
+1 Thraben Watcher  
+1 Adult Gold Dragon  
+1 Angel of Invention  
+1 Archangel of Thune
+1 Herald of War  
+1 Lyra Dawnbringer  
+1 Angelic Guardian  
+1 Akroma, Vision of Ixidor  
+1 Angel of Serenity  
+1 Angel of the Ruins  
+1 Angelic Arbiter  
+1 Akroma, Angel of Wrath  
+1 Avacyn, Angel of Hope  
+1 Basilisk Collar  
+1 Blade of the Bloodchief  
+1 Bloodforged Battle-Axe  
+1 Cliffhaven Kitesail  
+1 Colossus Hammer  
+1 Commander's Plate  
+1 Darksteel Axe  
+1 Sol Ring  
+1 Ancestral Katana  
+1 Armory of Iroas  
+1 Banshee's Blade  
+1 Batterbone  
+1 Blackblade Reforged  
+1 Captain's Claws  
+1 Cloak and Dagger  
+1 Cobbled Wings  
+1 Executioner's Hood  
+1 Mask of Avacyn  
+1 Mirror Shield  
+1 Swiftfoot Boots  
+1 Archaeomancer's Map  
+1 Battlemage's Bracers  
+1 Bearded Axe  
+1 Darksteel Plate  
+1 Avarice Amulet  
+1 Hammer of Nazahn  
+1 Argentum Armor 
+1 Cleansing Nova  
+1 Rout  
+1 All That Glitters  
+1 Dawn of Hope  
+1 Shielded by Faith  
+1 Timely Ward  
+1 Indestructibility  
+1 Sigarda's Splendor 
+1 Sublime Archangel  
+15 Mountain  
+25 Plains  
+  
+SIDEBOARD
+1 Accorder's Shield  
+1 Cathar's Shield  
+1 Alseid of Life's Bounty  
+1 Blinding Powder  
+1 Ceremonial Knife  
+1 Akiri, Line-Slinger  
+1 Aether Membrane  
+1 Haunted Cloak  
+1 Losheel, Clockwork Scholar  
+1 Thorough Investigation  
+1 Legion Angel  
+1 Search the Premises  
+1 Seraph of the Sword  
+1 Angel of Destiny  
+1 Sigarda's Vanguard  
+1 Adarkar Valkyrie  
+1 Akki Battle Squad  
+1 Valkyrie Harbinger  
+1 Wispweaver Angel  
+1 Exquisite Archangel  
+1 Ancient Stone Idol  
