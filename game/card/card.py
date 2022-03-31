@@ -44,7 +44,12 @@ class CardVisualization(Tapable):
         Loades name.jpg from the directory.
         """
         path_to_card = Path.joinpath(Path(self.DEFAULT_PATH), f'{name}.jpg')
-        image = pygame.image.load(path_to_card)
+        try:
+            image = pygame.image.load(path_to_card)
+
+        except Exception:
+            raise ValueError(f'Failed to load image: {path_to_card}')
+
         return image
 
     def unify_scale(self, image: pygame.Surface, **kwargs):
