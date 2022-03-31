@@ -43,11 +43,21 @@ class Attachable(Dragable):
                     else:
                         self.attach_offset = (card.rect.width // 2, card.rect.height // 2)
 
+    def find_non_card_localization(self, loc):
+        result = None
+        if 'loc' in loc.__dict__:
+            if isinstance(loc.loc, Dragable):
+                result = self.find_non_card_localization(loc.loc)
+            else:
+                result = loc.loc
+
+        return result
+
     def detach(self):
         """
         Change loc to loc of card attached to and change options.
         """
-        self.loc = self.loc.loc
+        self.loc = self.find_non_card_localization(self.loc)
         self.is_attached = False
         self.right_click_options.pop('detach')
         self.right_click_options['attach'] = {'instance': self, 'kwargs': {}}
