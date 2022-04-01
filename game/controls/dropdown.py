@@ -27,7 +27,7 @@ class Dropdown(GameObject):
         super().__init__(**kwargs)
         mapping = self.create_mapping(options)
         self.buttons = self.create_buttons(mapping)
-        self.distribute_buttons(self.buttons, button_w, button_h)
+        self.distribute_buttons(self.buttons, button_w, button_h=self.game.screen.height//len(self.buttons))
         self.victims = self.buttons
 
     def create_mapping(self, options: dict):

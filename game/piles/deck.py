@@ -63,6 +63,7 @@ class DeckVisualization(PileVisualization):
         self.right_click_options = {
                      'search': {'instance': self, 'kwargs': {}},
                      'shuffle': {'instance': self.pile, 'kwargs': {}},
+                     'shuffle_hand_into_library': {'instance': self.pile.player.hand, 'kwargs': {}},
                      'scry': {'instance': self, 'kwargs': {'number_of_cards': 1}},
                      'surveil': {'instance': self, 'kwargs': {'number_of_cards': 1}},
                      'mill': {'instance': self.pile, 'kwargs': {'number_of_cards': 1}},
