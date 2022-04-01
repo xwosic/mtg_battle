@@ -9,7 +9,6 @@ mainboard
 1 Dwarven Blastminer  
 1 Dwarven Miner  
 1 Fearless Liberator
-1 Goldvein Pick
 7 Seven Dwarves  
 1 Vault Robber  
 1 Wily Goblin  
@@ -36,7 +35,6 @@ mainboard
 1 Terror of the Peaks  
 1 Hellkite Tyrant  
 1 Mordant Dragon  
-1 Predator Dragon  
 1 Preyseizer Dragon  
 1 Steel Hellkite  
 1 Balefire Dragon  
@@ -45,7 +43,6 @@ mainboard
 1 Skyline Despot  
 1 Utvara Hellkite  
 1 Consulate Dreadnought  
-1 Springleaf Drum  
 1 Cultivator's Caravan  
 1 Raiders' Karve  
 1 Obelisk of Urd  
@@ -58,6 +55,10 @@ mainboard
 1 Trove of Temptation  
 37 Mountain  
 1 Treasure Vault  
+1 Funeral Longboat
+1 Gilded Assault Cart
+1 Honeymoon Hearse
+
 
 tokens
 name:treasure
