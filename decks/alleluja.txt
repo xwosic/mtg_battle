@@ -19,7 +19,7 @@ mainboard
 1 Glorious Protector  
 1 Guardian Seraph  
 1 Legion Angel  
-2 Linvala, Keeper of Silence  
+1 Linvala, Keeper of Silence  
 1 Restoration Angel  
 1 Shalai, Voice of Plenty  
 1 Sublime Archangel  
@@ -62,3 +62,11 @@ mainboard
 1 Myriad Landscape  
 39 Plains  
 1 Seraph Sanctuary  
+
+tokens
+name:servo
+name:angel pow:4 tou:4 o:vigilance oracle:flying
+name:angel pow:4 tou:4 o:flying
+name:bird pow:1 tou:1 c:white
+name:spirit c:white
+name:angel pow:3 tou:3
