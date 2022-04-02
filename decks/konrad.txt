@@ -1,0 +1,80 @@
+COMMANDER
+1 Syr Konrad, the Grim  
+  
+mainboard
+[PLANESWALKERS]  
+1 Liliana, the Last Hope  
+  
+[CREATURES]  
+1 Disciple of the Vault  
+1 Eye Collector  
+1 Stitcher's Supplier  
+1 Thieves' Guild Enforcer  
+1 Blood Artist  
+1 Golgari Thug  
+1 Jadar, Ghoulcaller of Nephalia  
+1 Millikin  
+1 Mire Triton  
+1 Returned Reveler  
+1 Undead Butler  
+3 Ayara, First of Locthwain  
+1 Gorging Vulture  
+1 Isareth the Awakener  
+1 Necroplasm  
+1 Ophiomancer  
+1 Shadow Stinger  
+1 Stinkweed Imp  
+1 Gisa, Glorious Resurrector  
+1 Mindwrack Demon  
+1 Scaretiller  
+3 Death Tyrant  
+1 Ghoulcaller Gisa  
+1 Underworld Sentinel  
+1 Dreadhound  
+1 Kothophed, Soul Hoarder  
+1 The Haunt of Hightower  
+  
+[ARTIFACTS]  
+1 Altar of the Brood  
+1 Codex Shredder  
+1 Ghoulcaller's Bell  
+1 Profane Memento  
+1 Wand of Vertebrae  
+1 Altar of Dementia  
+1 Mesmeric Orb  
+1 Mindcrank  
+1 Crucible of Worlds  
+1 Sword of Body and Mind  
+1 Trepanation Blade  
+  
+[INSTANTS]  
+1 Grisly Spectacle  
+1 Thrilling Encore  
+  
+[SORCERIES]  
+1 Shared Trauma  
+1 Dread Summons  
+1 Funeral Rites  
+1 Beacon of Unrest  
+1 Necromantic Summons  
+1 Rise from the Grave  
+  
+[ENCHANTMENTS]  
+1 Bloodchief Ascension  
+1 Soul Stair Expedition  
+1 Bitterblossom  
+1 Shadows of the Past  
+3 Attrition  
+1 Blight Mound  
+1 Endless Ranks of the Dead  
+  
+[LANDS]  
+1 Dakmor Salvage  
+38 Swamp  
+
+tokens
+name:zombie
+name:faerie rogue
+name:snake pow:1 tou:1
+name:wolf pow:2 tou:2
+name:pest

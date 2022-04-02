@@ -1,0 +1,123 @@
+COMMANDER  
+1 Korvold, Fae-Cursed King  
+  
+mainboard
+[CREATURES]  
+1 Cauldron Familiar  
+1 Dragonmaster Outcast  
+1 Gilded Goose  
+1 Mortician Beetle  
+1 Ravenous Squirrel  
+1 Blood Artist  
+1 Blood Aspirant  
+1 Jadar, Ghoulcaller of Nephalia  
+1 Juri, Master of the Revue  
+1 Priest of Forgotten Gods  
+1 Slaughter-Priest of Mogis  
+1 Sorcerer's Broom  
+1 Academy Manufactor  
+1 Bloodbriar  
+1 Bloodflow Connoisseur  
+1 Lyzolda, the Blood Witch  
+1 Mayhem Devil  
+1 Old Rutstein  
+1 Ophiomancer  
+1 Plaguecrafter  
+1 Savvy Hunter  
+1 Tireless Provisioner  
+1 Tireless Tracker  
+1 Creakwood Liege  
+1 Gyome, Master Chef  
+1 Hell's Caretaker  
+1 Prowling Geistcatcher  
+1 Savra, Queen of the Golgari  
+1 Strefan, Maurer Progenitor  
+1 Wicked Wolf  
+1 Anowon, the Ruin Sage  
+1 Havoc Jester  
+1 Molder Slug  
+1 Mycoloth  
+1 Ruthless Winnower  
+1 Syr Konrad, the Grim  
+1 Wasitora, Nekoru Queen  
+1 Dragon Broodmother  
+1 Preyseizer Dragon  
+1 Vaevictis Asmadi, the Dire  
+  
+[ARTIFACTS]  
+1 Mox Tantalite  
+1 Sol Ring  
+1 Witch's Oven  
+1 Arcane Signet  
+1 Phyrexian Altar  
+1 Smokestack  
+  
+[SORCERIES]  
+1 Bone Splinters  
+1 Pest Infestation  
+1 Giant Opportunity  
+1 Taste of Death  
+  
+[ENCHANTMENTS]  
+1 Soul Stair Expedition  
+1 Bitterblossom  
+1 Evolutionary Leap  
+1 Gate to Phyrexia  
+1 Trail of Crumbs  
+1 Attrition  
+1 Awakening Zone  
+1 Bastion of Remembrance  
+1 Blight Mound  
+1 Crawling Infestation  
+1 Goblin Assault  
+1 Call to the Grave  
+1 Revel in Riches  
+  
+[LANDS]  
+1 Akoum Refuge  
+1 Ash Barrens  
+1 Blighted Woodland  
+1 Bojuka Bog  
+1 Cinder Barrens  
+1 Command Tower  
+1 Evolving Wilds  
+5 Forest  
+1 Foul Orchard  
+1 Gingerbread Cabin  
+1 Golgari Guildgate  
+1 Grim Backwoods  
+1 High Market  
+1 Jund Panorama  
+1 Jungle Hollow  
+1 Kazandu Refuge  
+1 Khalni Garden  
+4 Mountain  
+1 Myriad Landscape  
+1 Reliquary Tower  
+1 Rupture Spire  
+1 Savage Lands  
+4 Swamp  
+1 Terramorphic Expanse  
+1 Timber Gorge  
+
+tokens
+name:food
+name:eldrazi spawn
+name:clue
+name:treasure
+name:blood
+name:faerie rogue
+name:snake pow:1 tou:1
+name:zombie
+name:plant
+name:saproling
+name:wolf pow:2 tou:2
+name:giant pow:7 tou:7
+name:insect
+name:goblin
+name:dragon pow:5 tou:5
+name:human soldier c:white
+name:worm
+name:pest
+name:dragon pow:1 tou:1
+name:cat dragon

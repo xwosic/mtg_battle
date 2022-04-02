@@ -19,9 +19,10 @@ class DeckReader:
         return 'token__' + '_'.join([f'{k}_{v}' for k, v in kwargs.items()])
 
     def skip_empty(self, line: str):
-        return (line.startswith('\n') 
+        return (line.startswith('\n')
                 or line.startswith('#')
-                or line.startswith(' '))
+                or line.startswith(' ')
+                or line.startswith('['))
 
     def check_destination(self, line: str):
         line = line.strip()
