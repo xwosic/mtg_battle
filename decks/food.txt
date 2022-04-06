@@ -113,8 +113,8 @@ name:plant
 name:saproling
 name:wolf pow:2 tou:2
 name:giant pow:7 tou:7
-name:insect
-name:goblin
+name:insect pow:1 tou:1
+name:goblin pow:1 tou:1
 name:dragon pow:5 tou:5
 name:human soldier c:white
 name:worm
