@@ -35,6 +35,18 @@ bugs:
   - make scry and surveil borders bolder:
     status: pending
 
+  - case sensitive checking if token is downloaded:
+    status: done
+  
+  - mill:
+    status: done
+  
+  - put card on top and bottom:
+    status: done
+
+  - make scry and surveil borders bolder:
+    status: pending
+
   - removing cards from piles doesn't work:
     status: done
 

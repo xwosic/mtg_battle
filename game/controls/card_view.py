@@ -23,7 +23,6 @@ class CardView(CardZone):
             self.add_card(card)
 
     def remove_card(self, card: CardVisualization):
-        self.pile.remove_card(card.name)
         return super().remove_card(card)
 
     def kill(self):
