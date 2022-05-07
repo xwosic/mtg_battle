@@ -57,6 +57,7 @@ class Attachable(Dragable):
         """
         Change loc to loc of card attached to and change options.
         """
+        self.loc.attached_things.remove(self)
         self.loc = self.find_non_card_localization(self.loc)
         self.is_attached = False
         self.right_click_options.pop('detach')
@@ -64,7 +65,7 @@ class Attachable(Dragable):
 
     def kill(self) -> None:
         for thing in self.attached_things:
-            thing.kill()
+            thing.detach()
         return super().kill()
 
     def update(self):

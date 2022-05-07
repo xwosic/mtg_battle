@@ -43,3 +43,6 @@ bugs:
 
   - dropdownlist has black space on bottom:
     status: pending
+  
+  - deattaching deosn't remove attached card from kill list:
+    status: done

@@ -103,3 +103,6 @@ class DiceCounter(Attachable):
                        color=color,
                        number=number_of_counters)
             dice.attach_me_to_card(card)
+
+    def detach(self):
+        self.kill()
