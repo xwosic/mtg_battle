@@ -1,0 +1,20 @@
+mainboard 
+4 Eternal of Harsh Truths  
+4 Shadow Kin  
+4 Undead Alchemist  
+4 Hordewing Skaab  
+2 Fleet Swallower  
+
+4 Sol Ring  
+2 Talisman of Dominance  
+2 Thought Vessel  
+ 
+2 Curse of Unbinding 
+4 psychic corrosion
+4 patient rebuilding 
+  
+[LANDS]  
+24 Island
+
+tokens
+name:zombie pow:2 tou:2

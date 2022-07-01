@@ -1,0 +1,17 @@
+4 Foundry Street Denizen
+4 Goblin Bushwhacker
+2 Goblin Chieftain
+4 Goblin Guide
+2 Goblin King
+4 Goblin Piledriver
+2 Krenko, Mob Boss
+4 Legion Loyalist
+2 Dragon Fodder
+4 Goblin Grenade
+3 Krenko's Command
+2 Collateral Damage
+4 Lightning Bolt
+19 Mountain
+
+tokens
+name:goblin pow:1 tou:1

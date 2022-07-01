@@ -1,0 +1,27 @@
+mainboard
+[CREATURES]  
+4 Baleful Strix  
+4 Eternal of Harsh Truths  
+1 Shadow Kin  
+4 Undead Alchemist  
+4 Wilhelt, the Rotcleaver  
+4 Death Tyrant  
+1 Hordewing Skaab  
+4 Syr Konrad, the Grim  
+1 Fleet Swallower  
+  
+[ARTIFACTS]  
+4 Sol Ring  
+2 Talisman of Dominance  
+2 Thought Vessel  
+  
+[ENCHANTMENTS]  
+1 Curse of Unbinding  
+  
+[LANDS]  
+12 Island  
+12 Swamp
+
+tokens
+name:zombie pow:2 tou:2
+name:zombie o:decayed
