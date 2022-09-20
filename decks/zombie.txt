@@ -1,0 +1,15 @@
+mainboard
+4 Carrion Feeder
+4 Diregraf Ghoul
+4 Undead Augur
+4 Dreadhorde Invasion
+4 Death Baron
+4 Diregraf Colossus
+4 Lord of the Accursed
+4 Murder
+4 Endless Ranks of the Dead
+24 Swamp
+
+tokens
+name:zombie pow:2 tou:2
+name:zombie army
